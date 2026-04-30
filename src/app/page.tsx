@@ -1,65 +1,198 @@
-import Image from "next/image";
+import type { Metadata } from 'next';
+import Link from 'next/link';
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: 'Bowlay Law — California Tenant Rights Attorney',
+  description:
+    'Your landlord has lawyers. Now you can too. Bowlay Law represents California tenants in wrongful eviction and rent control cases. No fee unless we win.',
+};
+
+const howItWorks = [
+  {
+    step: '01',
+    title: 'Tell us what happened',
+    body: 'Fill out our short form — it takes about 2 minutes. No legal knowledge required.',
+  },
+  {
+    step: '02',
+    title: "We'll talk through your case",
+    body: 'Cody will call you for a free, no-pressure screening call. He listens first.',
+  },
+  {
+    step: '03',
+    title: 'No fee unless we win',
+    body: "If we take your case, you pay nothing upfront — ever. We only get paid when you do.",
+  },
+];
+
+const situations = [
+  'You were given a notice to leave without a valid legal reason',
+  'Your landlord moved someone in and claimed they needed your unit',
+  'Your home was made unlivable until you felt you had no choice but to go',
+  'You left based on a notice that turned out to be improper or misleading',
+  'Your rent was increased beyond what the law allows',
+  'You were harassed or intimidated into vacating',
+];
+
+const whyPoints = [
+  {
+    icon: '📞',
+    title: 'You will always hear from us',
+    body: 'Every update, every development — Cody calls and explains. No waiting weeks to hear back.',
+  },
+  {
+    icon: '🤝',
+    title: 'Your case is a collaboration',
+    body: 'Cody wants your input, your facts, your perspective. You are not a file number.',
+  },
+  {
+    icon: '⚡',
+    title: 'Tech-forward practice',
+    body: 'AI-assisted note-taking, organized case files, fast turnaround. Modern tools for your benefit.',
+  },
+  {
+    icon: '⚖️',
+    title: 'Contingency fee — always',
+    body: 'No retainer. No hourly rate. You pay nothing unless we win your case.',
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      {/* Hero */}
+      <section className="bg-brand-dark text-white px-6 py-24 md:py-32">
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="font-display text-4xl md:text-6xl font-bold leading-tight mb-6">
+            Your landlord has lawyers.
+            <br />
+            <span className="text-brand-pale">Now you can too.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+          <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-2xl mx-auto">
+            Bowlay Law represents California tenants in wrongful eviction cases and rent control
+            disputes. No fee unless we win.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-gold text-ink px-8 py-4 rounded-full font-semibold text-lg hover:bg-gold-light transition-colors"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              Get a Free Case Review
+            </Link>
+            <Link
+              href="/practice-areas"
+              className="border-2 border-white/40 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-colors"
             >
-              Learning
-            </a>{" "}
-            center.
+              See What We Handle
+            </Link>
+          </div>
+          <p className="mt-6 text-sm text-white/50">
+            California tenants only &middot; Contingency fee &middot; Free screening call
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* You may have a case */}
+      <section className="bg-cream-dark px-6 py-20">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-ink text-center mb-4">
+            You may have a case if&hellip;
+          </h2>
+          <p className="text-center text-muted mb-12 max-w-xl mx-auto">
+            These are the most common situations we see. If any sound familiar, it is worth a conversation.
+          </p>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {situations.map((s, i) => (
+              <li key={i} className="flex items-start gap-3 bg-white rounded-xl px-5 py-4 shadow-sm">
+                <span className="text-brand mt-0.5 text-lg">✓</span>
+                <span className="text-ink leading-snug">{s}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="text-center text-muted text-sm mt-8">
+            Cases are strongest when your tenancy is at least a year old and is covered by a local rent
+            ordinance or the California Tenant Protection Act.{' '}
+            <Link href="/faq" className="text-brand underline hover:text-brand-mid">
+              Learn more in the FAQ.
+            </Link>
+          </p>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* How it works */}
+      <section className="bg-cream px-6 py-20">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-ink text-center mb-12">
+            How it works
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {howItWorks.map(({ step, title, body }) => (
+              <div key={step} className="text-center">
+                <div className="w-14 h-14 rounded-full bg-brand-pale text-brand-dark font-display font-bold text-xl flex items-center justify-center mx-auto mb-4">
+                  {step}
+                </div>
+                <h3 className="font-display text-xl font-semibold text-ink mb-2">{title}</h3>
+                <p className="text-muted leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Bowlay Law */}
+      <section className="bg-brand-dark text-white px-6 py-20">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-4">
+            Why Bowlay Law
+          </h2>
+          <p className="text-white/70 text-center mb-12 max-w-xl mx-auto">
+            Cody started this practice because he believed tenants deserved a lawyer who actually
+            listens — and responds.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+            {whyPoints.map(({ icon, title, body }) => (
+              <div key={title} className="bg-brand/60 rounded-2xl p-6">
+                <div className="text-2xl mb-3">{icon}</div>
+                <h3 className="font-semibold text-brand-pale mb-2">{title}</h3>
+                <p className="text-white/70 text-sm leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <Link
+              href="/about"
+              className="inline-block border-2 border-brand-pale text-brand-pale px-6 py-3 rounded-full font-semibold hover:bg-brand-pale/10 transition-colors mr-4"
+            >
+              About Cody
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-block bg-gold text-ink px-6 py-3 rounded-full font-semibold hover:bg-gold-light transition-colors"
+            >
+              Get a Free Case Review
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA strip */}
+      <section className="bg-gold-pale px-6 py-14">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-ink mb-3">
+            Not sure if you have a case?
+          </h2>
+          <p className="text-muted mb-6">
+            The free screening call costs you nothing and takes 15&ndash;20 minutes. Cody will tell
+            you what he thinks — honestly.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-block bg-brand-dark text-white px-8 py-4 rounded-full font-semibold hover:bg-brand transition-colors"
+          >
+            Request a Free Case Review
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }
