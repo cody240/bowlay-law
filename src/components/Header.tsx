@@ -20,8 +20,19 @@ export default function Header() {
   return (
     <header className="bg-brand-dark text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
-        <Link href="/" className="font-display text-xl font-semibold tracking-tight text-white hover:text-brand-pale transition-colors">
-          Bowlay Law
+        <Link href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
+          <svg viewBox="0 0 48 48" className="w-8 h-8 shrink-0" aria-hidden="true">
+            <rect x="4" y="16" width="40" height="28" rx="1" fill="white"/>
+            <rect x="2" y="12" width="44" height="5" rx="1" fill="#D97706"/>
+            <rect x="9" y="21" width="6" height="6" rx="0.5" fill="#1B4332"/>
+            <rect x="21" y="21" width="6" height="6" rx="0.5" fill="#1B4332"/>
+            <rect x="33" y="21" width="6" height="6" rx="0.5" fill="#1B4332"/>
+            <rect x="9" y="30" width="6" height="6" rx="0.5" fill="#1B4332"/>
+            <rect x="21" y="30" width="6" height="6" rx="0.5" fill="#1B4332"/>
+            <rect x="33" y="30" width="6" height="6" rx="0.5" fill="#1B4332"/>
+            <rect x="19" y="36" width="10" height="8" rx="1" fill="#D97706"/>
+          </svg>
+          <span className="font-display text-xl font-semibold tracking-tight text-white">Bowlay Law</span>
         </Link>
 
         {/* Desktop nav */}
