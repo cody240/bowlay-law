@@ -44,6 +44,22 @@ const noFaultCauses = [
   'Government order or local ordinance requiring vacancy',
 ];
 
+const rentControlExemptions: { text: string; notice?: string }[] = [
+  {
+    text: 'Housing already subject to a local rent ordinance or price control that restricts annual increases to less than the TPA cap — meaning the local ordinance provides equal or stronger rent control protection',
+  },
+  {
+    text: 'Housing issued a certificate of occupancy within the previous 15 years (the 15-year exemption does not apply to mobilehomes)',
+  },
+  {
+    text: 'Residential property alienable separate from any other dwelling unit (including mobilehomes) where the owner is not a REIT, corporation, LLC with at least one corporate member, or mobilehome park management — AND the tenant received a written exemption notice. For tenancies started or renewed on or after July 1, 2020 (July 1, 2022 for mobilehome tenancies), this notice must appear in the rental agreement.',
+    notice: '"This property is not subject to the rent limits imposed by Section 1947.12 of the Civil Code and is not subject to the just cause requirements of Section 1946.2 of the Civil Code. This property meets the requirements of Sections 1947.12 (d)(5) and 1946.2 (e)(8) of the Civil Code and the owner is not any of the following: (1) a real estate investment trust, as defined by Section 856 of the Internal Revenue Code; (2) a corporation; or (3) a limited liability company in which at least one member is a corporation."',
+  },
+  {
+    text: 'A property containing two separate dwelling units within a single structure where the owner occupied one unit as their principal residence at the start of the tenancy, continues to live there, and neither unit is an ADU or JADU',
+  },
+];
+
 const justCauseExemptions = [
   'Housing where the tenant shares a bathroom or kitchen with an owner who maintains their principal residence at the property',
   'Single-family owner-occupied residences — including where the owner-occupant rents no more than two units or bedrooms (including an ADU or JADU), and including mobilehomes',
@@ -140,7 +156,7 @@ export default function CaliforniaPage() {
           <h2 className="font-display text-2xl font-bold text-ink mb-6">At a glance</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { label: 'Just cause required', value: 'Yes — after tenancy qualifies (generally 12 months)' },
+              { label: 'Just cause required', value: 'Yes — for covered units, after tenancy qualifies (generally 12 months)' },
               { label: 'Rent cap', value: '5% + local CPI, never more than 10% per year' },
               { label: 'Relocation assistance', value: '1 month\'s rent for no-fault evictions' },
               { label: 'Attorney fees', value: 'At court\'s discretion for material violations' },
@@ -200,12 +216,12 @@ export default function CaliforniaPage() {
                 original tenant reached 24 months, protection only begins when either:
               </p>
               <ul className="space-y-2 ml-4">
-                <li className="flex items-start gap-2 text-muted">
-                  <span className="text-brand mt-1 shrink-0">→</span>
+                <li className="flex items-center gap-2 text-muted">
+                  <span className="text-brand shrink-0">→</span>
                   <span>All tenants in the household have been there at least 12 months, <em>or</em></span>
                 </li>
-                <li className="flex items-start gap-2 text-muted">
-                  <span className="text-brand mt-1 shrink-0">→</span>
+                <li className="flex items-center gap-2 text-muted">
+                  <span className="text-brand shrink-0">→</span>
                   <span>At least one tenant has been there for at least 24 months</span>
                 </li>
               </ul>
@@ -360,14 +376,36 @@ export default function CaliforniaPage() {
               </div>
             </div>
 
-            <div className="bg-gold-pale rounded-2xl p-6 border border-border">
-              <h3 className="font-semibold text-ink mb-2">Exemptions — units not covered by rent control (§ 1947.12(d))</h3>
-              <p className="text-muted text-sm leading-relaxed">
-                The rent control provisions have their own separate set of exemptions under
-                § 1947.12(d). These are distinct from the just cause exemptions under § 1946.2(e)
-                — a unit may be exempt from one but not the other. Contact Bowlay Law to discuss
-                whether the rent cap applies to your specific tenancy.
+            <div>
+              <h3 className="font-display text-xl font-bold text-ink mb-3">Covered units</h3>
+              <p className="text-muted leading-relaxed mb-5">
+                The rent control provisions have their own separate exemptions under § 1947.12(d) —
+                distinct from the just cause exemptions under § 1946.2(e). A unit may be exempt from
+                one but not the other.
               </p>
+              <div className="bg-cream-dark rounded-xl p-5 border border-border">
+                <p className="text-sm font-semibold text-ink mb-3">
+                  Exemptions under § 1947.12(d)(3)–(6):
+                </p>
+                <ul className="space-y-4">
+                  {rentControlExemptions.map(({ text, notice }) => (
+                    <li key={text} className="flex items-start gap-3 text-muted text-sm">
+                      <span className="text-red-400 mt-0.5 shrink-0 font-bold">✕</span>
+                      <span className="leading-snug">
+                        {text}
+                        {notice && (
+                          <span className="block mt-2 pl-3 border-l-2 border-border text-xs text-muted/70 italic leading-relaxed">
+                            Required notice language: {notice}
+                          </span>
+                        )}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-xs text-muted/60 mt-4">
+                  Note: § 1947.12(d)(1)–(2) (affordable housing and dormitories) are omitted here as they rarely arise in practice.
+                </p>
+              </div>
             </div>
 
           </div>
