@@ -160,11 +160,35 @@ export default function SanFranciscoPage() {
                 undergone substantial rehabilitation. This covers the large majority of San
                 Francisco's older multi-unit rental housing stock.
               </p>
-              <p className="text-muted leading-relaxed">
+              <p className="text-muted leading-relaxed mb-6">
                 Units built after June 13, 1979 are generally not subject to rent control under
                 the Ordinance, though they may have just cause protections under AB 1482 (TPA)
                 depending on the age of the building.
               </p>
+
+              <div className="bg-cream-dark rounded-xl p-5 border border-border">
+                <p className="text-sm font-semibold text-ink mb-3">Separately alienable units (§ 37.3(d)(1)) — Costa-Hawkins</p>
+                <p className="text-muted text-sm leading-relaxed mb-4">
+                  A unit that is alienable separate from the title to any other dwelling unit —
+                  such as a condominium or a subdivided interest — is generally <strong className="text-ink">not subject to rent control</strong>.
+                  The owner may set the initial and all subsequent rental rates freely. However,
+                  rent control continues to apply in the following circumstances:
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    'The unit is a condominium that has not yet been sold separately by the subdivider to a bona fide purchaser for value (exception: if all other units in the project have been sold and the subdivider has occupied the last unsold unit as their primary residence for at least one year)',
+                    'The preceding tenancy was terminated by the owner using a no-fault notice under Civil Code § 1946.1, or terminated upon a change in lease terms noticed under Civil Code § 827 — in those cases, rent control continues to apply for the duration of the new tenancy',
+                    'The unit contains serious health, safety, fire, or building code violations (not caused by a disaster) for which a citation has been issued and which has remained unabated for six months or longer before the vacancy',
+                    'The unit is a new dwelling unit created under § 37.2(r)(4)(D)',
+                    'The tenancy was in effect on December 31, 1995 — those tenancies remain subject to rent control regardless',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-muted text-sm">
+                      <span className="text-brand mt-0.5 shrink-0">·</span>
+                      <span className="leading-snug">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <div>
