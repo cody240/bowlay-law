@@ -443,7 +443,7 @@ export default function CaliforniaPage() {
                 allowed by § 1947.12 is liable to the tenant for all of the following
                 (Civil Code § 1947.12(k)(1)):
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-cream-dark rounded-xl p-5 border border-border">
                   <p className="text-xs font-semibold text-brand-mid uppercase tracking-wider mb-2">A — Injunctive Relief</p>
                   <p className="text-muted text-sm leading-relaxed">
@@ -465,15 +465,15 @@ export default function CaliforniaPage() {
                     Reasonable attorney&rsquo;s fees and litigation costs may be awarded against the landlord.
                   </p>
                 </div>
-              </div>
-              <div className="bg-cream-dark rounded-xl p-5 border border-border">
-                <p className="text-xs font-semibold text-brand-mid uppercase tracking-wider mb-2">D — Treble Damages</p>
-                <p className="text-ink font-semibold text-lg mb-1">Up to 3× the excess rent</p>
-                <p className="text-muted text-sm leading-relaxed">
-                  Upon a showing that the owner acted <strong className="text-ink">willfully</strong> or
-                  with <strong className="text-ink">oppression, fraud, or malice</strong>, the court may
-                  award up to three times the amount overcharged.
-                </p>
+                <div className="bg-cream-dark rounded-xl p-5 border border-border">
+                  <p className="text-xs font-semibold text-brand-mid uppercase tracking-wider mb-2">D — Treble Damages</p>
+                  <p className="text-ink font-semibold text-lg mb-1">Up to 3× the excess rent</p>
+                  <p className="text-muted text-sm leading-relaxed">
+                    Upon a showing that the owner acted <strong className="text-ink">willfully</strong> or
+                    with <strong className="text-ink">oppression, fraud, or malice</strong>, the court may
+                    award up to three times the amount overcharged.
+                  </p>
+                </div>
               </div>
             </div>
 
