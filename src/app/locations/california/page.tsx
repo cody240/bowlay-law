@@ -30,10 +30,10 @@ const atFaultCauses = [
   'Maintaining or committing a nuisance',
   'Committing waste of the property',
   'Criminal activity on the premises or directed at the owner or their agent',
-  'Assigning or subletting without permission',
+  'Assigning or subletting the premises in violation of the tenant\'s lease',
   'Refusing to allow the owner lawful entry after proper notice',
   'Using the property for an unlawful purpose',
-  'Failure to renew a lease on substantially similar terms when offered',
+  'Tenant had a written lease that terminated on or after January 1, 2020 (January 1, 2022 for mobilehome tenancies), and after a written request or demand from the owner, refused to sign a written extension or renewal for a similar term and similar provisions — provided the offered terms do not violate the law',
   'An employee or licensee whose right to occupy is tied to employment that has ended',
 ];
 
