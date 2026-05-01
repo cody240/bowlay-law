@@ -174,7 +174,9 @@ export default function SanFranciscoPage() {
                 <p className="text-muted text-sm">Published each March 1 by the Rent Board · Hard cap of 7% per year</p>
               </div>
               <p className="text-muted leading-relaxed">
-                On March 1 of each year, the Rent Board publishes the allowable annual increase
+                On March 1 of each year, the{' '}
+                <a href="https://sfrentboard.org" target="_blank" rel="noopener noreferrer" className="text-brand underline hover:text-brand-mid">Rent Board</a>
+                {' '}publishes the allowable annual increase
                 based on 60% of the increase in the San Francisco Consumer Price Index (CPI) for
                 the preceding 12 months. In no event may the allowable annual increase exceed 7%.
                 A landlord who has reported required information about their rental unit to the
