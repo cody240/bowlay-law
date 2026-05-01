@@ -36,14 +36,14 @@ export default async function LocationPage({
     <>
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto text-center">
           <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">
             {loc.fullName}
           </p>
           <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-4 text-ink">
             {loc.city} Tenant Rights Attorney
           </h1>
-          <p className="text-muted text-lg leading-relaxed mb-6 max-w-xl">
+          <p className="text-muted text-lg leading-relaxed mb-6 max-w-2xl mx-auto">
             {loc.heroTagline}
           </p>
           <div className="inline-flex items-center gap-2 bg-cream-dark px-4 py-2 rounded-full text-sm text-muted">
