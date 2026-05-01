@@ -42,12 +42,9 @@ const noFaultCauses: { text: string; conditions?: string[] }[] = [
   {
     text: 'Owner or qualifying family member intends to occupy the unit as their primary residence for at least 12 continuous months',
     conditions: [
-      'Qualifying relatives: spouse, domestic partner, children, grandchildren, parents, or grandparents',
-      'For leases signed on or after July 1, 2020: applies only if the lease contains a provision permitting owner move-in, or the tenant agrees in writing',
       'Does not apply if a similar vacant unit already exists on the property, or if the intended occupant already lives there',
       'Intended occupant must move in within 90 days of the tenant vacating',
       'If the owner fails to follow through (no move-in within 90 days, or less than 12 months of occupancy): must re-offer the unit to the displaced tenant at the same rent and reimburse excess moving costs',
-      '"Owner" means a natural person with at least 25% recorded ownership interest, or any recorded interest in a 100% family-owned property',
     ],
   },
   { text: 'Owner withdraws the unit from the rental market entirely (Ellis Act)' },
