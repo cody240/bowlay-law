@@ -153,27 +153,94 @@ export default function SanFranciscoPage() {
 
             <div>
               <h3 className="font-display text-xl font-semibold text-ink mb-3">Covered units</h3>
+              <p className="text-muted leading-relaxed mb-3">
+                If you live in San Francisco, you are usually covered by rent control. The
+                general rule is that rent control applies to units with a certificate of
+                occupancy issued on or before June 13, 1979.
+              </p>
               <p className="text-muted leading-relaxed mb-6">
-                Rent control applies to residential rental units that received a certificate of
-                occupancy on or before June 13, 1979.
+                Two categories of units are covered even if they fall outside that general
+                rule: (1) illegal units, which have no certificate of occupancy and are
+                therefore covered unless exempt for another reason; and (2) commercial spaces
+                or live/work units where tenants continue to reside with the landlord's
+                knowledge — what matters is whether the landlord actually knows people live
+                there and allows it.
               </p>
 
               <div className="bg-cream-dark rounded-xl p-5 border border-border">
-                <p className="text-sm font-semibold text-ink mb-3">Common exemptions from rent control</p>
-                <ul className="space-y-3">
-                  {[
-                    'Units built after June 13, 1979',
-                    'Units certified by the Rent Board as having undergone substantial rehabilitation',
-                    'Separately alienable units — condominiums and single-family homes — under Costa-Hawkins (§ 37.3(d)(1)), except that tenancies in effect on December 31, 1995 remain covered. Note: individual bedrooms rented separately are not alienable separate from title and are not exempt on this basis',
-                    'Units where the tenant shares a kitchen or bathroom with an owner who occupies the property as their principal residence',
-                    'Hotels, motels, and other transient or tourist accommodations',
-                    'Government-owned or operated housing',
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-muted text-sm">
-                      <span className="text-red-400 mt-0.5 shrink-0 font-bold">✕</span>
-                      <span className="leading-snug">{item}</span>
-                    </li>
-                  ))}
+                <p className="text-sm font-semibold text-ink mb-4">Common exemptions from rent control</p>
+                <ul className="space-y-5">
+
+                  <li className="flex items-start gap-3 text-muted text-sm">
+                    <span className="text-red-400 mt-0.5 shrink-0 font-bold">✕</span>
+                    <span className="leading-snug">
+                      <span className="font-medium text-ink">New construction — units built after June 13, 1979.</span>
+                      {' '}This is the largest exemption in SF. The Assessor&rsquo;s database can help
+                      confirm a building&rsquo;s construction date as a proxy for the certificate of
+                      occupancy date. Exceptions where the unit remains covered despite a
+                      post-1979 certificate of occupancy:
+                      <ul className="mt-2 space-y-1.5 pl-3 border-l-2 border-border">
+                        <li className="text-xs text-muted/80 leading-snug">Some accessory dwelling units (in-law units) under SF Administrative Code § 37.2(r)(4)(D)</li>
+                        <li className="text-xs text-muted/80 leading-snug">Unauthorized units that existed before June 13, 1979 and were later brought up to code — though effective January 19, 2020, these units are no longer exempt from the rest of the Rent Ordinance based solely on their certificate of occupancy date</li>
+                      </ul>
+                    </span>
+                  </li>
+
+                  <li className="flex items-start gap-3 text-muted text-sm">
+                    <span className="text-red-400 mt-0.5 shrink-0 font-bold">✕</span>
+                    <span className="leading-snug">
+                      <span className="font-medium text-ink">Single-family homes and condominiums</span>
+                      {' '}where the tenant (and any roommates) moved in on or after January 1,
+                      1996 generally do not have rent control. A single-family home with an
+                      illegal in-law unit counts as a two-unit building. These tenants still
+                      have just cause eviction protection unless otherwise exempt. Three
+                      exceptions where full rent control applies:
+                      <ul className="mt-2 space-y-1.5 pl-3 border-l-2 border-border">
+                        <li className="text-xs text-muted/80 leading-snug">The previous tenancy was terminated by the owner with a no-fault eviction notice (30 or 60 days) — if so, the new tenant has full rent control. The Rent Board website or California Superior Court records can show whether a prior eviction occurred</li>
+                        <li className="text-xs text-muted/80 leading-snug">The unit had housing code violations that were cited and uncorrected for at least 6 months before the vacancy — check the Department of Building Inspection&rsquo;s website</li>
+                        <li className="text-xs text-muted/80 leading-snug">A condominium still owned by the original subdivider — full rent control applies, unless it is the last unsold unit and the subdivider occupied it as their principal residence for at least one year after subdivision</li>
+                      </ul>
+                    </span>
+                  </li>
+
+                  <li className="flex items-start gap-3 text-muted text-sm">
+                    <span className="text-red-400 mt-0.5 shrink-0 font-bold">✕</span>
+                    <span className="leading-snug">
+                      <span className="font-medium text-ink">Subsidized housing</span>
+                      {' '}such as HUD housing projects. Note: tenants with tenant-based rental
+                      assistance (e.g., Section 8 vouchers) still have just cause eviction
+                      protection under the Rent Ordinance and may have rent control protections
+                      depending on the specifics of their tenancy.
+                    </span>
+                  </li>
+
+                  <li className="flex items-start gap-3 text-muted text-sm">
+                    <span className="text-red-400 mt-0.5 shrink-0 font-bold">✕</span>
+                    <span className="leading-snug">Residential hotels where the tenant has less than 32 days of continuous tenancy</span>
+                  </li>
+
+                  <li className="flex items-start gap-3 text-muted text-sm">
+                    <span className="text-red-400 mt-0.5 shrink-0 font-bold">✕</span>
+                    <span className="leading-snug">Dormitories, hospitals, monasteries, nunneries, and similar institutional housing</span>
+                  </li>
+
+                  <li className="flex items-start gap-3 text-muted text-sm">
+                    <span className="text-red-400 mt-0.5 shrink-0 font-bold">✕</span>
+                    <span className="leading-snug">Units certified by the Rent Board as having undergone substantial rehabilitation</span>
+                  </li>
+
+                  <li className="flex items-start gap-3 text-muted text-sm">
+                    <span className="text-red-400 mt-0.5 shrink-0 font-bold">✕</span>
+                    <span className="leading-snug">
+                      <span className="font-medium text-ink">Separately alienable units</span>
+                      {' '}— condominiums and single-family homes — are generally not subject to
+                      rent control under Costa-Hawkins (§ 37.3(d)(1)), except that tenancies
+                      in effect on December 31, 1995 remain covered. Individual bedrooms
+                      rented separately are not alienable separate from title and are not
+                      exempt on this basis.
+                    </span>
+                  </li>
+
                 </ul>
               </div>
             </div>
