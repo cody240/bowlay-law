@@ -38,11 +38,29 @@ const atFaultCauses = [
   'An employee or licensee whose right to occupy is tied to employment that has ended',
 ];
 
-const noFaultCauses = [
-  'Owner or owner\'s family member intends to occupy the unit as their primary residence',
-  'Owner withdraws the unit from the rental market entirely (Ellis Act)',
-  'Owner intends to demolish or substantially remodel the unit (and remodel requires vacancy)',
-  'Government order or local ordinance requiring vacancy',
+const noFaultCauses: { text: string; conditions?: string[] }[] = [
+  {
+    text: 'Owner or qualifying family member intends to occupy the unit as their primary residence for at least 12 continuous months',
+    conditions: [
+      'Qualifying relatives: spouse, domestic partner, children, grandchildren, parents, or grandparents',
+      'For leases signed on or after July 1, 2020: applies only if the lease contains a provision permitting owner move-in, or the tenant agrees in writing',
+      'Does not apply if a similar vacant unit already exists on the property, or if the intended occupant already lives there',
+      'Intended occupant must move in within 90 days of the tenant vacating',
+      'If the owner fails to follow through (no move-in within 90 days, or less than 12 months of occupancy): must re-offer the unit to the displaced tenant at the same rent and reimburse excess moving costs',
+      '"Owner" means a natural person with at least 25% recorded ownership interest, or any recorded interest in a 100% family-owned property',
+    ],
+  },
+  { text: 'Owner withdraws the unit from the rental market entirely (Ellis Act)' },
+  {
+    text: 'Owner intends to demolish or substantially remodel the unit',
+    conditions: [
+      '"Substantially remodel" means replacement or substantial modification of any structural, electrical, plumbing, or mechanical system requiring a permit — or abatement of hazardous materials (lead paint, mold, asbestos) — that cannot be safely done with the tenant in place and requires vacancy for at least 30 consecutive days',
+      'Cosmetic improvements alone (painting, decorating, minor repairs, or work that can be done safely without vacancy) do not qualify',
+      'Notice must include: a description of the work, expected duration, copies of required permits (or contractor contract for hazardous material abatement not requiring a permit), and notification of the tenant\'s right to re-occupy',
+      'Right to return: if the remodel is not commenced or completed, the owner must offer the unit back to the displaced tenant at the same rent and terms',
+    ],
+  },
+  { text: 'Government order or local ordinance requiring vacancy' },
 ];
 
 const rentControlExemptions: { text: string; notice?: string }[] = [
@@ -266,11 +284,20 @@ export default function CaliforniaPage() {
                 </div>
                 <div className="bg-cream-dark rounded-xl p-5 border border-border">
                   <p className="text-xs font-semibold text-brand-mid uppercase tracking-wider mb-3">No-fault</p>
-                  <ul className="space-y-2">
-                    {noFaultCauses.map((c) => (
-                      <li key={c} className="flex items-start gap-2 text-sm text-muted">
+                  <ul className="space-y-3">
+                    {noFaultCauses.map(({ text, conditions }) => (
+                      <li key={text} className="flex items-start gap-2 text-sm text-muted">
                         <span className="text-brand mt-0.5 shrink-0">·</span>
-                        <span>{c}</span>
+                        <span>
+                          {text}
+                          {conditions && (
+                            <ul className="mt-2 space-y-1.5 pl-3 border-l-2 border-border">
+                              {conditions.map((cond) => (
+                                <li key={cond} className="text-xs text-muted/80 leading-snug">{cond}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </span>
                       </li>
                     ))}
                   </ul>
