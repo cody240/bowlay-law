@@ -175,8 +175,8 @@ export default function SanFranciscoPage() {
                     <span className="text-red-400 mt-0.5 shrink-0 font-bold">✕</span>
                     <span className="leading-snug">
                       <span className="font-medium text-ink">New construction — units built after June 13, 1979.</span>
-                      {' '}This is the largest exemption in SF.{' '}
-                      <a href="https://sfassessor.org" target="_blank" rel="noopener noreferrer" className="text-brand underline hover:text-brand-mid">The Assessor&rsquo;s database</a>
+                      {' '}This is the largest exemption in SF. The{' '}
+                      <a href="https://sfassessor.org" target="_blank" rel="noopener noreferrer" className="text-brand underline hover:text-brand-mid">Assessor&rsquo;s database</a>
                       {' '}can help confirm a building&rsquo;s construction date as a proxy for the
                       certificate of occupancy date. Exceptions where the unit remains covered despite a
                       post-1979 certificate of occupancy:
