@@ -89,7 +89,11 @@ export default async function LocationPage({
 
           <div>
             <h2 className="font-display text-2xl font-bold text-ink mb-4">Rent cap</h2>
-            <p className="text-muted leading-relaxed">{loc.rentCap}</p>
+            <div className="space-y-3">
+              {loc.rentCap.split('\n\n').map((para, i) => (
+                <p key={i} className="text-muted leading-relaxed">{para}</p>
+              ))}
+            </div>
           </div>
 
           <div>
