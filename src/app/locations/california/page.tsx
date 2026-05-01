@@ -138,20 +138,20 @@ export default function CaliforniaPage() {
 
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto text-center">
           <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">
             California Statewide
           </p>
           <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-4 text-ink">
             California Tenant Protection Act (AB 1482)
           </h1>
-          <p className="text-muted text-lg leading-relaxed mb-6 max-w-xl">
+          <p className="text-muted text-lg leading-relaxed mb-6 max-w-2xl mx-auto">
             AB 1482 established the first statewide rent control and just cause eviction protections
             in California history. California tenants facing wrongful eviction or unlawful rent
             increases may have claims under this law. It has two distinct parts — each with its own
             coverage rules and exemptions.
           </p>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <div className="inline-flex items-center gap-2 bg-cream-dark px-4 py-2 rounded-full text-sm text-muted">
               <span className="font-medium text-ink">Civil Code §§ 1946.2 &amp; 1947.12</span>
               <span>·</span>
