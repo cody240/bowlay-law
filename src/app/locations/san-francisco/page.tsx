@@ -173,8 +173,7 @@ export default function SanFranciscoPage() {
                 <p className="text-muted text-sm leading-relaxed mb-4">
                   A unit that is alienable separate from the title to any other dwelling unit —
                   such as a condominium or a single-family home — is generally <strong className="text-ink">not subject to rent control</strong>.
-                  The owner may set the initial and all subsequent rental rates freely. However,
-                  rent control continues to apply in the following circumstances:
+                  However, rent control continues to apply in the following circumstances:
                 </p>
                 <ul className="space-y-3">
                   {[
