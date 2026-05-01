@@ -154,11 +154,13 @@ export default function SanFranciscoPage() {
             <div>
               <h3 className="font-display text-xl font-semibold text-ink mb-3">Covered units</h3>
               <p className="text-muted leading-relaxed mb-4">
-                Rent control under the SF Rent Ordinance applies to residential rental units in
-                buildings of two or more units that received a certificate of occupancy on or
-                before June 13, 1979, or that have been certified by the Rent Board as having
-                undergone substantial rehabilitation. This covers the large majority of San
-                Francisco's older multi-unit rental housing stock.
+                Rent control under the SF Rent Ordinance applies to residential rental units
+                that received a certificate of occupancy on or before June 13, 1979, or that
+                have been certified by the Rent Board as having undergone substantial
+                rehabilitation. A "rental unit" includes individual rooms or bedrooms rented
+                separately — if a landlord rents out bedrooms in a single-family home, each
+                bedroom is the rental unit. Because bedrooms are not alienable separate from
+                title, they are not subject to the Costa-Hawkins exemption described below.
               </p>
               <p className="text-muted leading-relaxed mb-6">
                 Units built after June 13, 1979 are generally not subject to rent control under
