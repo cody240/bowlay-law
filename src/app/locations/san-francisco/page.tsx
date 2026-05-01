@@ -155,8 +155,7 @@ export default function SanFranciscoPage() {
               <h3 className="font-display text-xl font-semibold text-ink mb-3">Covered units</h3>
               <p className="text-muted leading-relaxed mb-6">
                 Rent control applies to residential rental units that received a certificate of
-                occupancy on or before June 13, 1979, or that have been certified by the Rent
-                Board as having undergone substantial rehabilitation.
+                occupancy on or before June 13, 1979.
               </p>
 
               <div className="bg-cream-dark rounded-xl p-5 border border-border">
@@ -164,6 +163,7 @@ export default function SanFranciscoPage() {
                 <ul className="space-y-3">
                   {[
                     'Units built after June 13, 1979 (may still have just cause protections under AB 1482 depending on the age of the building)',
+                    'Units certified by the Rent Board as having undergone substantial rehabilitation',
                     'Separately alienable units — condominiums and single-family homes — under Costa-Hawkins (§ 37.3(d)(1)), except that tenancies in effect on December 31, 1995 remain covered. Note: individual bedrooms rented separately are not alienable separate from title and are not exempt on this basis',
                     'Units where the tenant shares a kitchen or bathroom with an owner who occupies the property as their principal residence',
                     'Hotels, motels, and other transient or tourist accommodations',
