@@ -170,21 +170,12 @@ export default function SanFranciscoPage() {
 
               <div className="bg-cream-dark rounded-xl p-5 border border-border">
                 <p className="text-sm font-semibold text-ink mb-3">Separately alienable units (§ 37.3(d)(1)) — Costa-Hawkins</p>
-                <p className="text-muted text-sm leading-relaxed mb-4">
+                <p className="text-muted text-sm leading-relaxed">
                   A unit that is alienable separate from the title to any other dwelling unit —
-                  such as a condominium or a single-family home — is generally <strong className="text-ink">not subject to rent control</strong>.
-                  However, rent control continues to apply in the following circumstances:
+                  such as a condominium or a single-family home — is generally <strong className="text-ink">not subject to rent control</strong>,
+                  except that tenancies in effect on December 31, 1995 remain subject to rent
+                  control regardless.
                 </p>
-                <ul className="space-y-3">
-                  {[
-                    'The tenancy was in effect on December 31, 1995 — those tenancies remain subject to rent control regardless',
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-muted text-sm">
-                      <span className="text-brand mt-0.5 shrink-0">·</span>
-                      <span className="leading-snug">{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
 
