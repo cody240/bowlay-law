@@ -34,6 +34,7 @@ const atFaultCauses = [
   'Refusing to allow the owner lawful entry after proper notice',
   'Using the property for an unlawful purpose',
   'Refusing to renew a written lease after the owner\'s written request, where the renewal is for a similar duration and similar provisions',
+  'Failing to vacate after giving the owner written notice of intent to terminate the tenancy, or after a written offer to surrender that the owner accepted in writing',
   'An employee or licensee whose right to occupy is tied to employment that has ended',
 ];
 
