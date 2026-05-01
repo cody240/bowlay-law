@@ -40,12 +40,12 @@ export default function Header() {
 
           {/* Locations dropdown */}
           <div className="relative" onMouseEnter={() => setLocOpen(true)} onMouseLeave={() => setLocOpen(false)}>
-            <button className={`flex items-center gap-1 transition-colors ${pathname.startsWith('/locations') ? 'text-brand font-semibold' : 'text-ink/70 hover:text-ink'}`}>
+            <Link href="/locations/california" className={`flex items-center gap-1 transition-colors ${pathname.startsWith('/locations') ? 'text-brand font-semibold' : 'text-ink/70 hover:text-ink'}`}>
               Locations
               <svg className={`w-3.5 h-3.5 transition-transform ${locOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
               </svg>
-            </button>
+            </Link>
             {locOpen && (
               <div className="absolute top-full left-0 mt-1 w-52 bg-white border border-border rounded-xl shadow-lg py-1 z-50">
                 {locationLinks.map(({ href, city }) => (
@@ -104,7 +104,7 @@ export default function Header() {
               </Link>
             ))}
             <div>
-              <p className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">Locations</p>
+              <Link href="/locations/california" onClick={() => setMobileOpen(false)} className="text-xs font-semibold text-muted uppercase tracking-wider mb-2 hover:text-brand transition-colors">Locations</Link>
               <div className="flex flex-col gap-2 pl-2">
                 {locationLinks.map(({ href, city }) => (
                   <Link key={href} href={href} onClick={() => setMobileOpen(false)} className="text-sm text-ink/70 hover:text-ink transition-colors">
