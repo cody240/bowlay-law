@@ -188,9 +188,7 @@ export default function SanFranciscoPage() {
               <p className="text-muted leading-relaxed">
                 A landlord who refrains from imposing an annual increase — or imposes only a
                 portion of it — may accumulate the unused amount and apply it on subsequent
-                rent increase anniversary dates. Banked increases from between April 1, 1982
-                and February 29, 1984 (banked at 7%) may also be carried forward and imposed
-                in future years.
+                rent increase anniversary dates.
               </p>
             </div>
 
