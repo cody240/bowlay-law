@@ -33,7 +33,7 @@ const atFaultCauses = [
   'Assigning or subletting the premises in violation of the tenant\'s lease',
   'Refusing to allow the owner lawful entry after proper notice',
   'Using the property for an unlawful purpose',
-  'Refusing, after the owner\'s written request, to sign a written lease renewal or extension on similar terms — for leases that expired on or after January 1, 2020 (January 1, 2022 for mobilehomes)',
+  'Refusing to renew a written lease after the owner\'s written request, where the renewal is for a similar duration and similar provisions',
   'An employee or licensee whose right to occupy is tied to employment that has ended',
 ];
 
