@@ -181,7 +181,7 @@ export default function SanFranciscoPage() {
                       certificate of occupancy date. Exceptions where the unit remains covered despite a
                       post-1979 certificate of occupancy:
                       <ul className="mt-2 space-y-1.5 pl-3 border-l-2 border-border">
-                        <li className="text-xs text-muted/80 leading-snug">Some accessory dwelling units (in-law units) under SF Administrative Code § 37.2(r)(4)(D)</li>
+                        <li className="text-xs text-muted/80 leading-snug">Certain new units explicitly brought back into coverage by § 37.2(r)(4)(D) — including ADUs constructed under Planning Code § 207.1 with density or parking waivers, units created under density exception or HOME-SF programs, and units subject to a Regulatory Agreement imposing rent increase limitations</li>
                         <li className="text-xs text-muted/80 leading-snug">Unauthorized units that existed before June 13, 1979 and were later brought up to code are covered by rent control. Effective January 19, 2020, they are also no longer exempt from the rest of the Rent Ordinance (just cause, tenant harassment) based solely on their certificate of occupancy date</li>
                       </ul>
                     </span>
