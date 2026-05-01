@@ -177,10 +177,6 @@ export default function SanFranciscoPage() {
                 </p>
                 <ul className="space-y-3">
                   {[
-                    'The unit is a condominium that has not yet been sold separately by the subdivider to a bona fide purchaser for value (exception: if all other units in the project have been sold and the subdivider has occupied the last unsold unit as their primary residence for at least one year)',
-                    'The preceding tenancy was terminated by the owner using a no-fault notice under Civil Code § 1946.1, or terminated upon a change in lease terms noticed under Civil Code § 827 — in those cases, rent control continues to apply for the duration of the new tenancy',
-                    'The unit contains serious health, safety, fire, or building code violations (not caused by a disaster) for which a citation has been issued and which has remained unabated for six months or longer before the vacancy',
-                    'The unit is a new dwelling unit created under § 37.2(r)(4)(D)',
                     'The tenancy was in effect on December 31, 1995 — those tenancies remain subject to rent control regardless',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-muted text-sm">
