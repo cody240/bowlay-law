@@ -46,15 +46,15 @@ export default function PracticeAreasPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-brand-dark text-white px-6 py-20">
+      <section className="bg-white px-6 py-20 border-b border-border">
         <div className="max-w-3xl mx-auto">
-          <p className="text-brand-pale text-sm font-semibold uppercase tracking-wider mb-4">
+          <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">
             Practice Areas
           </p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6">
+          <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6 text-ink">
             California tenant law — what we handle
           </h1>
-          <p className="text-white/75 text-lg leading-relaxed">
+          <p className="text-muted text-lg leading-relaxed">
             Bowlay Law focuses exclusively on tenant-side cases across California. All cases are
             handled on contingency — you pay nothing unless we win.
           </p>
@@ -71,7 +71,7 @@ export default function PracticeAreasPage() {
                 <div className="flex items-start justify-between gap-4 mb-3">
                   <h3 className="font-display text-xl font-semibold text-ink">{title}</h3>
                   {badge && (
-                    <span className="shrink-0 text-xs font-semibold bg-gold-pale text-gold px-3 py-1 rounded-full border border-gold/20">
+                    <span className="shrink-0 text-xs font-semibold bg-brand-pale text-brand-mid px-3 py-1 rounded-full border border-brand-mid/20">
                       {badge}
                     </span>
                   )}

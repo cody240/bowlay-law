@@ -72,13 +72,13 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: faqSchema }}
       />
       {/* Hero */}
-      <section className="bg-brand-dark text-white px-6 py-20">
+      <section className="bg-white px-6 py-20 border-b border-border">
         <div className="max-w-3xl mx-auto">
-          <p className="text-brand-pale text-sm font-semibold uppercase tracking-wider mb-4">FAQ</p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6">
+          <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">FAQ</p>
+          <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6 text-ink">
             Common questions
           </h1>
-          <p className="text-white/75 text-lg leading-relaxed">
+          <p className="text-muted text-lg leading-relaxed">
             Answers to what most tenants ask before reaching out. If you do not see your question
             here, just call or fill out the form.
           </p>

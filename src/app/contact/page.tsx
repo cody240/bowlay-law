@@ -67,15 +67,15 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-brand-dark text-white px-6 py-20">
+      <section className="bg-white px-6 py-20 border-b border-border">
         <div className="max-w-3xl mx-auto">
-          <p className="text-brand-pale text-sm font-semibold uppercase tracking-wider mb-4">
+          <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">
             Free Case Review
           </p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6">
+          <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6 text-ink">
             Let&rsquo;s talk about what happened.
           </h1>
-          <p className="text-white/75 text-lg leading-relaxed max-w-xl">
+          <p className="text-muted text-lg leading-relaxed max-w-xl">
             Fill out the form below and Cody will call you — usually within one business day. The
             call is free, low-pressure, and takes about 15&ndash;20 minutes. No commitment required.
           </p>
@@ -141,7 +141,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="name">
-                      Full name <span className="text-gold">*</span>
+                      Full name <span className="text-brand-mid">*</span>
                     </label>
                     <input
                       id="name"
@@ -154,7 +154,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="phone">
-                      Phone number <span className="text-gold">*</span>
+                      Phone number <span className="text-brand-mid">*</span>
                     </label>
                     <input
                       id="phone"
@@ -169,7 +169,7 @@ export default function ContactPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="email">
-                    Email address <span className="text-gold">*</span>
+                    Email address <span className="text-brand-mid">*</span>
                   </label>
                   <input
                     id="email"
@@ -184,7 +184,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="city">
-                      City where you rent <span className="text-gold">*</span>
+                      City where you rent <span className="text-brand-mid">*</span>
                     </label>
                     <select
                       id="city"
@@ -200,7 +200,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="tenancy">
-                      How long have you lived there? <span className="text-gold">*</span>
+                      How long have you lived there? <span className="text-brand-mid">*</span>
                     </label>
                     <select
                       id="tenancy"
@@ -218,7 +218,7 @@ export default function ContactPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="issue">
-                    What type of issue are you dealing with? <span className="text-gold">*</span>
+                    What type of issue are you dealing with? <span className="text-brand-mid">*</span>
                   </label>
                   <select
                     id="issue"
@@ -250,7 +250,7 @@ export default function ContactPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="description">
-                    Briefly describe what happened <span className="text-gold">*</span>
+                    Briefly describe what happened <span className="text-brand-mid">*</span>
                   </label>
                   <textarea
                     id="description"

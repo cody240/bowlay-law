@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import TimelineSection from '@/components/TimelineSection';
+import { locationLinks } from '@/lib/locations';
 
 export const metadata: Metadata = {
   title: 'Bowlay Law — California Tenant Rights Attorney',
@@ -61,34 +63,52 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-brand-dark text-white px-6 py-24 md:py-32">
+      <section className="bg-white px-6 py-24 md:py-32 border-b border-border">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="font-display text-4xl md:text-6xl font-bold leading-tight mb-6">
+          <h1 className="font-display text-4xl md:text-6xl font-bold leading-tight mb-6 text-ink">
             Your landlord has lawyers.
             <br />
-            <span className="text-brand-pale">Now you can too.</span>
+            <span className="text-brand">Now you can too.</span>
           </h1>
-          <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-muted leading-relaxed mb-10 max-w-2xl mx-auto">
             Bowlay Law represents California tenants in wrongful eviction cases and rent control
             disputes. No fee unless we win.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="bg-gold text-ink px-8 py-4 rounded-full font-semibold text-lg hover:bg-gold-light transition-colors"
+              className="bg-brand-dark text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-brand transition-colors"
             >
               Get a Free Case Review
             </Link>
             <Link
               href="/practice-areas"
-              className="border-2 border-white/40 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-colors"
+              className="border-2 border-brand-dark/25 text-brand-dark px-8 py-4 rounded-full font-semibold text-lg hover:bg-brand-dark/5 transition-colors"
             >
               See What We Handle
             </Link>
           </div>
-          <p className="mt-6 text-sm text-white/50">
+          <p className="mt-6 text-sm text-muted/60">
             California tenants only &middot; Contingency fee &middot; Free screening call
           </p>
+        </div>
+      </section>
+
+      {/* Locations */}
+      <section className="bg-cream-dark px-6 py-10 border-b border-border">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-4">
+          <p className="text-sm font-medium text-muted shrink-0">We serve tenants in:</p>
+          <div className="flex flex-wrap gap-2">
+            {locationLinks.map(({ href, city }) => (
+              <Link
+                key={href}
+                href={href}
+                className="px-4 py-1.5 rounded-full border border-brand-dark/20 text-sm text-brand-dark font-medium hover:bg-brand-dark hover:text-white transition-colors"
+              >
+                {city}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -138,6 +158,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <TimelineSection />
 
       {/* Why Bowlay Law */}
       <section className="bg-brand-dark text-white px-6 py-20">

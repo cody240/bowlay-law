@@ -1,20 +1,15 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, DM_Sans } from 'next/font/google';
+import { Nunito } from 'next/font/google';
 import Script from 'next/script';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import './globals.css';
 
-const playfair = Playfair_Display({
-  variable: '--font-playfair',
+const nunito = Nunito({
+  variable: '--font-nunito',
   subsets: ['latin'],
   display: 'swap',
-});
-
-const dmSans = DM_Sans({
-  variable: '--font-dm-sans',
-  subsets: ['latin'],
-  display: 'swap',
+  weight: ['300', '400', '500', '600', '700', '800'],
 });
 
 const GA_ID = 'G-D4183W8T93';
@@ -95,7 +90,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${dmSans.variable} h-full`}>
+    <html lang="en" className={`${nunito.variable} h-full`}>
       <head>
         <script
           type="application/ld+json"

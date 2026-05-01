@@ -30,15 +30,15 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-brand-dark text-white px-6 py-20">
+      <section className="bg-white px-6 py-20 border-b border-border">
         <div className="max-w-3xl mx-auto">
-          <p className="text-brand-pale text-sm font-semibold uppercase tracking-wider mb-4">
+          <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">
             About Cody
           </p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6">
+          <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6 text-ink">
             I started Bowlay Law because tenants deserve a lawyer who actually listens.
           </h1>
-          <p className="text-white/75 text-lg leading-relaxed">
+          <p className="text-muted text-lg leading-relaxed">
             At my last firm, clients emailed — and waited. Sometimes weeks. I kept thinking: that
             is not how this should work. So I started my own practice.
           </p>

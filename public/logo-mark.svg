@@ -1,16 +1,35 @@
-<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bowlay Law">
-  <!-- Building body -->
-  <rect x="4" y="16" width="40" height="28" rx="1" fill="#1B4332"/>
-  <!-- Cornice accent -->
-  <rect x="2" y="12" width="44" height="5" rx="1" fill="#D97706"/>
-  <!-- Windows row 1 -->
-  <rect x="9" y="21" width="6" height="6" rx="0.5" fill="white"/>
-  <rect x="21" y="21" width="6" height="6" rx="0.5" fill="white"/>
-  <rect x="33" y="21" width="6" height="6" rx="0.5" fill="white"/>
-  <!-- Windows row 2 -->
-  <rect x="9" y="30" width="6" height="6" rx="0.5" fill="white"/>
-  <rect x="21" y="30" width="6" height="6" rx="0.5" fill="white"/>
-  <rect x="33" y="30" width="6" height="6" rx="0.5" fill="white"/>
-  <!-- Door -->
-  <rect x="19" y="36" width="10" height="8" rx="1" fill="#D97706"/>
+<svg viewBox="0 0 48 58" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bowlay Law">
+  <!-- Chimney (drawn first so roof overlaps its base) -->
+  <rect x="33" y="9" width="5" height="16" rx="1" fill="#2D6A4F"/>
+
+  <!-- Steep Victorian gable roof -->
+  <polygon points="24,3 46,25 2,25" fill="#D97706"/>
+
+  <!-- Finial at roof peak -->
+  <circle cx="24" cy="3" r="2.5" fill="#D97706" stroke="#1B4332" stroke-width="1.5"/>
+
+  <!-- House body -->
+  <rect x="4" y="24" width="40" height="32" fill="#1B4332"/>
+
+  <!-- Bay window protrusion (center, 2nd floor) -->
+  <rect x="13" y="24" width="22" height="20" fill="#2D6A4F"/>
+
+  <!-- Gable / attic window -->
+  <ellipse cx="24" cy="16" rx="5" ry="5.5" fill="white"/>
+
+  <!-- Upper floor side windows -->
+  <rect x="5" y="28" width="7" height="9" rx="1.5" fill="white"/>
+  <rect x="36" y="28" width="7" height="9" rx="1.5" fill="white"/>
+
+  <!-- Bay window panes (3 vertical panels) -->
+  <rect x="15" y="27" width="5" height="13" rx="0.5" fill="white"/>
+  <rect x="21" y="27" width="5" height="13" rx="0.5" fill="white"/>
+  <rect x="27" y="27" width="5" height="13" rx="0.5" fill="white"/>
+
+  <!-- Ground floor side windows -->
+  <rect x="5" y="40" width="7" height="8" rx="1.5" fill="white"/>
+  <rect x="36" y="40" width="7" height="8" rx="1.5" fill="white"/>
+
+  <!-- Arched front door -->
+  <rect x="20" y="41" width="8" height="15" rx="4" fill="#D97706"/>
 </svg>
