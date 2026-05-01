@@ -47,7 +47,7 @@ export default function PracticeAreasPage() {
     <>
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">
             Practice Areas
           </p>
@@ -63,7 +63,7 @@ export default function PracticeAreasPage() {
 
       {/* Case types */}
       <section className="bg-cream px-6 py-20">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-ink mb-10">Cases we handle</h2>
           <div className="space-y-5">
             {caseTypes.map(({ title, body, badge }) => (
@@ -85,7 +85,7 @@ export default function PracticeAreasPage() {
 
       {/* Who qualifies */}
       <section className="bg-cream-dark px-6 py-20">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-ink mb-4">Do you qualify?</h2>
           <p className="text-muted mb-10 max-w-2xl">
             The most valuable cases share a few characteristics. You do not need to check every box,
@@ -132,7 +132,7 @@ export default function PracticeAreasPage() {
 
       {/* Statute of limitations warning */}
       <section className="bg-gold-pale border-y border-gold/20 px-6 py-12">
-        <div className="max-w-4xl mx-auto flex gap-4 items-start">
+        <div className="max-w-6xl mx-auto flex gap-4 items-start">
           <span className="text-2xl mt-0.5">⏰</span>
           <div>
             <h3 className="font-semibold text-ink mb-2">Time matters — act within a year</h3>
@@ -147,7 +147,7 @@ export default function PracticeAreasPage() {
 
       {/* CTA */}
       <section className="bg-brand-dark text-white px-6 py-20">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-display text-3xl font-bold mb-4">Not sure if your situation fits?</h2>
           <p className="text-white/70 mb-8 leading-relaxed">
             The free screening call is the right place to start. Cody will listen to what happened

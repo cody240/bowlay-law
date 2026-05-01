@@ -31,7 +31,7 @@ export default function AboutPage() {
     <>
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">
             About Cody
           </p>
@@ -47,7 +47,7 @@ export default function AboutPage() {
 
       {/* Story */}
       <section className="bg-cream px-6 py-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-ink mb-6">Background</h2>
           <div className="space-y-5 text-ink/80 leading-relaxed text-lg">
             <p>
@@ -79,7 +79,7 @@ export default function AboutPage() {
 
       {/* Values / approach */}
       <section className="bg-cream-dark px-6 py-20">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-ink text-center mb-12">
             How I work
           </h2>
@@ -97,7 +97,7 @@ export default function AboutPage() {
 
       {/* Tech-forward */}
       <section className="bg-brand-pale px-6 py-16">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <h2 className="font-display text-2xl font-bold text-ink mb-4">
             Tech-savvy lawyering
           </h2>
@@ -115,7 +115,7 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="bg-brand-dark text-white px-6 py-20">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-display text-3xl font-bold mb-4">
             Ready to talk about your situation?
           </h2>

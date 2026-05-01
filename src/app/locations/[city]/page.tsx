@@ -36,7 +36,7 @@ export default async function LocationPage({
     <>
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">
             {loc.fullName}
           </p>
@@ -56,7 +56,7 @@ export default async function LocationPage({
 
       {/* Coverage cards */}
       <section className="bg-cream-dark px-6 py-14">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="font-display text-2xl font-bold text-ink mb-6">At a glance</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {loc.coverageDetails.map(({ label, value }) => (
@@ -71,7 +71,7 @@ export default async function LocationPage({
 
       {/* Main content */}
       <section className="bg-white px-6 py-16">
-        <div className="max-w-4xl mx-auto space-y-12">
+        <div className="max-w-6xl mx-auto space-y-12">
 
           <div>
             <h2 className="font-display text-2xl font-bold text-ink mb-4">Overview</h2>
@@ -143,7 +143,7 @@ export default async function LocationPage({
 
       {/* FAQ */}
       <section className="bg-cream-dark px-6 py-16">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-2xl font-bold text-ink mb-8">
             Common questions — {loc.city}
           </h2>
@@ -163,7 +163,7 @@ export default async function LocationPage({
 
       {/* CTA */}
       <section className="bg-brand-dark text-white px-6 py-20">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-display text-3xl font-bold mb-4">
             {loc.city} tenant? Let&rsquo;s talk.
           </h2>

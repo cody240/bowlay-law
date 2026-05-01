@@ -120,7 +120,7 @@ export default function CaliforniaPage() {
 
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">
             California Statewide
           </p>
@@ -153,7 +153,7 @@ export default function CaliforniaPage() {
 
       {/* At a glance */}
       <section className="bg-cream-dark px-6 py-12">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="font-display text-2xl font-bold text-ink mb-6">At a glance</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
@@ -175,7 +175,7 @@ export default function CaliforniaPage() {
 
       {/* ── SECTION 1: JUST CAUSE ── */}
       <section className="bg-white px-6 py-16 border-b-4 border-cream-dark">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
 
           <div className="flex items-center gap-3 mb-8">
             <div className="h-8 w-1 bg-brand-dark rounded-full" />
@@ -335,7 +335,7 @@ export default function CaliforniaPage() {
 
       {/* ── SECTION 2: RENT CONTROL ── */}
       <section className="bg-white px-6 py-16 border-b border-border">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
 
           <div className="flex items-center gap-3 mb-8">
             <div className="h-8 w-1 bg-brand-mid rounded-full" />
@@ -456,7 +456,7 @@ export default function CaliforniaPage() {
 
       {/* Interaction note */}
       <section className="bg-cream-dark px-6 py-12">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="bg-white rounded-2xl p-7 border border-border">
             <h2 className="font-display text-xl font-bold text-ink mb-3">
               How the TPA interacts with local rent ordinances
@@ -495,7 +495,7 @@ export default function CaliforniaPage() {
 
       {/* FAQ */}
       <section className="bg-white px-6 py-16">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-2xl font-bold text-ink mb-8">Common questions</h2>
           <div className="space-y-3">
             {faq.map(({ q, a }) => (
@@ -513,7 +513,7 @@ export default function CaliforniaPage() {
 
       {/* CTA */}
       <section className="bg-brand-dark text-white px-6 py-20">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-display text-3xl font-bold mb-4">
             Think the TPA applies to your situation?
           </h2>

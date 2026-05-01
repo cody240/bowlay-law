@@ -68,7 +68,7 @@ export default function ContactPage() {
     <>
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">
             Free Case Review
           </p>
@@ -84,7 +84,7 @@ export default function ContactPage() {
 
       {/* Form + sidebar */}
       <section className="bg-cream px-6 py-20">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Sidebar */}
           <div className="lg:col-span-1 space-y-6">
             <div>

@@ -73,7 +73,7 @@ export default function FAQPage() {
       />
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">FAQ</p>
           <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6 text-ink">
             Common questions
@@ -87,7 +87,7 @@ export default function FAQPage() {
 
       {/* FAQ list */}
       <section className="bg-cream px-6 py-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="space-y-3">
             {faqs.map(({ q, a }) => (
               <details
@@ -111,7 +111,7 @@ export default function FAQPage() {
 
       {/* CTA */}
       <section className="bg-cream-dark px-6 py-16">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-display text-2xl md:text-3xl font-bold text-ink mb-4">
             Still have questions?
           </h2>
