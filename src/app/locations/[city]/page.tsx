@@ -5,7 +5,7 @@ import { getLocation, locations } from '@/lib/locations';
 
 export async function generateStaticParams() {
   return locations
-    .filter(({ slug }) => slug !== 'california')
+    .filter(({ slug }) => slug !== 'california' && slug !== 'san-francisco')
     .map(({ slug }) => ({ city: slug }));
 }
 
