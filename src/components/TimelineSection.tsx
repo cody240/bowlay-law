@@ -118,7 +118,7 @@ export default function TimelineSection() {
 
   return (
     <section className="bg-cream-dark px-6 py-20">
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         <p className="text-center text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
           The Process
         </p>

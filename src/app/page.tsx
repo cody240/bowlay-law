@@ -64,13 +64,13 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="bg-white px-6 py-24 md:py-32 border-b border-border">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
           <h1 className="font-display text-4xl md:text-6xl font-bold leading-tight mb-6 text-ink">
             Your landlord has lawyers.
             <br />
             <span className="text-brand">Now you can too.</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted leading-relaxed mb-10 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-muted leading-relaxed mb-10 max-w-3xl mx-auto">
             Bowlay Law represents California tenants in wrongful eviction cases and rent control
             disputes. No fee unless we win.
           </p>
@@ -96,7 +96,7 @@ export default function HomePage() {
 
       {/* Locations */}
       <section className="bg-cream-dark px-6 py-10 border-b border-border">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-4">
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center gap-4">
           <p className="text-sm font-medium text-muted shrink-0">We serve tenants in:</p>
           <div className="flex flex-wrap gap-2">
             {locationLinks.map(({ href, city }) => (
@@ -114,7 +114,7 @@ export default function HomePage() {
 
       {/* You may have a case */}
       <section className="bg-cream-dark px-6 py-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-ink text-center mb-4">
             You may have a case if&hellip;
           </h2>
@@ -141,7 +141,7 @@ export default function HomePage() {
 
       {/* How it works */}
       <section className="bg-cream px-6 py-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-ink text-center mb-12">
             How it works
           </h2>
@@ -163,7 +163,7 @@ export default function HomePage() {
 
       {/* Why Bowlay Law */}
       <section className="bg-brand-dark text-white px-6 py-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-4">
             Why Bowlay Law
           </h2>
@@ -199,7 +199,7 @@ export default function HomePage() {
 
       {/* Bottom CTA strip */}
       <section className="bg-gold-pale px-6 py-14">
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-2xl md:text-3xl font-bold text-ink mb-3">
             Not sure if you have a case?
           </h2>

@@ -68,7 +68,7 @@ export default function ContactPage() {
     <>
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">
             Free Case Review
           </p>
