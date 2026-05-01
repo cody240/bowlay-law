@@ -153,29 +153,32 @@ export default function SanFranciscoPage() {
 
             <div>
               <h3 className="font-display text-xl font-semibold text-ink mb-3">Covered units</h3>
-              <p className="text-muted leading-relaxed mb-4">
+              <p className="text-muted leading-relaxed mb-6">
                 Rent control under the SF Rent Ordinance applies to residential rental units
                 that received a certificate of occupancy on or before June 13, 1979, or that
                 have been certified by the Rent Board as having undergone substantial
                 rehabilitation. A "rental unit" includes individual rooms or bedrooms rented
                 separately — if a landlord rents out bedrooms in a single-family home, each
                 bedroom is the rental unit. Because bedrooms are not alienable separate from
-                title, they are not subject to the Costa-Hawkins exemption described below.
-              </p>
-              <p className="text-muted leading-relaxed mb-6">
-                Units built after June 13, 1979 are generally not subject to rent control under
-                the Ordinance, though they may have just cause protections under AB 1482 (TPA)
-                depending on the age of the building.
+                title, they are not subject to the exemptions below.
               </p>
 
               <div className="bg-cream-dark rounded-xl p-5 border border-border">
-                <p className="text-sm font-semibold text-ink mb-3">Separately alienable units (§ 37.3(d)(1)) — Costa-Hawkins</p>
-                <p className="text-muted text-sm leading-relaxed">
-                  A unit that is alienable separate from the title to any other dwelling unit —
-                  such as a condominium or a single-family home — is generally <strong className="text-ink">not subject to rent control</strong>,
-                  except that tenancies in effect on December 31, 1995 remain subject to rent
-                  control regardless.
-                </p>
+                <p className="text-sm font-semibold text-ink mb-3">Common exemptions from rent control</p>
+                <ul className="space-y-3">
+                  {[
+                    'Units built after June 13, 1979 (may still have just cause protections under AB 1482 depending on the age of the building)',
+                    'Separately alienable units — condominiums and single-family homes — are generally not subject to rent control under Costa-Hawkins (§ 37.3(d)(1)), except that tenancies in effect on December 31, 1995 remain covered',
+                    'Units where the tenant shares a kitchen or bathroom with an owner who occupies the property as their principal residence',
+                    'Hotels, motels, and other transient or tourist accommodations',
+                    'Government-owned or operated housing',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-muted text-sm">
+                      <span className="text-red-400 mt-0.5 shrink-0 font-bold">✕</span>
+                      <span className="leading-snug">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 
