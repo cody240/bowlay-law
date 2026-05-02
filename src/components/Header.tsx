@@ -47,16 +47,39 @@ export default function Header() {
               </svg>
             </Link>
             {locOpen && (
-              <div className="absolute top-full left-0 mt-1 w-52 bg-white border border-border rounded-xl shadow-lg py-1 z-50">
+              <div className="absolute top-full left-0 mt-1 w-64 bg-white border border-border rounded-xl shadow-lg py-1 z-50">
                 {locationLinks.map(({ href, city }) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className="block px-4 py-2.5 text-sm text-ink/70 hover:text-ink hover:bg-cream-dark transition-colors"
-                    onClick={() => setLocOpen(false)}
-                  >
-                    {city}
-                  </Link>
+                  <div key={href}>
+                    <Link
+                      href={href}
+                      className="block px-4 py-2.5 text-sm text-ink/70 hover:text-ink hover:bg-cream-dark transition-colors"
+                      onClick={() => setLocOpen(false)}
+                    >
+                      {city}
+                    </Link>
+                    {city === 'San Francisco' && (
+                      <div className="pl-4 pb-1 border-b border-border">
+                        {[
+                          { href: '/locations/san-francisco/wrongful-eviction', label: 'Wrongful Eviction' },
+                          { href: '/locations/san-francisco/omi-eviction', label: 'Owner Move-In (OMI)' },
+                          { href: '/locations/san-francisco/ellis-act', label: 'Ellis Act' },
+                          { href: '/locations/san-francisco/constructive-eviction', label: 'Constructive Eviction' },
+                          { href: '/locations/san-francisco/rent-control', label: 'Rent Control Violations' },
+                          { href: '/locations/san-francisco/tenant-harassment', label: 'Tenant Harassment' },
+                          { href: '/locations/san-francisco/damages', label: 'Damages & Case Value' },
+                        ].map((sub) => (
+                          <Link
+                            key={sub.href}
+                            href={sub.href}
+                            className="block px-3 py-1.5 text-xs text-ink/60 hover:text-ink hover:bg-cream-dark rounded transition-colors"
+                            onClick={() => setLocOpen(false)}
+                          >
+                            → {sub.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             )}
@@ -105,11 +128,30 @@ export default function Header() {
             ))}
             <div>
               <Link href="/locations/california" onClick={() => setMobileOpen(false)} className="text-xs font-semibold text-muted uppercase tracking-wider mb-2 hover:text-brand transition-colors">Locations</Link>
-              <div className="flex flex-col gap-2 pl-2">
+              <div className="flex flex-col gap-1 pl-2">
                 {locationLinks.map(({ href, city }) => (
-                  <Link key={href} href={href} onClick={() => setMobileOpen(false)} className="text-sm text-ink/70 hover:text-ink transition-colors">
-                    {city}
-                  </Link>
+                  <div key={href}>
+                    <Link href={href} onClick={() => setMobileOpen(false)} className="block text-sm text-ink/70 hover:text-ink transition-colors py-1">
+                      {city}
+                    </Link>
+                    {city === 'San Francisco' && (
+                      <div className="pl-3 flex flex-col gap-0.5 mb-1">
+                        {[
+                          { href: '/locations/san-francisco/wrongful-eviction', label: 'Wrongful Eviction' },
+                          { href: '/locations/san-francisco/omi-eviction', label: 'Owner Move-In' },
+                          { href: '/locations/san-francisco/ellis-act', label: 'Ellis Act' },
+                          { href: '/locations/san-francisco/constructive-eviction', label: 'Constructive Eviction' },
+                          { href: '/locations/san-francisco/rent-control', label: 'Rent Control Violations' },
+                          { href: '/locations/san-francisco/tenant-harassment', label: 'Tenant Harassment' },
+                          { href: '/locations/san-francisco/damages', label: 'Damages & Case Value' },
+                        ].map((sub) => (
+                          <Link key={sub.href} href={sub.href} onClick={() => setMobileOpen(false)} className="text-xs text-ink/50 hover:text-ink transition-colors py-0.5">
+                            → {sub.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>
