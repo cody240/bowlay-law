@@ -14,10 +14,19 @@ const navLinks = [
   { href: '/contact', label: 'Contact' },
 ];
 
+const resourceCities = [
+  { href: '/resources/local-ordinances/san-francisco', label: 'San Francisco' },
+  { href: '/resources/local-ordinances/oakland', label: 'Oakland' },
+  { href: '/resources/local-ordinances/berkeley', label: 'Berkeley' },
+  { href: '/resources/local-ordinances/los-angeles', label: 'Los Angeles' },
+  { href: '/resources/local-ordinances/san-jose', label: 'San Jose' },
+];
+
 export default function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [locOpen, setLocOpen] = useState(false);
+  const [resOpen, setResOpen] = useState(false);
 
   return (
     <header className="bg-white border-b border-border sticky top-0 z-50 shadow-sm">
@@ -81,6 +90,50 @@ export default function Header() {
                     )}
                   </div>
                 ))}
+              </div>
+            )}
+          </div>
+
+          {/* Resources dropdown */}
+          <div className="relative" onMouseEnter={() => setResOpen(true)} onMouseLeave={() => setResOpen(false)}>
+            <Link href="/resources/local-ordinances" className={`flex items-center gap-1 transition-colors ${pathname.startsWith('/resources') ? 'text-brand font-semibold' : 'text-ink/70 hover:text-ink'}`}>
+              Resources
+              <svg className={`w-3.5 h-3.5 transition-transform ${resOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+              </svg>
+            </Link>
+            {resOpen && (
+              <div className="absolute top-full left-0 mt-1 w-56 bg-white border border-border rounded-xl shadow-lg py-1 z-50">
+                <div className="px-4 pt-2 pb-1">
+                  <Link
+                    href="/resources/local-ordinances"
+                    className="block text-xs font-semibold text-muted hover:text-ink transition-colors mb-1"
+                    onClick={() => setResOpen(false)}
+                  >
+                    Local Ordinances
+                  </Link>
+                  <div className="pl-2 mb-2">
+                    {resourceCities.map(({ href, label }) => (
+                      <Link
+                        key={href}
+                        href={href}
+                        className="block px-2 py-1 text-xs text-ink/60 hover:text-ink hover:bg-cream-dark rounded transition-colors"
+                        onClick={() => setResOpen(false)}
+                      >
+                        → {label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <div className="border-t border-border px-4 py-2">
+                  <Link
+                    href="/resources/ab-1482"
+                    className="block text-xs text-ink/60 hover:text-ink hover:bg-cream-dark rounded px-2 py-1 transition-colors"
+                    onClick={() => setResOpen(false)}
+                  >
+                    AB 1482 (statewide)
+                  </Link>
+                </div>
               </div>
             )}
           </div>
@@ -153,6 +206,24 @@ export default function Header() {
                     )}
                   </div>
                 ))}
+              </div>
+            </div>
+            <div>
+              <Link href="/resources/local-ordinances" onClick={() => setMobileOpen(false)} className="text-xs font-semibold text-muted tracking-wider mb-2 hover:text-brand transition-colors">Resources</Link>
+              <div className="flex flex-col gap-1 pl-2 mt-1">
+                <Link href="/resources/local-ordinances" onClick={() => setMobileOpen(false)} className="block text-sm text-ink/70 hover:text-ink transition-colors py-1">
+                  Local Ordinances
+                </Link>
+                <div className="pl-3 flex flex-col gap-0.5">
+                  {resourceCities.map(({ href, label }) => (
+                    <Link key={href} href={href} onClick={() => setMobileOpen(false)} className="text-xs text-ink/50 hover:text-ink transition-colors py-0.5">
+                      → {label}
+                    </Link>
+                  ))}
+                </div>
+                <Link href="/resources/ab-1482" onClick={() => setMobileOpen(false)} className="text-sm text-ink/70 hover:text-ink transition-colors py-1">
+                  AB 1482 (statewide)
+                </Link>
               </div>
             </div>
             <Link
