@@ -61,8 +61,16 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between gap-3 text-xs text-white/40">
-          <p>© {new Date().getFullYear()} Bowlay Law. All rights reserved.</p>
-          <p className="max-w-md text-right">
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
+            <p>© {new Date().getFullYear()} Bowlay Law. All rights reserved.</p>
+            <Link
+              href="/privacy"
+              className="text-white/60 hover:text-white transition-colors"
+            >
+              Privacy Policy
+            </Link>
+          </div>
+          <p className="max-w-md md:text-right">
             This website is for informational purposes only and does not constitute legal advice.
             No attorney-client relationship is formed by visiting this site.
           </p>
