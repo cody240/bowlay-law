@@ -184,8 +184,7 @@ export default function SFOrdinanceReferencePage() {
                 <p className="text-muted text-sm leading-relaxed">
                   Hospitals, convents, monasteries, extended care facilities, asylums,
                   licensed residential care or adult day health care facilities for the
-                  elderly, and dormitories owned and operated by an institution of higher
-                  education, a high school, or an elementary school.
+                  elderly, and dormitories.
                 </p>
               </div>
             </div>
@@ -215,6 +214,19 @@ export default function SFOrdinanceReferencePage() {
                       where the tenant&rsquo;s share is a fixed percentage of income (e.g., the
                       Section 8 Certificate Program) are not covered by those rent increase
                       limitations.
+                    </p>
+                  </div>
+                  <div className="bg-white rounded-lg p-4 border border-amber-100">
+                    <p className="text-xs font-semibold text-amber-700 tracking-wider mb-1.5">§ 37.2(r)(4)(B) — Fixed-percentage tenant-based assistance (e.g., Section 8 Certificate)</p>
+                    <p className="text-amber-900 text-sm leading-relaxed">
+                      Units occupied by recipients of tenant-based rental assistance where the
+                      tenant&rsquo;s share is a fixed percentage of their income — such as the Section 8
+                      Certificate Program — remain covered as &ldquo;rental units&rdquo; for just cause eviction
+                      (§ 37.9), Ellis Act (§ 37.9A), harassment (§ 37.10A), and other protections
+                      listed in § 37.2(r)(4)(B). The annual CPI-based rent increase cap under
+                      § 37.3(a)(10)(A) does not apply to these tenants — their rent is governed
+                      instead by § 37.3(a)(10)(B), which reflects that the landlord negotiates
+                      the unit rent with the housing authority directly, not with the tenant.
                     </p>
                   </div>
                   <div className="bg-white rounded-lg p-4 border border-amber-100">
@@ -360,98 +372,181 @@ export default function SFOrdinanceReferencePage() {
                       </p>
                     </div>
                     <div className="bg-white rounded-lg p-4 border border-amber-100">
-                      <p className="text-sm font-medium text-ink mb-1">§ 37.3(g)(1)(C) — Units expressly denied the exemption</p>
-                      <p className="text-amber-900 text-sm leading-relaxed">
-                        ADUs under Planning Code § 207.1 with density or other waivers; Chapter 85
-                        units; units created under Planning Code density exceptions or the HOME-SF
-                        Program; and units subject to a Regulatory Agreement, including Replacement
-                        Units — get full rent control even though they post-date June 13, 1979.
-                      </p>
+                      <p className="text-sm font-medium text-ink mb-2">§ 37.3(g)(1) — Four express limits on the new construction exemption</p>
+                      <div className="space-y-2">
+                        {[
+                          { sub: '(A)', text: 'Where rent restrictions apply to the unit under § 37.3(d) or § 37.3(f) — i.e., a Costa-Hawkins exception already applies.' },
+                          { sub: '(B)', text: 'Where the unit is a replacement unit under § 37.9A(b) — units that replace housing demolished in an Ellis Act withdrawal.' },
+                          { sub: '(C)', text: 'As provided for certain categories of units under § 37.2(r)(4)(D) — ADUs under Planning Code § 207.1 with density waivers, Chapter 85 units, HOME-SF units, and units subject to a Regulatory Agreement.' },
+                          { sub: '(D)', text: 'As provided in a development agreement entered into by the City under Administrative Code Chapter 56.' },
+                        ].map(({ sub, text }) => (
+                          <div key={sub} className="flex items-start gap-2 text-sm text-amber-900">
+                            <span className="font-semibold shrink-0">{sub}</span>
+                            <span>{text}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="rounded-xl overflow-hidden border border-border">
+                {/* Header */}
                 <div className="flex items-start gap-3 bg-white p-6 border-b border-border">
                   <span className="text-red-400 font-bold text-lg mt-0.5 shrink-0">✕</span>
                   <div>
                     <p className="text-xs font-semibold text-brand-mid tracking-wider mb-1">§ 37.3(d) · Exemption B</p>
-                    <p className="font-semibold text-ink mb-2">Single-Family Homes &amp; Condominiums (Costa-Hawkins)</p>
-                    <p className="text-muted text-sm leading-relaxed mb-4">
-                      California&rsquo;s Costa-Hawkins Act permits an owner to set the initial and
-                      subsequent rental rates for a dwelling or unit that is &ldquo;alienable separate
-                      from the title to any other dwelling unit&rdquo; — meaning the entire
-                      single-family home or condominium rented as a whole. Applies to tenancies
-                      created on or after January 1, 1996; tenancies in effect on December 31,
-                      1995 remain covered regardless.
+                    <p className="font-semibold text-ink mb-2">Costa-Hawkins Rental Housing Act (Civ. Code §§ 1954.50 et seq.)</p>
+                    <p className="text-muted text-sm leading-relaxed">
+                      Consistent with Costa-Hawkins and regardless of whether otherwise provided
+                      under Chapter 37, the following rules apply to separately alienable dwellings
+                      and units.
                     </p>
+                  </div>
+                </div>
+
+                {/* § 37.3(d)(1)(A) */}
+                <div className="bg-white p-6 border-b border-border">
+                  <p className="text-xs font-semibold text-brand-mid tracking-wider mb-3">§ 37.3(d)(1)(A) — General rule: owner may set initial and all subsequent rental rates</p>
+                  <p className="text-muted text-sm leading-relaxed mb-4">
+                    An owner of residential real property may establish the initial and all
+                    subsequent rental rates for a dwelling or unit that is alienable separate from
+                    the title to any other dwelling unit, or is a subdivided interest in a
+                    subdivision as specified in Cal. Bus. &amp; Prof. Code § 11004.5(b), (d), or (f).
+                    In plain terms: a single-family home or condominium rented as a whole.
+                  </p>
+                  <div className="bg-white rounded-lg p-4 border border-border mb-4">
+                    <p className="text-xs font-semibold text-ink mb-2">What is NOT separately alienable — still covered by rent control:</p>
+                    <div className="space-y-1.5">
+                      {[
+                        'A single-family home with an illegal in-law unit — counts as a two-unit building, not separately alienable',
+                        'Individual bedrooms rented separately — a bedroom cannot be conveyed apart from title to the rest of the house',
+                      ].map((item) => (
+                        <div key={item} className="flex items-start gap-2 text-sm text-muted">
+                          <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">✓</span>
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-xs font-semibold text-amber-800 mb-2">The right to set subsequent rental rates does NOT apply where:</p>
+                  <div className="space-y-3">
+                    <div className="bg-amber-50 rounded-lg p-4 border border-amber-100">
+                      <p className="text-xs font-semibold text-amber-700 tracking-wider mb-1.5">§ 37.3(d)(1)(A)(i) — Unsold condominium units</p>
+                      <p className="text-amber-900 text-sm leading-relaxed">
+                        A condominium dwelling or unit that has not been sold separately by the
+                        subdivider to a bona fide purchaser for value. Exception: Costa-Hawkins does
+                        apply to a single unsold condominium if all other units in the building have
+                        been sold to bona fide purchasers, and the subdivider has occupied the
+                        remaining unit as their principal residence for at least one year after the
+                        subdivision occurred.
+                      </p>
+                    </div>
+                    <div className="bg-amber-50 rounded-lg p-4 border border-amber-100">
+                      <p className="text-xs font-semibold text-amber-700 tracking-wider mb-1.5">§ 37.3(d)(1)(A)(ii) — Prior tenancy terminated by owner notice</p>
+                      <p className="text-amber-900 text-sm leading-relaxed">
+                        The preceding tenancy was terminated by the owner by notice pursuant to
+                        Cal. Civ. Code § 1946.1, or was terminated upon a change in the terms of
+                        the tenancy noticed pursuant to Cal. Civ. Code § 827. In such cases, the
+                        rent increase limitation provisions of Chapter 37 continue to apply for
+                        the duration of the new tenancy in that dwelling or unit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* § 37.3(d)(1)(B) */}
+                <div className="bg-white p-6 border-b border-border">
+                  <p className="text-xs font-semibold text-brand-mid tracking-wider mb-3">§ 37.3(d)(1)(B) — Transition rules for units that were rent-controlled on January 1, 1995</p>
+                  <div className="space-y-3">
                     <div className="bg-cream-dark rounded-lg p-4 border border-border">
-                      <p className="text-xs font-semibold text-ink tracking-wider mb-3">What is NOT separately alienable — still covered:</p>
-                      <div className="space-y-2">
-                        <div className="flex items-start gap-2 text-sm text-muted">
-                          <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">✓</span>
-                          <span>A single-family home with an illegal in-law unit — counts as a two-unit building, not separately alienable</span>
-                        </div>
-                        <div className="flex items-start gap-2 text-sm text-muted">
-                          <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">✓</span>
-                          <span>Individual bedrooms rented separately — a bedroom cannot be conveyed separately from title to the rest of the house</span>
-                        </div>
-                      </div>
+                      <p className="text-xs font-semibold text-ink tracking-wider mb-1.5">§ 37.3(d)(1)(B)(i) — Tenancies in effect on December 31, 1995</p>
+                      <p className="text-muted text-sm leading-relaxed">
+                        A tenancy that was in effect on December 31, 1995, remains subject to the
+                        rent control provisions of Chapter 37. The owner may not establish
+                        subsequent rental rates for that tenancy.
+                      </p>
+                    </div>
+                    <div className="bg-cream-dark rounded-lg p-4 border border-border">
+                      <p className="text-xs font-semibold text-ink tracking-wider mb-1.5">§ 37.3(d)(1)(B)(ii) — Tenancies created on or after January 1, 1996</p>
+                      <p className="text-muted text-sm leading-relaxed">
+                        On or after January 1, 1999, an owner may establish the initial and all
+                        subsequent rental rates for any tenancy created on or after January 1, 1996.
+                      </p>
                     </div>
                   </div>
                 </div>
-                <div className="bg-amber-50 border-b border-amber-100 p-6">
-                  <p className="text-sm font-semibold text-amber-900 mb-4">↩ Three exceptions that restore full rent control:</p>
+
+                {/* § 37.3(d)(1)(C) and (D) */}
+                <div className="bg-white p-6 border-b border-border">
+                  <p className="text-xs font-semibold text-brand-mid tracking-wider mb-3">§§ 37.3(d)(1)(C)–(D) — Additional limits on the right to set subsequent rental rates</p>
                   <div className="space-y-3">
-                    <div className="bg-white rounded-lg p-4 border border-amber-100">
-                      <p className="text-sm font-medium text-ink mb-1">Exception 1 — No-fault eviction of the prior tenant (§ 37.3(f))</p>
-                      <p className="text-amber-900 text-sm leading-relaxed">
-                        Where the previous tenancy was terminated by a no-fault notice under Civil
-                        Code § 1946.1 — such as Ellis Act, owner move-in, demolition, or other
-                        no-fault grounds under §§ 37.9(a)(8), (9), (10), (11), (14), or (17) —
-                        or by a change in terms under Civil Code § 827, the new tenancy&rsquo;s base
-                        rent cannot exceed the prior controlled rent plus allowable increases for
-                        five years from termination.
+                    <div className="bg-cream-dark rounded-lg p-4 border border-border">
+                      <p className="text-xs font-semibold text-ink tracking-wider mb-1.5">§ 37.3(d)(1)(C) — Uncorrected code violations</p>
+                      <p className="text-muted text-sm leading-relaxed">
+                        Does not apply where the unit contains serious health, safety, fire, or
+                        building code violations — excluding those caused by disasters — for which
+                        a citation has been issued by the appropriate governmental agency and which
+                        remained unabated for six months or longer preceding the vacancy.
                       </p>
                     </div>
-                    <div className="bg-white rounded-lg p-4 border border-amber-100">
-                      <p className="text-sm font-medium text-ink mb-1">Exception 2 — Uncorrected code violations (§ 37.3(d)(1)(C))</p>
-                      <p className="text-amber-900 text-sm leading-relaxed">
-                        Where the unit had serious health, safety, fire, or building code
-                        violations that remained unabated for six months or longer before the
-                        vacancy, the owner cannot set a new initial rent under Costa-Hawkins.
-                      </p>
-                    </div>
-                    <div className="bg-white rounded-lg p-4 border border-amber-100">
-                      <p className="text-sm font-medium text-ink mb-1">Exception 3 — Unsold condos held by the subdivider (§ 37.3(d)(1)(A)(i))</p>
-                      <p className="text-amber-900 text-sm leading-relaxed">
-                        The Costa-Hawkins exemption does not apply to a condominium that has not
-                        been sold separately by the subdivider to a bona fide purchaser for value
-                        — unless it is the last unsold unit and the subdivider has occupied it as
-                        their principal residence for at least one year after subdivision.
+                    <div className="bg-cream-dark rounded-lg p-4 border border-border">
+                      <p className="text-xs font-semibold text-ink tracking-wider mb-1.5">§ 37.3(d)(1)(D) — Units under § 37.2(r)(4)(D)</p>
+                      <p className="text-muted text-sm leading-relaxed">
+                        Does not apply to a new dwelling unit created pursuant to, or that
+                        utilizes, the Code provisions specified in § 37.2(r)(4)(D) — ADUs under
+                        Planning Code § 207.1 with density waivers, Chapter 85 units, HOME-SF
+                        units, and units subject to a Regulatory Agreement.
                       </p>
                     </div>
                   </div>
                 </div>
+
+                {/* § 37.3(d)(2) */}
                 <div className="bg-white p-6">
-                  <p className="text-sm font-semibold text-ink mb-4">Additional Costa-Hawkins limits:</p>
+                  <p className="text-xs font-semibold text-brand-mid tracking-wider mb-3">§ 37.3(d)(2) — Sublet or Assignment</p>
                   <div className="space-y-3">
-                    <div className="flex items-start gap-3 text-sm text-muted">
-                      <span className="text-brand mt-0.5 shrink-0">·</span>
-                      <span>
-                        <span className="font-medium text-ink">Change-in-terms termination (§§ 37.3(d)(1)(A)(ii), 37.3(f)(2)):</span>
-                        {' '}Where the previous tenancy ended because the landlord changed the terms
-                        under Civil Code § 827, full rent control applies for five years.
-                      </span>
+                    <div className="bg-cream-dark rounded-lg p-4 border border-border">
+                      <p className="text-xs font-semibold text-ink tracking-wider mb-1.5">§ 37.3(d)(2)(A) — Original occupants no longer reside in the unit</p>
+                      <p className="text-muted text-sm leading-relaxed mb-2">
+                        Where the original occupant or occupants no longer permanently reside in
+                        the dwelling or unit, an owner may increase the rent to a lawful sublessee
+                        or assignee who did not reside at the unit prior to January 1, 1996.
+                        However, a rent increase is not permitted while all three of the following
+                        apply:
+                      </p>
+                      <ul className="space-y-1">
+                        {[
+                          'The unit has been cited as containing serious health, safety, fire, or building code violations (as defined by Cal. Health &amp; Safety Code § 17920.3), excluding disaster-caused violations;',
+                          'The citation was issued at least 60 days prior to the date of the vacancy; and',
+                          'The cited violation had not been abated when the prior tenant vacated and remained unabated for 60 days or longer (the 60-day period may be extended by the citing agency).',
+                        ].map((item) => (
+                          <li key={item} className="flex items-start gap-2 text-xs text-muted">
+                            <span className="text-brand mt-0.5 shrink-0">·</span>
+                            <span dangerouslySetInnerHTML={{ __html: item }} />
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <div className="flex items-start gap-3 text-sm text-muted">
-                      <span className="text-brand mt-0.5 shrink-0">·</span>
-                      <span>
-                        <span className="font-medium text-ink">Government rent-limitation contract terminated (§§ 37.3(d)(3), 37.3(f)(3)):</span>
-                        {' '}Where the landlord terminates or fails to renew a government rent-limitation
-                        contract, no new initial rent may be set for three years.
-                      </span>
+                    <div className="bg-cream-dark rounded-lg p-4 border border-border">
+                      <p className="text-xs font-semibold text-ink tracking-wider mb-1.5">§ 37.3(d)(2)(B) — Partial changes in occupancy</p>
+                      <p className="text-muted text-sm leading-relaxed">
+                        Subsection (d)(2) does not apply to partial changes in occupancy where one
+                        or more of the original occupants remains in lawful possession, or where a
+                        lawful sublessee or assignee who resided at the unit prior to January 1,
+                        1996, remains in possession. Nothing in (d)(2) enlarges or diminishes an
+                        owner&rsquo;s right to withhold consent to a sublease or assignment.
+                      </p>
+                    </div>
+                    <div className="bg-cream-dark rounded-lg p-4 border border-border">
+                      <p className="text-xs font-semibold text-ink tracking-wider mb-1.5">§ 37.3(d)(2)(C) — Acceptance of rent is not a waiver</p>
+                      <p className="text-muted text-sm leading-relaxed">
+                        Acceptance of rent by the owner does not operate as a waiver of a covenant
+                        prohibiting sublease or assignment, or as a waiver of the owner&rsquo;s right to
+                        establish the initial rental rate — unless the owner received written notice
+                        from the tenant and thereafter accepted rent.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -479,31 +574,67 @@ export default function SFOrdinanceReferencePage() {
                     <p className="text-xs font-semibold text-brand-mid tracking-wider mb-0.5">§ 37.3(a)(1)</p>
                     <p className="font-semibold text-ink">Annual Allowable Increase</p>
                   </div>
-                  <div className="bg-cream-dark p-5">
-                    <div className="bg-white rounded-xl p-4 border border-border mb-4">
-                      <p className="text-2xl font-bold text-ink mb-0.5">60% of CPI</p>
-                      <p className="text-muted text-sm">Published each March 1 · Hard cap of 7% per year</p>
-                    </div>
-                    <p className="text-muted text-sm leading-relaxed">
-                      The{' '}
-                      <a href="https://sfrentboard.org" target="_blank" rel="noopener noreferrer" className="text-brand underline hover:text-brand-mid">Rent Board</a>
-                      {' '}publishes the allowable annual increase each March 1 — 60% of the increase
-                      in the SF Consumer Price Index for the preceding 12 months, with a hard cap of
-                      7%. A landlord may impose this increase once per year on the tenant&rsquo;s
-                      anniversary date, provided they have reported required information about their
-                      unit to the Rent Board under § 37.15.
+                  <div className="bg-white p-5">
+                    <p className="text-muted text-sm leading-relaxed mb-5">
+                      A landlord may increase the tenant&rsquo;s base rent <span className="font-medium text-ink">once every 12 months</span>, on
+                      the tenant&rsquo;s rent increase anniversary date, without filing a petition at the
+                      Rent Board. The current allowable rate is <span className="font-medium text-ink">1.6%</span> (March 1, 2026 –
+                      February 28, 2027). The rate is published each March 1 based on 60% of the
+                      increase in the SF Consumer Price Index for the preceding 12 months, with a
+                      hard cap of 7%. A landlord must have reported required information about their
+                      unit to the Rent Board under § 37.15 to impose the increase.{' '}
+                      <a href="https://www.sf.gov/learn-about-rent-increases-san-francisco" target="_blank" rel="noopener noreferrer" className="text-brand underline hover:text-brand-mid">SF.gov rent increases guide ↗</a>
                     </p>
+                    <div className="bg-cream-dark rounded-xl p-4 border border-border mb-5">
+                      <p className="text-xs font-semibold text-ink mb-3">Example — 1.6% increase on $2,000/month rent</p>
+                      <div className="space-y-2">
+                        {[
+                          { label: 'Current base rent', value: '$2,000.00' },
+                          { label: 'Allowable increase (× 0.016)', value: '$32.00' },
+                          { label: 'New base rent', value: '$2,032.00' },
+                        ].map(({ label, value }) => (
+                          <div key={label} className="flex justify-between items-baseline border-b border-border pb-1.5 last:border-0 last:pb-0">
+                            <span className="text-sm text-muted">{label}</span>
+                            <span className="text-sm font-semibold text-ink">{value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="bg-cream-dark rounded-xl overflow-hidden border border-border">
+                      <div className="px-4 py-2 border-b border-border">
+                        <p className="text-xs font-semibold text-ink">Historical allowable increases</p>
+                      </div>
+                      <table className="w-full text-sm">
+                        <tbody>
+                          {[
+                            { period: '3/1/26 – 2/28/27', rate: '1.6%', current: true },
+                            { period: '3/1/25 – 2/28/26', rate: '1.4%' },
+                            { period: '3/1/24 – 2/28/25', rate: '1.7%' },
+                            { period: '3/1/23 – 2/29/24', rate: '3.6%' },
+                            { period: '3/1/22 – 2/28/23', rate: '2.3%' },
+                            { period: '3/1/21 – 2/28/22', rate: '0.7%' },
+                          ].map(({ period, rate, current }) => (
+                            <tr key={period} className={`border-b border-border last:border-0 ${current ? 'bg-white' : ''}`}>
+                              <td className="px-4 py-2 text-muted">{period}</td>
+                              <td className="px-4 py-2 font-semibold text-ink text-right">
+                                {rate}{current && <span className="ml-2 text-xs text-brand-mid font-normal">current</span>}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
 
                 {[
                   {
-                    citation: '§ 37.3(a)(1)',
+                    citation: '§ 37.3(a)(2)',
                     title: 'Banked Increases',
                     body: 'A landlord who refrains from imposing an annual increase — or imposes only a portion of it — may accumulate the unused amount and apply it on subsequent rent increase anniversary dates. There is no limit on how long increases may be banked, but the total accumulated amount cannot exceed the sum of prior unused allowable annual increases.',
                   },
                   {
-                    citation: '§§ 37.7, 37.8B',
+                    citation: '§ 37.3(a)(3)',
                     title: 'Capital Improvement Passthroughs',
                     body: 'A landlord may petition the Rent Board to pass through costs for capital improvements, rehabilitation, energy conservation, and renewable energy improvements. These require Board certification and are subject to caps: seismic work capped at 10% per 12 months; other improvements amortized over a Board-set period.',
                   },
@@ -538,7 +669,7 @@ export default function SFOrdinanceReferencePage() {
                       <p className="text-xs font-semibold text-brand-mid tracking-wider mb-0.5">{citation}</p>
                       <p className="font-semibold text-ink">{title}</p>
                     </div>
-                    <div className="bg-cream-dark p-5">
+                    <div className="bg-white p-5">
                       <p className="text-muted text-sm leading-relaxed">{body}</p>
                     </div>
                   </div>
@@ -549,8 +680,8 @@ export default function SFOrdinanceReferencePage() {
                     <p className="text-xs font-semibold text-brand-mid tracking-wider mb-0.5">§ 37.3(a)(10)</p>
                     <p className="font-semibold text-ink">Tenant-Based Rental Assistance</p>
                   </div>
-                  <div className="bg-cream-dark p-5 space-y-3">
-                    <div className="bg-white rounded-lg p-4 border border-border">
+                  <div className="bg-white p-5 space-y-3">
+                    <div className="bg-cream-dark rounded-lg p-4 border border-border">
                       <p className="text-xs font-semibold text-ink tracking-wider mb-1.5">§ 37.3(a)(10)(A) — Non-fixed-percentage programs (e.g., Housing Choice Vouchers)</p>
                       <p className="text-muted text-sm leading-relaxed">
                         Where the tenant&rsquo;s share of rent is not a fixed percentage of income —
@@ -558,7 +689,7 @@ export default function SFOrdinanceReferencePage() {
                         limitations under § 37.3(a)(10)(A) apply.
                       </p>
                     </div>
-                    <div className="bg-white rounded-lg p-4 border border-border">
+                    <div className="bg-cream-dark rounded-lg p-4 border border-border">
                       <p className="text-xs font-semibold text-ink tracking-wider mb-1.5">§ 37.3(a)(10)(B) — Fixed-percentage programs (e.g., Section 8 Certificate)</p>
                       <p className="text-muted text-sm leading-relaxed">
                         Where the tenant&rsquo;s share is a fixed percentage of income, the rent
@@ -573,7 +704,7 @@ export default function SFOrdinanceReferencePage() {
                     <p className="text-xs font-semibold text-brand-mid tracking-wider mb-0.5">§ 37.3(b)</p>
                     <p className="font-semibold text-ink">No Increase for Additional Occupants</p>
                   </div>
-                  <div className="bg-cream-dark p-5">
+                  <div className="bg-white p-5">
                     <p className="text-muted text-sm leading-relaxed">
                       A landlord may not impose a rent increase solely because a tenant has added
                       an occupant to an existing tenancy — including a newborn child or a family
@@ -715,21 +846,6 @@ export default function SFOrdinanceReferencePage() {
                         returned checks. Rent means the amount to which the landlord is lawfully
                         entitled — not charges prohibited by Police Code § 919.1.
                       </p>
-                    </div>
-                  </div>
-                  <div className="bg-amber-50 border-t border-amber-100 p-5">
-                    <p className="text-sm font-semibold text-amber-900 mb-3">Key tenant protections:</p>
-                    <div className="space-y-2">
-                      {[
-                        { bold: 'COVID-19 protection (March 16, 2020 – Sept 30, 2020):', rest: ' No eviction for nonpayment if the tenant shows the failure arose from a COVID-related substantial decrease in household income, documented by bank statements, pay stubs, termination notices, proof of unemployment filing, or sworn affidavit.' },
-                        { bold: 'Extended COVID protection (July 1, 2022 – 60 days after end of COVID emergency):', rest: ' Same showing applies for rent that came due during this period.' },
-                        { bold: 'Capital improvement passthrough moratorium:', rest: ' No eviction for nonpayment of capital improvement passthroughs certified after April 10, 2000 if the petition was filed before August 10, 2001 (covering August 10, 2001 – February 10, 2003).' },
-                      ].map(({ bold, rest }) => (
-                        <div key={bold} className="flex items-start gap-2 text-sm text-amber-900">
-                          <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">✓</span>
-                          <span><span className="font-medium">{bold}</span>{rest}</span>
-                        </div>
-                      ))}
                     </div>
                   </div>
                 </div>
@@ -1235,7 +1351,7 @@ export default function SFOrdinanceReferencePage() {
                   <div className="bg-white px-5 py-3 border-b border-border">
                     <p className="text-xs font-semibold text-brand-mid tracking-wider">§§ 37.10B(a)(1)–(3) · Housing Services &amp; Maintenance</p>
                   </div>
-                  <div className="bg-cream-dark p-5 space-y-3">
+                  <div className="bg-white p-5 space-y-3">
                     {[
                       { num: '(1)', text: 'Interrupt, terminate, or fail to provide housing services required by contract or by state, county, or local housing, health, or safety laws.' },
                       { num: '(2)', text: 'Fail to perform repairs and maintenance required by contract or by state, county, or local housing, health, or safety laws.' },
@@ -1253,7 +1369,7 @@ export default function SFOrdinanceReferencePage() {
                   <div className="bg-white px-5 py-3 border-b border-border">
                     <p className="text-xs font-semibold text-brand-mid tracking-wider">§ 37.10B(a)(4) · Right of Access</p>
                   </div>
-                  <div className="bg-cream-dark p-5">
+                  <div className="bg-white p-5">
                     <div className="flex items-start gap-3 text-sm text-muted">
                       <span className="text-red-400 font-bold shrink-0 mt-0.5">(4)</span>
                       <span>Abuse the landlord&rsquo;s right of access into a rental housing unit as that right is provided by law. California Civil Code § 1954 requires advance written notice and limits the permissible purposes and frequency of entry.</span>
@@ -1265,7 +1381,7 @@ export default function SFOrdinanceReferencePage() {
                   <div className="bg-white px-5 py-3 border-b border-border">
                     <p className="text-xs font-semibold text-brand-mid tracking-wider">§§ 37.10B(a)(5)–(7) · Coercion to Vacate</p>
                   </div>
-                  <div className="bg-cream-dark p-5 space-y-4">
+                  <div className="bg-white p-5 space-y-4">
                     <div className="flex items-start gap-3 text-sm text-muted">
                       <span className="text-red-400 font-bold shrink-0 mt-0.5">(5)</span>
                       <div>
@@ -1290,7 +1406,7 @@ export default function SFOrdinanceReferencePage() {
                   <div className="bg-white px-5 py-3 border-b border-border">
                     <p className="text-xs font-semibold text-brand-mid tracking-wider">§§ 37.10B(a)(8)–(9) · Threats &amp; Discrimination</p>
                   </div>
-                  <div className="bg-cream-dark p-5 space-y-3">
+                  <div className="bg-white p-5 space-y-3">
                     <div className="flex items-start gap-3 text-sm text-muted">
                       <span className="text-red-400 font-bold shrink-0 mt-0.5">(8)</span>
                       <span>Threaten the tenant, by word or gesture, with physical harm.</span>
@@ -1306,7 +1422,7 @@ export default function SFOrdinanceReferencePage() {
                   <div className="bg-white px-5 py-3 border-b border-border">
                     <p className="text-xs font-semibold text-brand-mid tracking-wider">§§ 37.10B(a)(10), (13)–(14) · Quiet Enjoyment &amp; Privacy</p>
                   </div>
-                  <div className="bg-cream-dark p-5 space-y-3">
+                  <div className="bg-white p-5 space-y-3">
                     {[
                       { num: '(10)', text: "Interfere with a tenant's right to quiet use and enjoyment of a rental housing unit as that right is defined by California law." },
                       { num: '(13)', text: "Interfere with a tenant's right to privacy." },
@@ -1324,7 +1440,7 @@ export default function SFOrdinanceReferencePage() {
                   <div className="bg-white px-5 py-3 border-b border-border">
                     <p className="text-xs font-semibold text-brand-mid tracking-wider">§§ 37.10B(a)(11)–(12) · Rent Payment</p>
                   </div>
-                  <div className="bg-cream-dark p-5 space-y-3">
+                  <div className="bg-white p-5 space-y-3">
                     <div className="flex items-start gap-3 text-sm text-muted">
                       <span className="text-red-400 font-bold shrink-0 mt-0.5">(11)</span>
                       <span>Refuse to accept or acknowledge receipt of a tenant&rsquo;s lawful rent payment.</span>
@@ -1340,7 +1456,7 @@ export default function SFOrdinanceReferencePage() {
                   <div className="bg-white px-5 py-3 border-b border-border">
                     <p className="text-xs font-semibold text-brand-mid tracking-wider">§ 37.10B(a)(15) · Catch-All</p>
                   </div>
-                  <div className="bg-cream-dark p-5">
+                  <div className="bg-white p-5">
                     <div className="flex items-start gap-3 text-sm text-muted">
                       <span className="text-red-400 font-bold shrink-0 mt-0.5">(15)</span>
                       <span>Other repeated acts or omissions of such significance as to substantially interfere with or disturb the comfort, repose, peace, or quiet of any person lawfully entitled to occupancy — and that cause, are likely to cause, or are intended to cause such person to vacate the unit or surrender or waive any rights in relation to their occupancy.</span>

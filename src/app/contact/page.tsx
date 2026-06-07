@@ -140,18 +140,34 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="name">
-                      Full name <span className="text-brand-mid">*</span>
+                    <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="first_name">
+                      First name <span className="text-brand-mid">*</span>
                     </label>
                     <input
-                      id="name"
-                      name="name"
+                      id="first_name"
+                      name="first_name"
                       type="text"
                       required
                       className="w-full rounded-xl border border-border bg-white px-4 py-3 text-ink placeholder:text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
-                      placeholder="Jane Smith"
+                      placeholder="Jane"
                     />
                   </div>
+                  <div>
+                    <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="last_name">
+                      Last name <span className="text-brand-mid">*</span>
+                    </label>
+                    <input
+                      id="last_name"
+                      name="last_name"
+                      type="text"
+                      required
+                      className="w-full rounded-xl border border-border bg-white px-4 py-3 text-ink placeholder:text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
+                      placeholder="Smith"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="phone">
                       Phone number <span className="text-brand-mid">*</span>
@@ -165,20 +181,19 @@ export default function ContactPage() {
                       placeholder="(415) 555-0100"
                     />
                   </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="email">
-                    Email address <span className="text-brand-mid">*</span>
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    className="w-full rounded-xl border border-border bg-white px-4 py-3 text-ink placeholder:text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
-                    placeholder="jane@example.com"
-                  />
+                  <div>
+                    <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="email">
+                      Email address <span className="text-brand-mid">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      className="w-full rounded-xl border border-border bg-white px-4 py-3 text-ink placeholder:text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
+                      placeholder="jane@example.com"
+                    />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

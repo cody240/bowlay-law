@@ -25,12 +25,12 @@ export const metadata: Metadata = {
 const topics = [
   {
     title: 'Wrongful Eviction',
-    description: 'Your landlord got you out through means that weren't legally valid.',
+    description: "Your landlord got you out through means that weren't legally valid.",
     href: '/locations/san-francisco/wrongful-eviction',
   },
   {
     title: 'Owner Move-In (OMI)',
-    description: 'Your landlord said they or a relative needed the unit — and then didn't move in, or moved out early.',
+    description: "Your landlord said they or a relative needed the unit — and then didn't move in, or moved out early.",
     href: '/locations/san-francisco/omi-eviction',
   },
   {
@@ -59,7 +59,7 @@ const process = [
   {
     step: '01',
     title: 'Free screening call',
-    body: '15–20 minutes. Cody listens to what happened, asks about your rent and tenancy, and tells you honestly whether there\'s a case.',
+    body: "15–20 minutes. Cody listens to what happened, asks about your rent and tenancy, and tells you honestly whether there's a case.",
   },
   {
     step: '02',

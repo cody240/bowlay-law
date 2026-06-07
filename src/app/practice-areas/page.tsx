@@ -106,7 +106,7 @@ export default function PracticeAreasPage() {
               Local ordinances vs. state law
             </h3>
             <p className="text-ink/75 leading-relaxed mb-4">
-              California's Tenant Protection Act (AB 1482) provides a statewide floor — but cities like
+              California&rsquo;s Tenant Protection Act (AB 1482) provides a statewide floor — but cities like
               San Francisco, Oakland, Los Angeles, Berkeley, San Jose, and Santa Barbara have local
               ordinances that go further. Local ordinances typically mean:
             </p>
@@ -138,7 +138,7 @@ export default function PracticeAreasPage() {
             <h3 className="font-semibold text-ink mb-2">Time matters — act within a year</h3>
             <p className="text-ink/70 leading-relaxed">
               Most local rent ordinances have a statute of limitations of approximately one year. If your
-              landlord's wrongful action happened more than 12 months ago, your options may be limited.
+              landlord&rsquo;s wrongful action happened more than 12 months ago, your options may be limited.
               If something happened recently, reach out now rather than later.
             </p>
           </div>

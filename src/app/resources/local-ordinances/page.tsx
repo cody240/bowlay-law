@@ -37,7 +37,7 @@ const cities = [
     description:
       'Covers most rental units in Oakland regardless of building age. Just cause required for eviction, rent control for pre-1983 buildings, and substantial relocation assistance for no-fault evictions.',
     href: '/resources/local-ordinances/oakland',
-    available: false,
+    available: true,
   },
   {
     city: 'Berkeley',
