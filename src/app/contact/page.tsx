@@ -1,69 +1,10 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
 import { trackEvent } from '@/lib/analytics';
 
-const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? '';
-
-const tenancyOptions = [
-  'Less than 6 months',
-  '6–12 months',
-  '1–3 years',
-  '3–5 years',
-  '5–10 years',
-  'Over 10 years',
-];
-
-const issueOptions = [
-  'Wrongful eviction / improper notice',
-  'Constructive eviction (forced out by conditions)',
-  'Illegal rent increase',
-  'Landlord harassment',
-  'I moved out and think I was pushed out',
-  'Other',
-];
-
-const cityOptions = [
-  'San Francisco',
-  'Oakland',
-  'Los Angeles',
-  'Berkeley',
-  'San Jose',
-  'Santa Barbara',
-  'Other California city',
-];
+const FILLOUT_FORM_URL = 'https://bowlaylaw.fillout.com/t/je9Kza31Mkus';
 
 export default function ContactPage() {
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (!FORMSPREE_ENDPOINT) {
-      setStatus('error');
-      return;
-    }
-    setStatus('submitting');
-    const form = e.currentTarget;
-    const data = new FormData(form);
-
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
-      });
-      if (res.ok) {
-        setStatus('success');
-        trackEvent('consultation_form_submit');
-        form.reset();
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
-  }
-
   return (
     <>
       {/* Hero */}
@@ -90,7 +31,7 @@ export default function ContactPage() {
             <div>
               <h2 className="font-display text-xl font-semibold text-ink mb-3">What to expect</h2>
               <ul className="space-y-3 text-muted text-sm leading-relaxed">
-                <li className="flex gap-2"><span className="text-brand font-bold mt-0.5">1.</span>Submit the short form below.</li>
+                <li className="flex gap-2"><span className="text-brand font-bold mt-0.5">1.</span>Submit the short form.</li>
                 <li className="flex gap-2"><span className="text-brand font-bold mt-0.5">2.</span>Cody reviews your situation and calls you back.</li>
                 <li className="flex gap-2"><span className="text-brand font-bold mt-0.5">3.</span>On the call, you tell Cody what happened. He listens, asks questions, and gives you an honest read.</li>
                 <li className="flex gap-2"><span className="text-brand font-bold mt-0.5">4.</span>If there is a case worth taking, Cody will explain next steps. If not, he will do his best to point you somewhere useful.</li>
@@ -122,183 +63,19 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Form */}
+          {/* Fillout form embed */}
           <div className="lg:col-span-2">
-            {status === 'success' ? (
-              <div className="bg-brand-pale rounded-2xl p-10 text-center">
-                <div className="text-4xl mb-4">✅</div>
-                <h2 className="font-display text-2xl font-bold text-ink mb-3">
-                  Got it — Cody will be in touch.
-                </h2>
-                <p className="text-muted leading-relaxed">
-                  He will give you a call within one business day. In the meantime, feel free to
-                  gather any documents that might be helpful (lease, notices, texts from your
-                  landlord).
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="first_name">
-                      First name <span className="text-brand-mid">*</span>
-                    </label>
-                    <input
-                      id="first_name"
-                      name="first_name"
-                      type="text"
-                      required
-                      className="w-full rounded-xl border border-border bg-white px-4 py-3 text-ink placeholder:text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
-                      placeholder="Jane"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="last_name">
-                      Last name <span className="text-brand-mid">*</span>
-                    </label>
-                    <input
-                      id="last_name"
-                      name="last_name"
-                      type="text"
-                      required
-                      className="w-full rounded-xl border border-border bg-white px-4 py-3 text-ink placeholder:text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
-                      placeholder="Smith"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="phone">
-                      Phone number <span className="text-brand-mid">*</span>
-                    </label>
-                    <input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      required
-                      className="w-full rounded-xl border border-border bg-white px-4 py-3 text-ink placeholder:text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
-                      placeholder="(415) 555-0100"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="email">
-                      Email address <span className="text-brand-mid">*</span>
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      className="w-full rounded-xl border border-border bg-white px-4 py-3 text-ink placeholder:text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
-                      placeholder="jane@example.com"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="city">
-                      City where you rent <span className="text-brand-mid">*</span>
-                    </label>
-                    <select
-                      id="city"
-                      name="city"
-                      required
-                      className="w-full rounded-xl border border-border bg-white px-4 py-3 text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
-                    >
-                      <option value="">Select a city</option>
-                      {cityOptions.map((c) => (
-                        <option key={c} value={c}>{c}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="tenancy">
-                      How long have you lived there? <span className="text-brand-mid">*</span>
-                    </label>
-                    <select
-                      id="tenancy"
-                      name="tenancy_length"
-                      required
-                      className="w-full rounded-xl border border-border bg-white px-4 py-3 text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
-                    >
-                      <option value="">Select one</option>
-                      {tenancyOptions.map((t) => (
-                        <option key={t} value={t}>{t}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="issue">
-                    What type of issue are you dealing with? <span className="text-brand-mid">*</span>
-                  </label>
-                  <select
-                    id="issue"
-                    name="issue_type"
-                    required
-                    className="w-full rounded-xl border border-border bg-white px-4 py-3 text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
-                  >
-                    <option value="">Select one</option>
-                    {issueOptions.map((o) => (
-                      <option key={o} value={o}>{o}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="moved_out">
-                    Have you already moved out?
-                  </label>
-                  <select
-                    id="moved_out"
-                    name="moved_out"
-                    className="w-full rounded-xl border border-border bg-white px-4 py-3 text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
-                  >
-                    <option value="">Select one</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No, still in the unit</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-ink mb-1.5" htmlFor="description">
-                    Briefly describe what happened <span className="text-brand-mid">*</span>
-                  </label>
-                  <textarea
-                    id="description"
-                    name="description"
-                    rows={5}
-                    required
-                    className="w-full rounded-xl border border-border bg-white px-4 py-3 text-ink placeholder:text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 resize-none"
-                    placeholder="Tell Cody what happened in your own words. Don't worry about legal language — just explain the situation."
-                  />
-                </div>
-
-                {status === 'error' && (
-                  <p className="text-sm text-red-600 bg-red-50 rounded-xl px-4 py-3 border border-red-200">
-                    {FORMSPREE_ENDPOINT
-                      ? 'Something went wrong. Please try again or call (415) 909-5920.'
-                      : 'The contact form is not yet configured. Please email cody@bowlaylaw.com or call (415) 909-5920.'}
-                  </p>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={status === 'submitting'}
-                  className="w-full bg-brand-dark text-white py-4 rounded-full font-semibold text-lg hover:bg-brand transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {status === 'submitting' ? 'Sending…' : 'Request Free Case Review'}
-                </button>
-
-                <p className="text-xs text-muted text-center leading-relaxed">
-                  Submitting this form does not create an attorney-client relationship. No legal
-                  advice is given until a formal engagement is established.
-                </p>
-              </form>
-            )}
+            <iframe
+              src={FILLOUT_FORM_URL}
+              title="Free Case Review form"
+              className="w-full rounded-2xl border border-border bg-white"
+              style={{ minHeight: 760 }}
+              loading="lazy"
+            />
+            <p className="text-xs text-muted text-center leading-relaxed mt-4">
+              Submitting this form does not create an attorney-client relationship. No legal
+              advice is given until a formal engagement is established.
+            </p>
           </div>
         </div>
       </section>
