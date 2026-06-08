@@ -24,7 +24,7 @@ export default function ContactPage() {
       </section>
 
       {/* Form + sidebar */}
-      <section className="bg-cream px-6 py-20">
+      <section className="bg-white px-6 py-20">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Sidebar */}
           <div className="lg:col-span-1 space-y-6">
@@ -68,7 +68,7 @@ export default function ContactPage() {
             <iframe
               src={FILLOUT_FORM_URL}
               title="Free Case Review form"
-              className="w-full rounded-2xl border border-border bg-white"
+              className="w-full bg-white"
               style={{ minHeight: 760 }}
               loading="lazy"
             />
