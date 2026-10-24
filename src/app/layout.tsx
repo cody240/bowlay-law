@@ -98,10 +98,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
-        {/* dataLayer + gtag() shim so trackEvent() events reach GA4 through GTM's Google tag */}
+        {/* dataLayer for GTM; trackEvent() pushes custom events here */}
         <Script id="gtm-datalayer" strategy="beforeInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};`}
+          {`window.dataLayer = window.dataLayer || [];`}
         </Script>
         <Script id="gtm" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
