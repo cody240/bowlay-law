@@ -1,8 +1,7 @@
 'use client';
 
+import IntakeForm from '@/components/IntakeForm';
 import { trackEvent } from '@/lib/analytics';
-
-const FILLOUT_FORM_URL = 'https://bowlaylaw.fillout.com/t/je9Kza31Mkus';
 
 export default function ContactPage() {
   return (
@@ -63,15 +62,9 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Fillout form embed */}
+          {/* Intake form (submits to GoHighLevel via /api/intake) */}
           <div className="lg:col-span-2">
-            <iframe
-              src={FILLOUT_FORM_URL}
-              title="Free Case Review form"
-              className="w-full bg-white"
-              style={{ minHeight: 760 }}
-              loading="lazy"
-            />
+            <IntakeForm />
             <p className="text-xs text-muted text-center leading-relaxed mt-4">
               Submitting this form does not create an attorney-client relationship. No legal
               advice is given until a formal engagement is established.
