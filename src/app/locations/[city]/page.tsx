@@ -18,6 +18,7 @@ export async function generateMetadata({
   const loc = getLocation(city);
   if (!loc) return {};
   return {
+    alternates: { canonical: `/locations/${loc.slug}` },
     title: `${loc.city} Tenant Rights Attorney`,
     description: `Bowlay Law represents ${loc.city} tenants in wrongful eviction and rent control cases under the ${loc.ordinanceName}. No fee unless we win.`,
   };

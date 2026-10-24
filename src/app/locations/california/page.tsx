@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/locations/california' },
   title: 'California Tenant Protection Act (AB 1482) | Tenant Rights Attorney',
   description:
     'AB 1482 gives California tenants statewide just cause eviction and rent control protections. Learn what is covered, what is exempt, and what remedies are available. Bowlay Law handles TPA wrongful eviction cases on contingency.',
@@ -16,9 +17,10 @@ export const metadata: Metadata = {
     'TPA wrongful eviction',
   ],
   openGraph: {
+    images: '/opengraph-image',
     type: 'article',
     url: 'https://bowlaylaw.com/locations/california',
-    title: 'California Tenant Protection Act (AB 1482) | Bowlay Law',
+    title: 'California Tenant Protection Act (AB 1482)',
     description:
       'AB 1482 gives California tenants statewide just cause eviction and rent control protections. Learn what is covered, what is exempt, and what remedies are available.',
   },

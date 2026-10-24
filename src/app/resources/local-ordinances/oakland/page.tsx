@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Oakland Rent Adjustment Ordinance Reference (OMC Chapter 8.22) | Bowlay Law',
+  alternates: { canonical: '/resources/local-ordinances/oakland' },
+  title: 'Oakland Rent Adjustment Ordinance Reference (OMC Chapter 8.22)',
   description:
     'Plain-language reference for Oakland Municipal Code Chapter 8.22 — covered unit definition, rent control exemptions, just cause for eviction, and Ellis Act protections.',
   keywords: [
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     'Oakland wrongful eviction lawyer',
   ],
   openGraph: {
+    images: '/opengraph-image',
     type: 'article',
     url: 'https://bowlaylaw.com/resources/local-ordinances/oakland',
     title: 'Oakland Rent Adjustment Ordinance Reference (OMC Chapter 8.22) | Bowlay Law',

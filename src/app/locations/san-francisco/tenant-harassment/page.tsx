@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'San Francisco Tenant Harassment Attorney | Bowlay Law',
+  alternates: { canonical: '/locations/san-francisco/tenant-harassment' },
+  title: 'San Francisco Tenant Harassment Attorney',
   description:
     'SF Admin Code § 37.10B makes landlord harassment a standalone civil claim — you can sue while still in your unit. Bowlay Law represents tenants facing harassment campaigns. No fee unless we win.',
   keywords: [
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     'quiet enjoyment violation San Francisco',
   ],
   openGraph: {
+    images: '/opengraph-image',
     type: 'article',
     url: 'https://bowlaylaw.com/locations/san-francisco/tenant-harassment',
     title: 'San Francisco Tenant Harassment Attorney | Bowlay Law',

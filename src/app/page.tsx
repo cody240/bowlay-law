@@ -4,6 +4,7 @@ import TimelineSection from '@/components/TimelineSection';
 import { locationLinks } from '@/lib/locations';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/' },
   title: 'Bowlay Law — California Tenant Rights Attorney',
   description:
     'Your landlord has lawyers. Now you can too. Bowlay Law represents California tenants in wrongful eviction and rent control cases. No fee unless we win.',

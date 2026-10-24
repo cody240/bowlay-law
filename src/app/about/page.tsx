@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/about' },
   title: 'About',
   description:
     'Cody Bowlay-Williams is a California tenant rights attorney at Bowlay Law. UC Berkeley Law graduate. Warm, responsive, tech-forward. No fee unless we win.',

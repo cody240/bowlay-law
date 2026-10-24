@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/faq' },
   title: 'FAQ',
   description:
     'Answers to the most common questions about California tenant rights, wrongful eviction cases, rent control, and what to expect when working with Bowlay Law.',

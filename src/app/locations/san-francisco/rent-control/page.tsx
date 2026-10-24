@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'San Francisco Unlawful Rent Increase Attorney | Bowlay Law',
+  alternates: { canonical: '/locations/san-francisco/rent-control' },
+  title: 'San Francisco Unlawful Rent Increase Attorney',
   description:
     'Has your SF landlord raised your rent beyond what the Rent Ordinance allows? Bowlay Law represents tenants in unlawful rent increase cases — repayment, damages, attorney fees. No fee unless we win.',
   keywords: [
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     'San Francisco tenant lawyer',
   ],
   openGraph: {
+    images: '/opengraph-image',
     type: 'article',
     url: 'https://bowlaylaw.com/locations/san-francisco/rent-control',
     title: 'San Francisco Unlawful Rent Increase Attorney | Bowlay Law',

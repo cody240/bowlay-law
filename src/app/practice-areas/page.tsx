@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/practice-areas' },
   title: 'Practice Areas',
   description:
     'Bowlay Law handles wrongful eviction, rent control violations, and landlord harassment cases across California. Learn what cases we take and whether you qualify.',
