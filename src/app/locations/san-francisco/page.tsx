@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'San Francisco Tenant Rights Attorney | Bowlay Law',
+  alternates: { canonical: '/locations/san-francisco' },
+  title: 'San Francisco Tenant Rights Attorney',
   description:
     'Bowlay Law represents San Francisco tenants under the SF Rent Ordinance (Chapter 37). Wrongful eviction, OMI, Ellis Act, constructive eviction, rent control violations, and tenant harassment. No fee unless we win.',
   keywords: [
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     'tenant harassment attorney SF',
   ],
   openGraph: {
+    images: '/opengraph-image',
     type: 'article',
     url: 'https://bowlaylaw.com/locations/san-francisco',
     title: 'San Francisco Tenant Rights Attorney | Bowlay Law',

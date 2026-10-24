@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'San Francisco Ellis Act Eviction Attorney | Bowlay Law',
+  alternates: { canonical: '/locations/san-francisco/ellis-act' },
+  title: 'San Francisco Ellis Act Eviction Attorney',
   description:
     'Facing an Ellis Act eviction in San Francisco? Bowlay Law represents tenants in fraudulent Ellis Act cases — relocation assistance, right of first refusal, treble damages. No fee unless we win.',
   keywords: [
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     'San Francisco tenant lawyer',
   ],
   openGraph: {
+    images: '/opengraph-image',
     type: 'article',
     url: 'https://bowlaylaw.com/locations/san-francisco/ellis-act',
     title: 'San Francisco Ellis Act Eviction Attorney | Bowlay Law',

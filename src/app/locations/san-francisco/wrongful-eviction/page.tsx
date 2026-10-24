@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'San Francisco Wrongful Eviction Attorney | Bowlay Law',
+  alternates: { canonical: '/locations/san-francisco/wrongful-eviction' },
+  title: 'San Francisco Wrongful Eviction Attorney',
   description:
     'Was your SF eviction unlawful? Bowlay Law represents San Francisco tenants in wrongful eviction cases under the Rent Ordinance — treble damages, attorney fees, relocation assistance. No fee unless we win.',
   keywords: [
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     'San Francisco tenant lawyer',
   ],
   openGraph: {
+    images: '/opengraph-image',
     type: 'article',
     url: 'https://bowlaylaw.com/locations/san-francisco/wrongful-eviction',
     title: 'San Francisco Wrongful Eviction Attorney | Bowlay Law',

@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'SF Wrongful Eviction Damages — How Cases Are Valued | Bowlay Law',
+  alternates: { canonical: '/locations/san-francisco/damages' },
+  title: 'SF Wrongful Eviction Damages — How Cases Are Valued',
   description:
     "How much is an SF wrongful eviction case worth? Bowlay Law explains the rent differential approach, treble damages, attorney's fees, and what drives case value up or down.",
   keywords: [
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     'San Francisco wrongful eviction settlement',
   ],
   openGraph: {
+    images: '/opengraph-image',
     type: 'article',
     url: 'https://bowlaylaw.com/locations/san-francisco/damages',
     title: 'SF Wrongful Eviction Damages — How Cases Are Valued | Bowlay Law',

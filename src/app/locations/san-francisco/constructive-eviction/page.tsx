@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'San Francisco Constructive Eviction Attorney | Bowlay Law',
+  alternates: { canonical: '/locations/san-francisco/constructive-eviction' },
+  title: 'San Francisco Constructive Eviction Attorney',
   description:
     "Your landlord doesn't need to serve you a notice to wrongfully evict you. Bowlay Law represents SF tenants forced out by habitability failures, harassment, and utility shutoffs. No fee unless we win.",
   keywords: [
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     'quiet enjoyment violation San Francisco',
   ],
   openGraph: {
+    images: '/opengraph-image',
     type: 'article',
     url: 'https://bowlaylaw.com/locations/san-francisco/constructive-eviction',
     title: 'San Francisco Constructive Eviction Attorney | Bowlay Law',

@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'California Local Tenant Ordinances | Bowlay Law',
+  alternates: { canonical: '/resources/local-ordinances' },
+  title: 'California Local Tenant Ordinances',
   description:
     "Plain-language reference guides to California's strongest local tenant ordinances — San Francisco, Oakland, Berkeley, Los Angeles, and San Jose. Rent control, just cause eviction, and tenant harassment law.",
   keywords: [
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     'AB 1482 California tenant protection',
   ],
   openGraph: {
+    images: '/opengraph-image',
     type: 'website',
     url: 'https://bowlaylaw.com/resources/local-ordinances',
     title: 'California Local Tenant Ordinances | Bowlay Law',

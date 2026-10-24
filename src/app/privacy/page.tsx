@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/privacy' },
   title: 'SMS Terms & Privacy',
   description: 'Terms of service and privacy policy for SMS communications from Bowlay Law.',
   robots: { index: true, follow: true },

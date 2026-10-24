@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'San Francisco Owner Move-In Eviction Attorney | Bowlay Law',
+  alternates: { canonical: '/locations/san-francisco/omi-eviction' },
+  title: 'San Francisco Owner Move-In Eviction Attorney',
   description:
     'Facing an owner move-in eviction in San Francisco? Bowlay Law represents tenants in fraudulent OMI cases — treble damages, attorney fees, 5-year statute of limitations. No fee unless we win.',
   keywords: [
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     'San Francisco tenant lawyer',
   ],
   openGraph: {
+    images: '/opengraph-image',
     type: 'article',
     url: 'https://bowlaylaw.com/locations/san-francisco/omi-eviction',
     title: 'San Francisco Owner Move-In Eviction Attorney | Bowlay Law',

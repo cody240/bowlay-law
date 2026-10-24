@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'San Francisco Rent Ordinance Reference (Chapter 37) | Bowlay Law',
+  alternates: { canonical: '/resources/local-ordinances/san-francisco' },
+  title: 'San Francisco Rent Ordinance Reference (Chapter 37)',
   description:
     'Complete plain-language reference for SF Admin Code Chapter 37 — rent control exemptions, allowable increases, all 17 just cause eviction grounds, and § 37.10B tenant harassment law. Statutory citations and carve-backs.',
   keywords: [
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     'SF Rent Ordinance attorney',
   ],
   openGraph: {
+    images: '/opengraph-image',
     type: 'article',
     url: 'https://bowlaylaw.com/resources/local-ordinances/san-francisco',
     title: 'San Francisco Rent Ordinance Reference (Chapter 37) | Bowlay Law',
