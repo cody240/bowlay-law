@@ -49,6 +49,7 @@ const cities = [
       'One of the oldest rent control programs in California, covering most pre-1980 multi-unit buildings. Just cause required for eviction, strict relocation assistance requirements, and an active Rent Stabilization Board.',
     href: '/resources/local-ordinances/berkeley',
     available: false,
+    cityPage: '/locations/berkeley',
   },
   {
     city: 'Los Angeles',
@@ -57,6 +58,7 @@ const cities = [
       'Covers most multi-unit residential buildings built before October 1, 1978. Just cause required for eviction, annual allowable rent increases, and relocation assistance for no-fault evictions.',
     href: '/resources/local-ordinances/los-angeles',
     available: false,
+    cityPage: '/locations/los-angeles',
   },
   {
     city: 'San Jose',
@@ -65,6 +67,7 @@ const cities = [
       'Covers multi-unit residential properties built before September 7, 1979. Annual rent increase limitations, a formal Rent Arbitration Program, and tenant petition rights for unlawful increases.',
     href: '/resources/local-ordinances/san-jose',
     available: false,
+    cityPage: '/locations/san-jose',
   },
 ];
 
@@ -105,7 +108,7 @@ export default function LocalOrdinancesPage() {
       <section className="bg-white px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {cities.map(({ city, ordinance, description, href, available }) => (
+            {cities.map(({ city, ordinance, description, href, available, cityPage }) => (
               <div
                 key={city}
                 className={`rounded-xl border border-border overflow-hidden ${!available ? 'opacity-75' : ''}`}
@@ -130,9 +133,14 @@ export default function LocalOrdinancesPage() {
                     >
                       Read the {city} ordinance reference →
                     </Link>
-                  ) : (
-                    <p className="text-xs text-muted">Reference guide in progress</p>
-                  )}
+                  ) : cityPage ? (
+                    <Link
+                      href={cityPage}
+                      className="inline-block text-sm font-semibold text-brand-dark hover:text-brand transition-colors"
+                    >
+                      See {city} tenant law →
+                    </Link>
+                  ) : null}
                 </div>
               </div>
             ))}
