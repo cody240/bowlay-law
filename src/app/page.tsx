@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CaseReviewCTA from '@/components/CaseReviewCTA';
 import CaseReviewSection from '@/components/CaseReviewSection';
+import ReviewList from '@/components/ReviewList';
 import TimelineSection from '@/components/TimelineSection';
 import { locationLinks } from '@/lib/locations';
 
@@ -199,6 +200,14 @@ export default function HomePage() {
               Get a Free Case Review
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Client reviews */}
+      <section className="bg-cream-dark px-6 py-16 border-b border-border">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-display text-3xl font-bold text-ink mb-8 text-center">What clients say</h2>
+          <ReviewList gridClassName="grid grid-cols-1 md:grid-cols-2 gap-6" />
         </div>
       </section>
 
