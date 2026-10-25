@@ -8,7 +8,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-white px-6 py-10 md:py-20 border-b border-border">
+      <section className="bg-white px-6 py-20 border-b border-border">
         <div className="max-w-6xl mx-auto">
           <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">
             Free Case Review
@@ -17,17 +17,17 @@ export default function ContactPage() {
             Let&rsquo;s talk about what happened.
           </h1>
           <p className="text-muted text-lg leading-relaxed max-w-xl">
-            Fill out the short form below and Cody will call you — usually within one business day. The
+            Fill out the form below and Cody will call you — usually within one business day. The
             call is free, low-pressure, and takes about 15&ndash;20 minutes. No commitment required.
           </p>
         </div>
       </section>
 
-      {/* Form + sidebar (form first on phones) */}
-      <section className="bg-white px-6 py-10 md:py-20">
+      {/* Form + sidebar */}
+      <section className="bg-white px-6 py-20">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Sidebar */}
-          <div className="order-2 lg:order-1 lg:col-span-1 space-y-6">
+          <div className="lg:col-span-1 space-y-6">
             <div>
               <h2 className="font-display text-xl font-semibold text-ink mb-3">What to expect</h2>
               <ul className="space-y-3 text-muted text-sm leading-relaxed">
@@ -64,7 +64,7 @@ export default function ContactPage() {
           </div>
 
           {/* Intake form (submits to GoHighLevel via /api/intake) */}
-          <div id={CASE_REVIEW_ID} className="order-1 lg:order-2 lg:col-span-2 scroll-mt-24">
+          <div id={CASE_REVIEW_ID} className="lg:col-span-2 scroll-mt-24">
             <IntakeForm />
             <p className="text-xs text-muted text-center leading-relaxed mt-4">
               Submitting this form does not create an attorney-client relationship. No legal
