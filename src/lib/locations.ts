@@ -154,46 +154,60 @@ export const locations: LocationData[] = [
     yearEstablished: '1980',
     heroTagline: 'Broad just cause protections for most Oakland renters.',
     overview:
-      'Oakland has two overlapping tenant protection systems: the Rent Adjustment Program (RAP), which provides rent control for qualifying units, and the Just Cause for Eviction Ordinance (JCEO), which requires a valid just cause for all evictions across a broader set of rentals. Together, they make Oakland one of the most protective tenant law environments in California. Oakland tenants — especially long-term renters — often have strong cases when landlords attempt to remove them without proper cause.',
+      'Oakland has two overlapping tenant protection systems: the Rent Adjustment Program (RAP), which limits rent increases on qualifying units, and the Just Cause for Eviction Ordinance, which requires a valid, listed reason to end a tenancy across a much broader set of rentals. A separate Tenant Protection Ordinance prohibits landlord harassment, and the City requires relocation payments for most no-fault evictions.',
     coverageDetails: [
-      { label: 'Rent control (RAP)', value: 'Covered units: CPI-based annual adjustment' },
-      { label: 'Just cause (JCEO)', value: 'Applies broadly, including many post-1983 units' },
-      { label: 'Relocation assistance', value: 'Required for certain no-fault evictions' },
-      { label: 'Attorney fees', value: 'Yes — available in wrongful eviction cases' },
-      { label: 'Enhanced damages', value: 'Available for certain violations' },
+      { label: 'Rent control (RAP)', value: '2.3% for increases effective Aug 1, 2026 through Jul 31, 2027; pre-1983 units' },
+      { label: 'Just cause', value: 'Nearly all rentals except new construction under 10 years old' },
+      { label: 'Relocation assistance', value: '$8,293 to $12,599, plus $2,500 for qualifying households (Jul 1, 2026 through Jun 30, 2027)' },
+      { label: 'Attorney fees', value: 'Yes, for a tenant who wins a just cause case (OMC § 8.22.370)' },
+      { label: 'Enhanced damages', value: 'Not less than 3× actual damages for wrongful eviction' },
     ],
     coveredUnits:
-      'Rent control (RAP) covers most residential rental units in buildings of three or more units built before January 1, 1983. Just cause eviction protections (JCEO) are broader and cover most residential rentals in Oakland, including many newer units. This distinction matters: a tenant in a post-1983 building may not have rent control, but still cannot be evicted without a valid just cause.',
+      'Rent control (Article I) generally covers units whose certificate of occupancy was issued before January 1, 1983, including owner-occupied duplexes and triplexes. Most single-family homes and condos (exempt under the state Costa-Hawkins Act) and government-subsidized units, including Section 8, are not rent-controlled.\n\nJust cause (Article II) covers almost every Oakland rental. The main exceptions are ground-up new construction with a certificate of occupancy issued in the last 10 years, and rooms where the owner lives in the unit and shares a kitchen or bathroom with the tenant. So a tenant in a newer building may not have rent control, but still cannot be evicted without a valid just cause.',
     rentCap:
-      'The Oakland Rent Adjustment Program sets an annual allowable rent increase tied to the Consumer Price Index. The City of Oakland Rent Adjustment Program administers petitions for increases beyond the annual allowance and handles disputes over allegedly unlawful rent increases.',
+      'For increases taking effect August 1, 2026 through July 31, 2027, the allowable annual increase for rent-controlled units is 2.3%. The City sets it at 60% of the change in the regional Consumer Price Index, capped at 3%. A landlord may raise the rent only once every 12 months, with at least 30 days\' written notice and the City\'s RAP Notice, and the unit must be registered with RAP.\n\nLandlords can "bank" increases they skipped in past years, but no single increase can exceed three times the current figure (6.9% this year). Anything more requires a RAP petition, and even then increases generally cannot exceed the state cap in one year (8.8% for the same period) or 30% over five years. A tenant has 180 days to challenge an unlawful increase with RAP.',
     justCause:
-      'Oakland\'s JCEO requires a valid just cause before a landlord can terminate a tenancy. Just causes include nonpayment of rent, lease violations, nuisance, criminal activity, owner move-in, Ellis Act withdrawal, capital improvements requiring vacancy, and others. The JCEO has been expanded over time and now covers a wide range of Oakland rental units.',
+      'Oakland\'s Just Cause for Eviction Ordinance (Measure EE, 2002) allows a landlord to end a tenancy only for a listed reason, stated in the notice. The listed causes include nonpayment of rent, a continuing substantial lease violation after written notice, willful substantial damage, continuing to disturb other tenants, illegal use of the unit, denying lawful access after written notice, owner or qualifying-relative move-in, substantial repairs needed to meet health and safety codes (with permits pulled first, a three-month limit, and a right to return at the same rent), and withdrawal from the rental market under the Ellis Act. The end of a lease, a sale or foreclosure, and refusing to sign a new lease are not just causes. Every termination notice must be filed with RAP within 10 days of service.',
     damages:
-      'Oakland tenants who are wrongfully evicted may recover actual damages, attorney fees, and in some circumstances enhanced damages. The combination of rent control and strong just cause protections makes long-term Oakland tenancies — particularly in pre-1983 buildings — high-value cases when wrongfully evicted.',
+      'If a landlord evicts or tries to evict in violation of the Just Cause Ordinance, the tenant can sue for not less than three times actual damages. Emotional distress damages are tripled only if the violation was knowing or reckless, and a tenant who wins recovers reasonable attorney\'s fees and costs (OMC § 8.22.370). Oakland\'s Tenant Protection Ordinance separately allows tenants to sue over landlord harassment.',
     relocationAssistance:
-      'Oakland requires relocation assistance for tenants displaced through no-fault evictions, including owner move-in and Ellis Act evictions. The amounts are set by the City and vary based on the type of eviction and tenant circumstances.',
+      'Owner or relative move-ins, Ellis Act withdrawals, code-compliance displacements, and condo conversions trigger relocation payments. For July 1, 2026 through June 30, 2027 the amounts are $8,293.13 for a studio or 1-bedroom, $10,206.93 for a 2-bedroom, and $12,599.18 for 3 or more bedrooms, plus one additional $2,500 payment per unit if the household includes a lower-income, elderly, or disabled tenant, or a minor child. Temporary displacement for code repairs pays actual temporary housing costs instead.',
     exemptions: [
-      'Single-family homes and condos (from rent control; just cause may still apply)',
-      'Units in buildings built after January 1, 1983 (from rent control only; just cause may still apply)',
-      'Owner-occupied buildings with fewer than three units (in some circumstances)',
-      'Certain subsidized housing and transient accommodations',
+      'Single-family homes and condos (from rent control under Costa-Hawkins; just cause usually still applies)',
+      'Units newly built with a certificate of occupancy on or after January 1, 1983 (from rent control only; just cause applies once the certificate is more than 10 years old)',
+      'Ground-up new construction with a certificate of occupancy issued in the last 10 years (from both rent control and just cause)',
+      'Government-subsidized units, including Section 8 (from rent control; just cause still applies)',
+      'Units where the owner lives in the unit and shares a kitchen or bathroom with the tenant (from just cause)',
+      'Hotel and motel stays under 30 days (from both)',
     ],
     whyStrong:
-      'Oakland\'s combination of rent control and broad just cause coverage — including for newer units — makes it a strong jurisdiction for tenant rights cases. The geographic diversity of Oakland means cases arise in neighborhoods with very different rent levels, and the gap between controlled rents and market rates is often substantial.',
+      'Oakland\'s combination of rent control and broad just cause coverage, including for many newer units, makes it a strong jurisdiction for tenant rights cases. A wrongful eviction carries not less than three times actual damages plus attorney\'s fees, and the gap between controlled rents and market rates is often substantial.',
     tpaInteraction:
-      'For Oakland units that are exempt from the RAP (e.g., post-1983 buildings) but not covered by the JCEO, AB 1482 (TPA) may apply if the unit is old enough. In practice, many Oakland tenants have overlapping protections, and determining which applies requires case-by-case analysis.',
+      'Where Oakland\'s Just Cause Ordinance covers a unit, Oakland\'s rules govern instead of the state Tenant Protection Act\'s just cause rules (Civ. Code § 1946.2). Rent-controlled units are exempt from the state rent cap (Civ. Code § 1947.12). The state cap (8.8% for August 1, 2026 through July 31, 2027) can apply to Oakland units that are not rent-controlled, such as post-1983 buildings at least 15 years old, or single-family homes and condos owned by a corporation or rented without the required exemption notice.',
     faq: [
       {
-        q: 'My building was built after 1983. Do I still have rights?',
-        a: 'Possibly. You may not have rent control under the RAP, but you may still be protected by Oakland\'s Just Cause for Eviction Ordinance and/or AB 1482 (TPA). Just cause protections mean your landlord needs a valid reason to end your tenancy regardless of rent control.',
+        q: 'My Oakland building was built after 1983. Do I still have rights?',
+        a: 'Likely yes. You may not have rent control, but if your unit\'s certificate of occupancy is more than 10 years old, Oakland\'s just cause rules likely apply (Measure V, 2022), so your landlord needs a listed reason to end your tenancy. State law may also cap rent increases if the building is at least 15 years old.',
       },
       {
-        q: 'My landlord told me to leave because they want to renovate. Is that allowed?',
-        a: 'Capital improvements requiring a tenant to vacate can be a valid just cause under some circumstances, but there are strict procedural requirements and relocation obligations. If the renovation was not genuine or the landlord re-rented the unit quickly at a higher price, you may have a wrongful eviction claim.',
+        q: 'My Oakland landlord told me to leave because they want to renovate. Is that allowed?',
+        a: 'Only in narrow cases. Substantial repairs needed to bring the unit up to health and safety codes, with permits pulled before the notice, are a just cause. The landlord must offer you the unit back at the same rent when the work is done, generally within three months, and must pay relocation. Cosmetic upgrades or a general remodel are not a just cause.',
       },
       {
-        q: 'How do I know if my unit is covered by rent control?',
-        a: 'Generally, if you live in a building with three or more units built before 1983 in Oakland, your unit is likely covered by the RAP. But coverage depends on specific details. Bowlay Law can evaluate your tenancy during a free screening call.',
+        q: 'Is my Oakland apartment covered by rent control?',
+        a: 'Generally yes if your unit\'s certificate of occupancy was issued before January 1, 1983, including duplexes and triplexes where the owner lives on site. Most single-family homes, condos, and government-subsidized units (including Section 8) are not rent-controlled, though they are usually still protected by Oakland\'s just cause eviction rules. Coverage depends on the details of your building, and a free screening call can help sort it out.',
+      },
+      {
+        q: 'How much can my Oakland landlord raise my rent this year?',
+        a: 'If your unit is rent-controlled, the allowable increase is 2.3% for increases taking effect August 1, 2026 through July 31, 2027. Your landlord can raise the rent only once every 12 months, must give at least 30 days\' written notice with the City\'s RAP Notice, and cannot raise the rent on a unit that is not registered with the City. A landlord who skipped past increases may add some of them, but no single increase can exceed 6.9% this year without City approval. If your unit is not rent-controlled, state law may still cap increases at 8.8% for the same period. You have 180 days to challenge an unlawful increase with Oakland\'s Rent Adjustment Program.',
+      },
+      {
+        q: 'Do I get relocation money if I am evicted for an owner move-in in Oakland?',
+        a: 'Usually yes. For notices served from July 1, 2026 through June 30, 2027, the base payment is $8,293.13 for a studio or 1-bedroom, $10,206.93 for a 2-bedroom, and $12,599.18 for 3 or more bedrooms, with half due when the notice is served. Households with a lower-income, elderly, or disabled tenant, or a child, get one extra $2,500. Tenants who have lived there less than two years get a reduced amount. Tenants who have lived there five or more years and are 60 or older, disabled, or catastrophically ill generally cannot be evicted for an owner move-in at all.',
+      },
+      {
+        q: 'My Oakland landlord evicted me to move in but never did. What can I do?',
+        a: 'Oakland requires an owner who evicts for a move-in to live in the unit within three months, use it as a principal residence for at least 36 months, and file proof with the City. If the eviction was not for a real just cause, the Just Cause Ordinance lets the tenant sue for at least three times their actual damages, and a tenant who wins recovers attorney\'s fees. Deadlines apply, so it is worth getting your situation reviewed soon.',
       },
     ],
   },
