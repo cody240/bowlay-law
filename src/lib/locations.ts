@@ -301,6 +301,72 @@ export const locations: LocationData[] = [
     ],
   },
   {
+    slug: 'san-jose',
+    city: 'San Jose',
+    fullName: 'San Jose',
+    ordinanceName: 'San Jose Apartment Rent Ordinance (ARO) & Tenant Protection Ordinance (TPO)',
+    yearEstablished: '1979',
+    heroTagline: 'Rent limits for older apartments and day-one just cause protection for most apartment renters.',
+    overview:
+      'San Jose protects renters through a set of ordinances run by the City Housing Department\'s Rent Stabilization Program. The Apartment Rent Ordinance (ARO), first adopted in 1979, limits rent increases in older apartment buildings to 5% once every 12 months. The Tenant Protection Ordinance (TPO), adopted in 2017, reaches much further: it requires one of 13 listed just causes to end a tenancy in most apartment buildings of three or more units, no matter when the building was built, starting on the first day of the tenancy. A separate Ellis Act Ordinance sets notice, relocation, and right-to-return rules when an owner takes a rent-stabilized building off the rental market.',
+    coverageDetails: [
+      { label: 'Rent cap (ARO)', value: '5%, once every 12 months, for covered pre-1979 apartments' },
+      { label: 'Just cause (TPO)', value: 'Required from day one: 13 listed causes' },
+      { label: 'Relocation assistance', value: 'Required for owner move-in, substantial rehab, Ellis Act, and certain other no-fault evictions' },
+      { label: 'Attorney fees', value: 'Yes, available under both the ARO and the TPO' },
+      { label: 'Treble damages', value: 'For willful TPO violations; refund plus up to 3× rent overcharges under the ARO' },
+      { label: 'ARO wrongful eviction', value: 'Up to $10,000 plus moving costs and attorney fees' },
+    ],
+    coveredUnits:
+      'San Jose\'s rent control and just cause rules cover different sets of units, so it matters which one you are asking about.\n\nRent control (ARO): apartments in buildings with three or more units that were approved for occupancy, or offered for rent, on or before September 7, 1979. The City estimates this covers roughly 38,000 apartments.\n\nJust cause (TPO): every rent-stabilized unit, plus rental units in apartment buildings of three or more units built after 1979, guest rooms in guesthouses, and unpermitted units (units the City never approved for living in). A tenant in a 1990s apartment complex may not have local rent control, but still cannot be evicted without one of the 13 just causes.\n\nSingle-family homes, condos, townhomes, and duplexes are generally outside both ordinances unless the unit is unpermitted, but California\'s Tenant Protection Act may still apply.',
+    rentCap:
+      'For apartments covered by the ARO, a landlord may raise the rent only once in any 12-month period, and by no more than 5% of the rent charged over the prior 12 months. The 5% is a flat limit; it does not change with inflation. A landlord who wants more must win a petition before the City, such as a fair return petition, and approved capital improvement pass-throughs are capped at 3% of the monthly rent. A landlord who has not substantially complied with the City\'s rent registry requirements for the unit may not raise the rent at all. The rent can reset for a new tenant only if the prior tenant left voluntarily or was lawfully evicted for nonpayment, a serious lease violation, or nuisance. If a landlord pushes a tenant out through unlawful conduct, the old rent carries over. Tenants can also petition the Rent Stabilization Program over improper increases, reduced services, or housing code violations.',
+    justCause:
+      'Under the TPO, a landlord must have one of 13 just causes, state it in a written notice, and send the City a copy of the notice within three days. The causes based on tenant conduct are: nonpayment of rent, a material or habitual lease violation not fixed after written notice, substantial damage to the unit, refusing to sign a substantially identical new lease, nuisance or disorderly conduct, refusing reasonable access after written notice, an unapproved subtenant holding over, and certain serious or violent felony charges against a household member who is not removed from the household. The causes based on landlord decisions are: substantial rehabilitation, Ellis Act withdrawal, owner move-in, a government order to vacate, and ending the use of an unpermitted unit. Adding a child, spouse, domestic partner, or parent to the household (within occupancy limits) can never be treated as a lease violation. Protection begins on the first day of the tenancy.',
+    damages:
+      'San Jose\'s ordinances give tenants their own right to sue. Under the TPO, a landlord who violates the just cause, notice, or anti-retaliation rules can be liable for actual damages, exemplary (punitive) damages, and attorney fees and costs, and damages are tripled when the violation is willful. Under the ARO, a landlord who wrongfully evicts a tenant from a rent-stabilized unit is liable to the tenant for up to $10,000 plus reasonable costs, including moving costs and attorney fees. A landlord who collects rent above the legal limit must refund the overcharge plus damages of up to three times the overcharge (or up to $500, whichever is greater). Renting a rent-stabilized unit in violation of the implied warranty of habitability, or in material violation of the City\'s housing codes, is also treated as an ARO violation. California law adds its own remedies, including penalties of up to $2,000 per violation for certain harassment aimed at forcing a tenant out.',
+    relocationAssistance:
+      'Under the TPO, a landlord who ends a tenancy for owner move-in or substantial rehabilitation must pay relocation assistance when the termination notice is delivered. The amount equals the Ellis Act "base assistance" set by the City Council by unit size, and the landlord must also refund the security deposit, less proper deductions. When an owner withdraws a rent-stabilized building under the Ellis Act, tenants receive base assistance plus additional "qualified assistance" if the household is lower-income, or includes someone 62 or older, someone with a disability or a terminal or catastrophic illness, or a child enrolled in K-12 school. Relocation is also required when a tenant must leave because of a government order to vacate or because the unit is unpermitted. The City sets and adjusts the amounts, so confirm current figures with the Rent Stabilization Program.',
+    exemptions: [
+      'Single-family homes, condos, and townhomes (from both ordinances, unless the unit is unpermitted; state law may still apply)',
+      'Duplexes and buildings with only one or two units (from both ordinances, unless the unit is unpermitted)',
+      'Apartments first occupied or offered for rent after September 7, 1979 (from ARO rent control only; TPO just cause still applies)',
+      'In-law units and accessory dwelling units (from ARO rent control)',
+      'Hotels and motels rented to transient guests for less than 30 days',
+      'Most government-owned units and units with recorded affordable-rent restrictions',
+    ],
+    whyStrong:
+      'San Jose\'s eviction protections reach far more renters than its rent control does. Because the TPO covers apartment buildings of three or more units regardless of age, and applies from the first day of a tenancy, many tenants in newer complexes have local just cause protection that state law would not give them until they had lived there 12 months. Those protections come with real remedies, including exemplary damages, attorney fees, and treble damages for willful violations. For long-term tenants in older rent-stabilized buildings, the gap between a rent held to 5% increases and current market rent can make the tenancy itself very valuable.',
+    tpaInteraction:
+      'California\'s Tenant Protection Act (Civil Code sections 1946.2 and 1947.12) fills the gaps around San Jose\'s ordinances. Where the TPO applies, the City\'s just cause rules govern instead of the state\'s, because the state law defers to local just cause ordinances adopted on or before September 1, 2019. Where the ARO applies, the City\'s flat 5% cap governs, because the state cap does not apply to housing under a stricter local rent limit. Apartments in post-1979 buildings of three or more units often get both: TPO just cause protection and, if the building is more than 15 years old, the state rent cap of 5% plus inflation (never more than 10%). Single-family homes, condos, and duplexes fall outside the local ordinances but may be covered by the TPA unless an exemption applies.',
+    faq: [
+      {
+        q: 'Can my San Jose landlord raise my rent more than 5%?',
+        a: 'If you live in an apartment building with three or more units that was approved for occupancy by September 7, 1979, generally no. Under the Apartment Rent Ordinance, your landlord can raise the rent only once every 12 months and by no more than 5%, unless the City approves a larger increase through a petition. If your unit is not covered by the ARO, California\'s Tenant Protection Act may still cap increases at 5% plus inflation (never more than 10%) if the building is more than 15 years old and no exemption applies. Some San Jose rentals have no rent cap at all.',
+      },
+      {
+        q: 'Does my San Jose landlord need a reason to evict me?',
+        a: 'If you rent in an apartment building of three or more units (of any age), a guesthouse room, or an unpermitted unit, yes. San Jose\'s Tenant Protection Ordinance requires one of 13 just causes, stated in a written notice, and the landlord must send the City a copy within three days. This protection starts on your first day as a tenant. Tenants in single-family homes, condos, and duplexes may instead be protected by California\'s Tenant Protection Act after 12 months.',
+      },
+      {
+        q: 'My San Jose landlord says they are moving into my unit. Do I have to leave?',
+        a: 'Not necessarily. Owner move-in is a just cause under the TPO only if an owner with at least a 50% interest intends, in good faith, to live in the unit as a principal residence for at least 36 consecutive months, starting within three months after you leave. A move-in for a family member is allowed only if the unit is in the same building where the owner lives and no other unit there is vacant. The landlord must pay relocation assistance when the notice is delivered. If the owner or relative does not move in within three months or does not stay 36 months, the law presumes bad faith unless the owner proves otherwise, and you may have a claim for damages.',
+      },
+      {
+        q: 'Is it illegal for my San Jose landlord to retaliate against me?',
+        a: 'Yes. San Jose\'s ordinances bar landlords from retaliating against tenants who exercise their rights under them, for example by threatening eviction, serving a termination notice, reducing services, raising the rent, or threatening to report a tenant to immigration authorities. Under the TPO, if the landlord acts within six months after you asserted your rights, the law presumes the act was retaliatory, and you can sue for actual and punitive damages. California law separately protects tenants who complain about repair or habitability problems.',
+      },
+      {
+        q: 'Does San Jose rent control cover my house, condo, or duplex?',
+        a: 'Generally no. San Jose\'s Apartment Rent Ordinance and Tenant Protection Ordinance apply to buildings with three or more units (and, for just cause, to guesthouses and unpermitted units). Single-family homes, condos, townhomes, and duplexes are usually outside both. California\'s Tenant Protection Act may still give you just cause protection and a cap on rent increases, unless your home is exempt. For example, it may be exempt if it was built within the last 15 years, or if it is not owned by a corporation or REIT and you received the required written exemption notice.',
+      },
+      {
+        q: 'What can I recover if my San Jose landlord wrongfully evicted me?',
+        a: 'It depends on your unit and what happened. Under the TPO, tenants can recover actual damages, exemplary damages, and attorney fees, and damages are tripled when the violation is willful. Under the ARO, a landlord who wrongfully evicts a tenant from a rent-stabilized unit is liable for up to $10,000 plus moving costs and attorney fees. California law may add other claims. Bowlay Law can review your situation during a free screening call.',
+      },
+    ],
+  },
+  {
     slug: 'antioch',
     city: 'Antioch',
     fullName: 'Antioch',
