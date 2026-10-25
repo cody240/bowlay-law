@@ -1,13 +1,19 @@
 import type { Metadata } from 'next';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
-// page.tsx is a client component and can't export metadata, so it lives here.
+// The contact page is a client component, so its metadata and schema live here.
 export const metadata: Metadata = {
   alternates: { canonical: '/contact' },
-  title: 'Free Case Review',
+  title: 'Free Case Review: Talk to a Tenant Rights Attorney',
   description:
-    'Tell Bowlay Law what happened with your landlord. Cody Bowlay-Williams will call you back, usually within one business day. No fee unless we win.',
+    'Tell Cody what happened and get a free, no-pressure case review from a California tenant rights attorney, usually within one business day. No fee unless we win.',
 };
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <BreadcrumbSchema trail={[{ name: 'Free Case Review', path: '/contact' }]} />
+      {children}
+    </>
+  );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/practice-areas' },
@@ -46,6 +47,7 @@ const qualifyItems = [
 export default function PracticeAreasPage() {
   return (
     <>
+      <BreadcrumbSchema trail={[{ name: 'Practice Areas', path: '/practice-areas' }]} />
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
         <div className="max-w-6xl mx-auto">

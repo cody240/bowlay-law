@@ -3,6 +3,7 @@ import Link from 'next/link';
 import CaseReviewCTA from '@/components/CaseReviewCTA';
 import CaseReviewSection from '@/components/CaseReviewSection';
 import TopCaseBox from '@/components/TopCaseBox';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/resources/local-ordinances/san-francisco' },
@@ -39,6 +40,7 @@ const atGlance = [
 export default function SFOrdinanceReferencePage() {
   return (
     <>
+      <BreadcrumbSchema trail={[{ name: 'Local Tenant Ordinances', path: '/resources/local-ordinances' }, { name: 'San Francisco Rent Ordinance', path: '/resources/local-ordinances/san-francisco' }]} />
       {/* Hero */}
       <section className="bg-white px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
