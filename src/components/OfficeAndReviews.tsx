@@ -1,5 +1,5 @@
 import { OFFICE } from '@/lib/contact';
-import { GOOGLE_REVIEWS_URL, reviews } from '@/lib/reviews';
+import ReviewList from '@/components/ReviewList';
 
 const mapQuery = encodeURIComponent(`125 12th Street, ${OFFICE.city}, ${OFFICE.region} ${OFFICE.postalCode}`);
 
@@ -28,29 +28,7 @@ export default function OfficeAndReviews() {
         </div>
         <div>
           <h2 className="font-display text-2xl font-bold text-ink mb-4">What clients say</h2>
-          <div className="space-y-4">
-            {reviews.map(({ name, rating, text }) => (
-              <figure key={name} className="bg-white rounded-xl p-6 border border-border">
-                <p className="text-amber-500 mb-2" aria-label={`${rating} out of 5 stars`}>
-                  {'★'.repeat(rating)}
-                </p>
-                <blockquote className="text-muted text-sm leading-relaxed">{text}</blockquote>
-                <figcaption className="mt-3 text-sm font-semibold text-ink">{name}, Google review</figcaption>
-              </figure>
-            ))}
-          </div>
-          <a
-            href={GOOGLE_REVIEWS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-4 text-sm text-brand underline hover:text-brand-mid"
-          >
-            See all reviews on Google ↗
-          </a>
-          <p className="mt-4 text-xs text-muted leading-relaxed">
-            Reviews describe individual experiences. Every case depends on its own facts, and past
-            results do not guarantee or predict the outcome of any other matter.
-          </p>
+          <ReviewList />
         </div>
       </div>
     </section>
