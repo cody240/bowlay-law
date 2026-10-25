@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CaseReviewCTA from '@/components/CaseReviewCTA';
+import CaseReviewSection from '@/components/CaseReviewSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/locations/california' },
@@ -359,6 +361,8 @@ export default function CaliforniaPage() {
         </div>
       </section>
 
+      <CaseReviewCTA location="california_mid" />
+
       {/* ── SECTION 2: RENT CONTROL ── */}
       <section className="bg-white px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
@@ -537,25 +541,12 @@ export default function CaliforniaPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-brand-dark text-white px-6 py-20">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-display text-3xl font-bold mb-4">
-            Think the TPA applies to your situation?
-          </h2>
-          <p className="text-white/70 mb-8 leading-relaxed">
-            Determining whether a tenancy and unit are covered — and which protections apply — is
-            often the first and most important question in a TPA case. Bowlay Law offers a free
-            screening call to walk through your situation.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-white text-brand-dark px-8 py-4 rounded-full font-semibold hover:bg-cream transition-colors"
-          >
-            Get a Free Case Review
-          </Link>
-        </div>
-      </section>
+      {/* Case review — intake form built in */}
+      <CaseReviewSection location="california_form" title="Think the TPA applies to your situation?">
+        <p>
+          Determining whether a tenancy and unit are covered — and which protections apply — is often the first and most important question in a TPA case. Bowlay Law offers a free screening call to walk through your situation.
+        </p>
+      </CaseReviewSection>
     </>
   );
 }

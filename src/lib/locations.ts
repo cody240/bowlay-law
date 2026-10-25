@@ -21,6 +21,10 @@ export interface LocationData {
   whyStrong: string;
   tpaInteraction: string;
   faq: { q: string; a: string }[];
+  // Optional city-specific sections rendered after "What is exempt" (paragraphs split on blank lines).
+  extraSections?: { title: string; body: string }[];
+  // Shows the office address, map, and client reviews (the city where the office is).
+  showOffice?: boolean;
 }
 
 export const locations: LocationData[] = [
@@ -144,51 +148,66 @@ export const locations: LocationData[] = [
   {
     slug: 'oakland',
     city: 'Oakland',
+    showOffice: true,
     fullName: 'Oakland',
     ordinanceName: 'Oakland Rent Adjustment Program & Just Cause for Eviction Ordinance',
     yearEstablished: '1980',
     heroTagline: 'Broad just cause protections for most Oakland renters.',
     overview:
-      'Oakland has two overlapping tenant protection systems: the Rent Adjustment Program (RAP), which provides rent control for qualifying units, and the Just Cause for Eviction Ordinance (JCEO), which requires a valid just cause for all evictions across a broader set of rentals. Together, they make Oakland one of the most protective tenant law environments in California. Oakland tenants — especially long-term renters — often have strong cases when landlords attempt to remove them without proper cause.',
+      'Oakland has two overlapping tenant protection systems: the Rent Adjustment Program (RAP), which limits rent increases on qualifying units, and the Just Cause for Eviction Ordinance, which requires a valid, listed reason to end a tenancy across a much broader set of rentals. A separate Tenant Protection Ordinance prohibits landlord harassment, and the City requires relocation payments for most no-fault evictions.',
     coverageDetails: [
-      { label: 'Rent control (RAP)', value: 'Covered units: CPI-based annual adjustment' },
-      { label: 'Just cause (JCEO)', value: 'Applies broadly, including many post-1983 units' },
-      { label: 'Relocation assistance', value: 'Required for certain no-fault evictions' },
-      { label: 'Attorney fees', value: 'Yes — available in wrongful eviction cases' },
-      { label: 'Enhanced damages', value: 'Available for certain violations' },
+      { label: 'Rent control (RAP)', value: '2.3% for increases effective Aug 1, 2026 through Jul 31, 2027; pre-1983 units' },
+      { label: 'Just cause', value: 'Nearly all rentals except new construction under 10 years old' },
+      { label: 'Relocation assistance', value: '$8,293 to $12,599, plus $2,500 for qualifying households (Jul 1, 2026 through Jun 30, 2027)' },
+      { label: 'Attorney fees', value: 'Yes, for a tenant who wins a just cause case (OMC § 8.22.370)' },
+      { label: 'Enhanced damages', value: 'Not less than 3× actual damages for wrongful eviction' },
     ],
     coveredUnits:
-      'Rent control (RAP) covers most residential rental units in buildings of three or more units built before January 1, 1983. Just cause eviction protections (JCEO) are broader and cover most residential rentals in Oakland, including many newer units. This distinction matters: a tenant in a post-1983 building may not have rent control, but still cannot be evicted without a valid just cause.',
+      'Rent control (Article I) generally covers units whose certificate of occupancy was issued before January 1, 1983, including owner-occupied duplexes and triplexes. Most single-family homes and condos (exempt under the state Costa-Hawkins Act) and government-subsidized units, including Section 8, are not rent-controlled.\n\nJust cause (Article II) covers almost every Oakland rental. The main exceptions are ground-up new construction with a certificate of occupancy issued in the last 10 years, and rooms where the owner lives in the unit and shares a kitchen or bathroom with the tenant. So a tenant in a newer building may not have rent control, but still cannot be evicted without a valid just cause.',
     rentCap:
-      'The Oakland Rent Adjustment Program sets an annual allowable rent increase tied to the Consumer Price Index. The City of Oakland Rent Adjustment Program administers petitions for increases beyond the annual allowance and handles disputes over allegedly unlawful rent increases.',
+      'For increases taking effect August 1, 2026 through July 31, 2027, the allowable annual increase for rent-controlled units is 2.3%. The City sets it at 60% of the change in the regional Consumer Price Index, capped at 3%. A landlord may raise the rent only once every 12 months, with at least 30 days\' written notice and the City\'s RAP Notice, and the unit must be registered with RAP.\n\nLandlords can "bank" increases they skipped in past years, but no single increase can exceed three times the current figure (6.9% this year). Anything more requires a RAP petition, and even then increases generally cannot exceed the state cap in one year (8.8% for the same period) or 30% over five years. A tenant has 180 days to challenge an unlawful increase with RAP.',
     justCause:
-      'Oakland\'s JCEO requires a valid just cause before a landlord can terminate a tenancy. Just causes include nonpayment of rent, lease violations, nuisance, criminal activity, owner move-in, Ellis Act withdrawal, capital improvements requiring vacancy, and others. The JCEO has been expanded over time and now covers a wide range of Oakland rental units.',
+      'Oakland\'s Just Cause for Eviction Ordinance (Measure EE, 2002) allows a landlord to end a tenancy only for a listed reason, stated in the notice. The listed causes include nonpayment of rent, a continuing substantial lease violation after written notice, willful substantial damage, continuing to disturb other tenants, illegal use of the unit, denying lawful access after written notice, owner or qualifying-relative move-in, substantial repairs needed to meet health and safety codes (with permits pulled first, a three-month limit, and a right to return at the same rent), and withdrawal from the rental market under the Ellis Act. The end of a lease, a sale or foreclosure, and refusing to sign a new lease are not just causes. Every termination notice must be filed with RAP within 10 days of service.',
     damages:
-      'Oakland tenants who are wrongfully evicted may recover actual damages, attorney fees, and in some circumstances enhanced damages. The combination of rent control and strong just cause protections makes long-term Oakland tenancies — particularly in pre-1983 buildings — high-value cases when wrongfully evicted.',
+      'If a landlord evicts or tries to evict in violation of the Just Cause Ordinance, the tenant can sue for not less than three times actual damages. Emotional distress damages are tripled only if the violation was knowing or reckless, and a tenant who wins recovers reasonable attorney\'s fees and costs (OMC § 8.22.370). Oakland\'s Tenant Protection Ordinance separately allows tenants to sue over landlord harassment.',
     relocationAssistance:
-      'Oakland requires relocation assistance for tenants displaced through no-fault evictions, including owner move-in and Ellis Act evictions. The amounts are set by the City and vary based on the type of eviction and tenant circumstances.',
+      'Owner or relative move-ins, Ellis Act withdrawals, code-compliance displacements, and condo conversions trigger relocation payments. For July 1, 2026 through June 30, 2027 the amounts are $8,293.13 for a studio or 1-bedroom, $10,206.93 for a 2-bedroom, and $12,599.18 for 3 or more bedrooms, plus one additional $2,500 payment per unit if the household includes a lower-income, elderly, or disabled tenant, or a minor child. Temporary displacement for code repairs pays actual temporary housing costs instead.',
     exemptions: [
-      'Single-family homes and condos (from rent control; just cause may still apply)',
-      'Units in buildings built after January 1, 1983 (from rent control only; just cause may still apply)',
-      'Owner-occupied buildings with fewer than three units (in some circumstances)',
-      'Certain subsidized housing and transient accommodations',
+      'Single-family homes and condos (from rent control under Costa-Hawkins; just cause usually still applies)',
+      'Units newly built with a certificate of occupancy on or after January 1, 1983 (from rent control only; just cause applies once the certificate is more than 10 years old)',
+      'Ground-up new construction with a certificate of occupancy issued in the last 10 years (from both rent control and just cause)',
+      'Government-subsidized units, including Section 8 (from rent control; just cause still applies)',
+      'Units where the owner lives in the unit and shares a kitchen or bathroom with the tenant (from just cause)',
+      'Hotel and motel stays under 30 days (from both)',
     ],
     whyStrong:
-      'Oakland\'s combination of rent control and broad just cause coverage — including for newer units — makes it a strong jurisdiction for tenant rights cases. The geographic diversity of Oakland means cases arise in neighborhoods with very different rent levels, and the gap between controlled rents and market rates is often substantial.',
+      'Oakland\'s combination of rent control and broad just cause coverage, including for many newer units, makes it a strong jurisdiction for tenant rights cases. A wrongful eviction carries not less than three times actual damages plus attorney\'s fees, and the gap between controlled rents and market rates is often substantial.',
     tpaInteraction:
-      'For Oakland units that are exempt from the RAP (e.g., post-1983 buildings) but not covered by the JCEO, AB 1482 (TPA) may apply if the unit is old enough. In practice, many Oakland tenants have overlapping protections, and determining which applies requires case-by-case analysis.',
+      'Where Oakland\'s Just Cause Ordinance covers a unit, Oakland\'s rules govern instead of the state Tenant Protection Act\'s just cause rules (Civ. Code § 1946.2). Rent-controlled units are exempt from the state rent cap (Civ. Code § 1947.12). The state cap (8.8% for August 1, 2026 through July 31, 2027) can apply to Oakland units that are not rent-controlled, such as post-1983 buildings at least 15 years old, or single-family homes and condos owned by a corporation or rented without the required exemption notice.',
     faq: [
       {
-        q: 'My building was built after 1983. Do I still have rights?',
-        a: 'Possibly. You may not have rent control under the RAP, but you may still be protected by Oakland\'s Just Cause for Eviction Ordinance and/or AB 1482 (TPA). Just cause protections mean your landlord needs a valid reason to end your tenancy regardless of rent control.',
+        q: 'My Oakland building was built after 1983. Do I still have rights?',
+        a: 'Likely yes. You may not have rent control, but if your unit\'s certificate of occupancy is more than 10 years old, Oakland\'s just cause rules likely apply (Measure V, 2022), so your landlord needs a listed reason to end your tenancy. State law may also cap rent increases if the building is at least 15 years old.',
       },
       {
-        q: 'My landlord told me to leave because they want to renovate. Is that allowed?',
-        a: 'Capital improvements requiring a tenant to vacate can be a valid just cause under some circumstances, but there are strict procedural requirements and relocation obligations. If the renovation was not genuine or the landlord re-rented the unit quickly at a higher price, you may have a wrongful eviction claim.',
+        q: 'My Oakland landlord told me to leave because they want to renovate. Is that allowed?',
+        a: 'Only in narrow cases. Substantial repairs needed to bring the unit up to health and safety codes, with permits pulled before the notice, are a just cause. The landlord must offer you the unit back at the same rent when the work is done, generally within three months, and must pay relocation. Cosmetic upgrades or a general remodel are not a just cause.',
       },
       {
-        q: 'How do I know if my unit is covered by rent control?',
-        a: 'Generally, if you live in a building with three or more units built before 1983 in Oakland, your unit is likely covered by the RAP. But coverage depends on specific details. Bowlay Law can evaluate your tenancy during a free screening call.',
+        q: 'Is my Oakland apartment covered by rent control?',
+        a: 'Generally yes if your unit\'s certificate of occupancy was issued before January 1, 1983, including duplexes and triplexes where the owner lives on site. Most single-family homes, condos, and government-subsidized units (including Section 8) are not rent-controlled, though they are usually still protected by Oakland\'s just cause eviction rules. Coverage depends on the details of your building, and a free screening call can help sort it out.',
+      },
+      {
+        q: 'How much can my Oakland landlord raise my rent this year?',
+        a: 'If your unit is rent-controlled, the allowable increase is 2.3% for increases taking effect August 1, 2026 through July 31, 2027. Your landlord can raise the rent only once every 12 months, must give at least 30 days\' written notice with the City\'s RAP Notice, and cannot raise the rent on a unit that is not registered with the City. A landlord who skipped past increases may add some of them, but no single increase can exceed 6.9% this year without City approval. If your unit is not rent-controlled, state law may still cap increases at 8.8% for the same period. You have 180 days to challenge an unlawful increase with Oakland\'s Rent Adjustment Program.',
+      },
+      {
+        q: 'Do I get relocation money if I am evicted for an owner move-in in Oakland?',
+        a: 'Usually yes. For notices served from July 1, 2026 through June 30, 2027, the base payment is $8,293.13 for a studio or 1-bedroom, $10,206.93 for a 2-bedroom, and $12,599.18 for 3 or more bedrooms, with half due when the notice is served. Households with a lower-income, elderly, or disabled tenant, or a child, get one extra $2,500. Tenants who have lived there less than two years get a reduced amount. Tenants who have lived there five or more years and are 60 or older, disabled, or catastrophically ill generally cannot be evicted for an owner move-in at all.',
+      },
+      {
+        q: 'My Oakland landlord evicted me to move in but never did. What can I do?',
+        a: 'Oakland requires an owner who evicts for a move-in to live in the unit within three months, use it as a principal residence for at least 36 months, and file proof with the City. If the eviction was not for a real just cause, the Just Cause Ordinance lets the tenant sue for at least three times their actual damages, and a tenant who wins recovers attorney\'s fees. Deadlines apply, so it is worth getting your situation reviewed soon.',
       },
     ],
   },
@@ -248,50 +267,155 @@ export const locations: LocationData[] = [
     city: 'Los Angeles',
     fullName: 'Los Angeles',
     ordinanceName: 'Los Angeles Rent Stabilization Ordinance (RSO)',
-    yearEstablished: '1978',
+    yearEstablished: '1979',
     heroTagline: 'Strong rent control and just cause protections for LA tenants.',
     overview:
-      'Los Angeles has one of the oldest and most established rent stabilization systems in California. The LA Rent Stabilization Ordinance (RSO), administered by the Los Angeles Housing Department (LAHD), covers a large portion of the city\'s rental housing stock and provides meaningful rent control and just cause eviction protections. In recent years, LA has also expanded protections through additional legislation, including the Tenant Anti-Harassment Ordinance and protections for tenants in units not covered by the RSO.',
+      'Los Angeles has one of the oldest and most established rent stabilization systems in California. The LA Rent Stabilization Ordinance (RSO), administered by the Los Angeles Housing Department (LAHD), covers a large portion of the city\'s rental housing stock and provides meaningful rent control and just cause eviction protections. In recent years, LA has also expanded protections through additional legislation, including the Tenant Anti-Harassment Ordinance and the Just Cause Ordinance for tenants in units not covered by the RSO.',
     coverageDetails: [
-      { label: 'Rent cap', value: 'Annual General Adjustment set by LAHD (typically 3–8%)' },
-      { label: 'Just cause required', value: 'Yes — for RSO units and expanded to others' },
-      { label: 'Relocation assistance', value: 'Yes — substantial, based on tenancy and type' },
-      { label: 'Attorney fees', value: 'Yes — available in wrongful eviction actions' },
-      { label: 'Treble damages', value: 'Up to 3× actual damages for wrongful eviction' },
+      { label: 'Rent cap', value: '3% per year for RSO units (July 1, 2026 to June 30, 2027)' },
+      { label: 'Just cause required', value: 'Yes, for RSO units and, under the JCO, most other rentals after the first lease or 6 months' },
+      { label: 'Relocation assistance', value: '$11,000 to $27,400 per unit for no-fault evictions (July 2026 to June 2027)' },
+      { label: 'Attorney fees', value: 'Yes, for prevailing tenants under the TAHO and JCO, and for RSO overcharges and bad-faith move-ins' },
+      { label: 'Treble damages', value: '3× damages for harassment (TAHO), JCO violations, RSO rent overcharges, and bad-faith RSO owner move-ins' },
     ],
     coveredUnits:
-      'The LA RSO covers most residential rental units in buildings with two or more units that were built on or before October 1, 1978. This includes a significant portion of Los Angeles\'s multifamily rental housing. Los Angeles has also enacted broader just cause eviction protections that may apply to tenants in some newer buildings, particularly following pandemic-era tenant protection measures.',
+      'The RSO covers rental units in properties whose first certificate of occupancy was issued on or before October 1, 1978. That includes apartments, duplexes, condominiums, two or more houses on the same lot, accessory dwelling units, mobilehomes in mobilehome parks, and hotel or motel rooms once a tenant has lived there more than 30 days. Some units built after July 15, 2007 that replace demolished RSO units are also covered. You can check a property at zimas.lacity.org under the Housing tab.\n\nMost rentals that are not under the RSO, including newer buildings and single-family homes, are covered by the City\'s Just Cause Ordinance (JCO) once the first lease ends or the tenant has lived there six months, whichever comes first.',
     rentCap:
-      'The Los Angeles Housing Department sets an annual General Adjustment for allowable rent increases under the RSO. Increases are tied to the Consumer Price Index and have historically ranged from 3% to 8%. Landlords may petition for additional increases based on specific grounds, including increased operating and maintenance costs.',
+      'RSO rents can go up once every 12 months by the annual allowable increase LAHD publishes. For increases taking effect July 1, 2026 through June 30, 2027, the limit is 3%. Under a formula change effective February 2, 2026, the yearly increase is 90% of local inflation, with a floor of 1% and a ceiling of 4% (the old range was 3% to 8%). Landlords may no longer add extra percentages for paying gas or electricity, or for a dependent added to the household. A landlord cannot collect rent on an RSO unit without registering it and serving the tenant a copy of the registration statement. Landlords can apply to LAHD for added increases for things like capital improvements or to earn a fair return.',
     justCause:
-      'RSO tenants may only be evicted for valid just causes, which include nonpayment of rent, lease violations, nuisance, illegal activity, owner move-in (including move-in by qualifying family members), Ellis Act withdrawal, substantial renovation, and government orders to vacate. The City of LA has added additional tenant protections over time, and landlords must comply with specific procedural requirements for each just cause.',
+      'An RSO landlord may evict only for a reason listed in the ordinance. At-fault reasons include nonpayment of rent (only when the tenant owes more than one month of HUD Fair Market Rent for the unit size), an uncured lease violation, nuisance, illegal use, refusing to sign a similar lease renewal, refusing lawful access, an unapproved subtenant at the end of the lease, and interfering with an LAHD-approved Tenant Habitability Plan. No-fault reasons include a move-in by the owner or the owner\'s spouse, children, grandchildren, parents, or grandparents, a legally required resident manager, demolition or permanent removal from the rental market (Ellis Act), a government order to vacate, and conversion to affordable housing. Renovation alone is not a reason to evict; major work requires a Tenant Habitability Plan that lets tenants stay safely or relocates them temporarily. Owner move-ins have extra limits: the owner must be a natural person with a large enough ownership share, can do it only once per family member per building, cannot evict if a comparable unit is vacant, and generally cannot evict a tenant who is terminally ill, or who has lived there 10 years and is 62 or older or disabled. The person moving in must do so within three months and live there for two years. Every eviction notice must be filed with LAHD within three business days of service.',
     damages:
-      'LA wrongful eviction cases can result in treble damages (up to three times actual damages), attorney fees, and punitive damages in egregious cases. The City of LA also has an anti-harassment ordinance that creates additional liability for landlords who harass tenants. Given LA\'s high market rents, the value of a long-term RSO tenancy can be very significant.',
+      'Several LA laws provide enhanced damages. A tenant who wins under the Tenant Anti-Harassment Ordinance is awarded three times compensatory damages (including emotional distress), attorney\'s fees, and civil penalties of $2,000 to $10,000 per violation. Since August 4, 2025, the same mandatory remedies apply to violations of the Just Cause Ordinance. Under the RSO, a landlord who takes back a unit for an owner or family move-in in bad faith owes three times actual damages, plus exemplary damages and attorney\'s fees, and a landlord who collects more than the legal RSO rent owes three times the overcharge plus attorney\'s fees. Given the gap between controlled rents and LA market rents, the value of a long-term RSO tenancy can be significant.',
     relocationAssistance:
-      'Los Angeles requires substantial relocation assistance for no-fault evictions. Amounts vary based on the type of eviction, the length of tenancy, whether the tenant is in certain protected categories (elderly, disabled, with minor children), and the unit size. For Ellis Act and owner move-in evictions of long-term tenants, relocation payments can reach tens of thousands of dollars.',
+      'Los Angeles requires relocation assistance for no-fault evictions from both RSO and JCO units. For July 1, 2026 through June 30, 2027, the amounts per unit are $11,000 for tenants with under 3 years, $14,400 for 3 or more years or low income, and $23,150 or $27,400 for qualified households (a tenant who is 62 or older, disabled, or has a minor dependent child). Reduced amounts apply to some small-landlord owner move-ins, and a JCO single-family home owned by an individual with few properties may owe only one month\'s rent. Payment is due within 15 days of the termination notice, and the amounts rise every July 1.',
     exemptions: [
-      'Units built after October 1, 1978 (from RSO rent control; expanded just cause may still apply)',
-      'Single-family homes and condominiums (from RSO, subject to TPA)',
-      'Hotels, motels, and short-term rentals',
-      'Certain owner-occupied buildings with three or fewer units',
-      'Government-subsidized housing with equivalent rent restrictions',
+      'Properties whose first certificate of occupancy was issued after October 1, 1978 (exempt from the RSO but usually covered by the JCO), except certain replacement units',
+      'A single-family home that is the only dwelling on its lot (exempt from the RSO but covered by the JCO)',
+      'Hotel, motel, and rooming house rooms until the tenant has lived there more than 30 days',
+      'Housing Authority (HACLA) housing or government housing exempt under state or federal law (Section 8 voucher units are not exempt)',
+      'Deed-restricted affordable housing and "luxury" units holding an LAHD exemption certificate',
+      'Hospitals, licensed care facilities, nonprofit cooperatives, and school- or college-owned student housing',
     ],
     whyStrong:
-      'Los Angeles is one of the most valuable jurisdictions for wrongful eviction cases in the state. The gap between controlled rents and current LA market rates can be enormous, and long-term tenants in pre-1979 buildings often represent some of the highest-value cases Bowlay Law handles. The city\'s large rental population and strong tenant protection framework make it a strong environment for tenant-side litigation.',
+      'Los Angeles is one of the most valuable jurisdictions for wrongful eviction cases in the state. The gap between controlled rents and current LA market rates can be enormous, so long-term tenants in RSO buildings can have especially valuable claims. Mandatory treble damages and attorney\'s fees under the harassment and just cause ordinances add to the strength of tenant-side cases.',
     tpaInteraction:
-      'For LA units built after October 1, 1978, the RSO does not apply. However, LA\'s expanded just cause protections may cover some post-RSO tenancies, and AB 1482 (TPA) provides additional statewide protections for older units. Determining which laws apply requires analysis of the specific unit and tenancy.',
+      'AB 1482\'s statewide rent cap does not apply to RSO units, because they already have stricter local rent control. For LA rentals outside the RSO, the City\'s Just Cause Ordinance sets the eviction rules, and AB 1482 may cap rent increases if the building is more than 15 years old and no exemption applies (for example, some single-family homes and condos owned by individuals who gave the required written notice). For August 1, 2026 through July 31, 2027, LAHD lists the AB 1482 maximum for the LA area as 8.7%. A single-family home that is exempt from AB 1482 can still be covered by the JCO.',
+    extraSections: [
+      {
+        title: 'Just Cause Ordinance: protection for non-RSO units',
+        body: 'If your unit is not covered by the RSO, including newer buildings, condos, and most single-family homes, you are likely covered by the City\'s Just Cause Ordinance (JCO), which has applied to most non-RSO rentals since January 27, 2023. Protection starts when your first lease ends or after six months, whichever comes first. From then on, your landlord needs a legal reason to end your tenancy, and must pay relocation money for no-fault reasons like an owner move-in, demolition, or taking the unit off the rental market. The JCO does not cap rent, but state law (AB 1482) may.\n\nSince August 4, 2025, a tenant who wins a JCO case is awarded three times compensatory damages (which can include emotional distress and unpaid relocation money), attorney\'s fees and costs, and a civil penalty of $2,000 to $10,000 per violation. Tenants over 65 or disabled can receive up to $5,000 more per violation. A few housing types are exempt, such as licensed care facilities, student housing, and renting a room in a home where you share a kitchen or bathroom with the owner.',
+      },
+      {
+        title: 'Tenant Anti-Harassment Ordinance (TAHO)',
+        body: 'Every residential tenant in the City of Los Angeles is protected by the Tenant Anti-Harassment Ordinance, whether or not the unit is rent controlled. Harassment means a landlord\'s bad-faith conduct aimed at a tenant that causes harm. Examples in the ordinance include cutting services like parking, failing to make required repairs, abusing the right to enter, threats, pressuring you to move with buyout offers, lying about whether you have to leave, refusing rent, asking about immigration status, and retaliating against tenant organizing.\n\nSince December 29, 2024, a tenant who wins a TAHO case is awarded three times compensatory damages (including emotional distress), rent refunds for lost services, attorney\'s fees and costs, and a civil penalty of $2,000 to $10,000 per violation, with up to $5,000 more per violation for tenants over 65 or disabled. Punitive damages are possible in serious cases. You generally have three years to sue. For repair-related claims, the landlord must first get written notice and a reasonable chance to fix the problem, unless the conduct was intentional and willful.',
+      },
+      {
+        title: 'Relocation money for no-fault evictions',
+        body: 'When an LA landlord ends a tenancy for a reason that is not the tenant\'s fault, such as an owner or family move-in, demolition, an Ellis Act withdrawal, or a government order to vacate, the landlord must pay relocation assistance. This applies to both RSO and JCO units. The landlord must file a declaration with LAHD before serving the notice, and the money must be made available within 15 days after the notice is served.\n\nFrom July 1, 2026 through June 30, 2027, the amounts per unit are $11,000 for tenants with less than 3 years in the unit, and $14,400 for tenants with 3 or more years or low household income. Qualified households, where a tenant is 62 or older, disabled, or has a minor dependent child, receive $23,150 or $27,400. Some small landlords pay less for owner move-ins ($10,550 or $21,250), and an individual owner of a JCO single-family home with few other properties may owe only one month\'s rent. The payment is per unit and split among the tenants, the landlord can subtract unpaid rent, and the amounts go up every July 1.',
+      },
+      {
+        title: 'Buyout ("cash for keys") offers',
+        body: 'A landlord can offer an RSO tenant money to move out, but strict rules apply. Before making any offer, the landlord must give the tenant LAHD\'s RSO Disclosure Notice explaining the tenant\'s rights, signed and dated by both sides. The written agreement must be in the tenant\'s primary language and state, in bold, that the tenant can cancel within 30 days after signing. The landlord must file the notice and agreement with LAHD within 60 days.\n\nYou never have to accept a buyout, and you can talk to a lawyer first. If the landlord skips the required steps, you can cancel the agreement at any time within the statute of limitations, and you can sue for damages plus a $500 penalty. Offering an RSO tenant money to move without the disclosure notice also counts as harassment under the TAHO, and pressuring any LA tenant to leave with payment offers can be harassment whether or not the unit is rent controlled.',
+      },
+    ],
     faq: [
       {
         q: 'My landlord served me an Ellis Act notice in Los Angeles. What are my rights?',
-        a: 'An Ellis Act eviction in LA requires the landlord to withdraw the entire building from the rental market. You are entitled to substantial relocation assistance, a right of first refusal if the units are re-rented within a certain period, and the landlord faces significant restrictions on what they can do with the property. If the Ellis Act eviction was not genuine, you may have a wrongful eviction claim.',
+        a: 'An Ellis Act eviction means the landlord is taking the units off the rental market. The landlord must file with LAHD and give you at least 120 days\' notice (six months if the plan is demolition for new construction). If you are 62 or older or disabled and have lived there at least a year, you can claim a one-year extension by telling your landlord in writing within 60 days of the LAHD filing. You are entitled to relocation money. If you tell the landlord in writing within 30 days of moving out that you want the unit back, you have a right to be offered it if it returns to the rental market within 10 years, and in the first five years the rent is limited to your old rent plus allowed increases. If the withdrawal was not genuine, you may have a wrongful eviction claim.',
       },
       {
         q: 'Does the LA RSO cover single-family homes?',
-        a: 'Generally, no. Single-family homes are typically exempt from the RSO. However, if your single-family home was built more than 15 years ago and you have lived there for more than 12 months, you may be protected by AB 1482 (TPA) for just cause and rent cap purposes.',
+        a: 'Usually not. A single-family home that is the only home on its lot is exempt from the RSO. But in the City of Los Angeles it is generally covered by the Just Cause Ordinance once your first lease ends or you have lived there six months. Your landlord still needs a legal reason to evict and must pay relocation money for no-fault evictions (sometimes only one month\'s rent if the owner is an individual with few properties). AB 1482 may also cap rent increases if the home is more than 15 years old and the owner is a corporation, REIT, or certain LLC, or did not give the required exemption notice.',
       },
       {
-        q: 'My landlord raised my rent during the year — is that allowed?',
-        a: 'Under the LA RSO, landlords may generally raise rent only once per 12-month period, by no more than the allowable General Adjustment. Multiple increases in a single year, or increases above the allowed amount, may be violations. Bowlay Law can review your situation.',
+        q: 'My LA landlord raised my rent during the year. Is that allowed?',
+        a: 'Under the LA RSO, landlords may raise rent only once every 12 months, and only by the annual allowable increase, which is 3% for increases taking effect July 1, 2026 through June 30, 2027. Since February 2, 2026, landlords can no longer add extra percentages for utilities. A second increase within 12 months, or an increase above the limit, may violate the RSO, and a tenant who paid more than the legal rent can recover three times the overcharge plus attorney\'s fees. Bowlay Law can review your situation.',
+      },
+      {
+        q: 'Can my Los Angeles landlord evict me without a reason?',
+        a: 'Usually not. If you rent in an RSO building, your landlord needs one of the legal reasons listed in the ordinance. If your unit is not under the RSO, the Just Cause Ordinance protects you once your first lease ends or after six months, whichever comes first. Allowed reasons include unpaid rent, uncured lease violations, nuisance, owner or family move-in, and removing the building from the rental market, and the no-fault reasons require relocation money. Even for unpaid rent, a landlord generally cannot evict unless you owe more than one month of HUD Fair Market Rent for your unit size (for example, $2,402 for a one-bedroom from October 1, 2026). If you were pushed out without a valid reason, you may have a claim for damages.',
+      },
+      {
+        q: 'How much relocation money do I get in Los Angeles?',
+        a: 'For a no-fault eviction between July 1, 2026 and June 30, 2027, LA landlords generally must pay $11,000 per unit if you have lived there less than 3 years, or $14,400 if you have lived there 3 years or more or have low household income. If a tenant in the unit is 62 or older, disabled, or has a minor dependent child, the amounts are $23,150 and $27,400. Some small landlords doing an owner move-in pay less, and certain single-family homes owned by individuals require only one month\'s rent. The money is per unit, so roommates split it. If your landlord did not pay, you can sue for the unpaid amount plus attorney\'s fees, and under the Just Cause Ordinance the award is tripled.',
+      },
+      {
+        q: 'Is my Los Angeles apartment rent controlled?',
+        a: 'Your unit is likely under the Rent Stabilization Ordinance (RSO) if the building\'s first certificate of occupancy was issued on or before October 1, 1978. That includes apartments, duplexes, condos, two or more houses on one lot, and hotel or motel rooms after you have lived there more than 30 days. A single-family home that is the only home on its lot is not under the RSO. You can check by entering your address at zimas.lacity.org and opening the Housing tab, or by calling LAHD at (866) 557-7368. If you are not under the RSO, the Just Cause Ordinance and state law (AB 1482) may still protect you.',
+      },
+      {
+        q: 'My LA landlord gave me a big rent increase on a unit that is not rent controlled. Do I have options?',
+        a: 'Possibly. If your building is more than 15 years old and not exempt, state law (AB 1482) generally limits increases to 8.7% for August 1, 2026 through July 31, 2027. Any increase over 10% requires at least 90 days\' written notice. Under the Just Cause Ordinance, if a proposed increase is more than 10%, or more than 5% plus inflation if that is lower, you can choose to move out and receive relocation money equal to three times HUD Fair Market Rent for a similar-size unit plus moving costs (one month\'s rent for some single-family homes owned by individuals). Bowlay Law can review your notice.',
+      },
+      {
+        q: 'My landlord is harassing me to get me to move out. What can I do in Los Angeles?',
+        a: 'Document everything: keep written repair requests, texts, emails, photos, and a log of dates and what happened. LA\'s Tenant Anti-Harassment Ordinance covers every rental unit in the city, rent controlled or not. A tenant who wins in court is awarded three times compensatory damages, attorney\'s fees, and civil penalties of $2,000 to $10,000 per violation. You can also file a complaint with LAHD. You generally have three years to bring a harassment lawsuit, but evidence gets harder to gather over time, so it helps to talk to a lawyer early.',
+      },
+    ],
+  },
+  {
+    slug: 'san-jose',
+    city: 'San Jose',
+    fullName: 'San Jose',
+    ordinanceName: 'San Jose Apartment Rent Ordinance (ARO) & Tenant Protection Ordinance (TPO)',
+    yearEstablished: '1979',
+    heroTagline: 'Rent limits for older apartments and day-one just cause protection for most apartment renters.',
+    overview:
+      'San Jose protects renters through a set of ordinances run by the City Housing Department\'s Rent Stabilization Program. The Apartment Rent Ordinance (ARO), first adopted in 1979, limits rent increases in older apartment buildings to 5% once every 12 months. The Tenant Protection Ordinance (TPO), adopted in 2017, reaches much further: it requires one of 13 listed just causes to end a tenancy in most apartment buildings of three or more units, no matter when the building was built, starting on the first day of the tenancy. A separate Ellis Act Ordinance sets notice, relocation, and right-to-return rules when an owner takes a rent-stabilized building off the rental market.',
+    coverageDetails: [
+      { label: 'Rent cap (ARO)', value: '5%, once every 12 months, for covered pre-1979 apartments' },
+      { label: 'Just cause (TPO)', value: 'Required from day one: 13 listed causes' },
+      { label: 'Relocation assistance', value: 'Required for owner move-in, substantial rehab, Ellis Act, and certain other no-fault evictions' },
+      { label: 'Attorney fees', value: 'Yes, available under both the ARO and the TPO' },
+      { label: 'Treble damages', value: 'For willful TPO violations; refund plus up to 3× rent overcharges under the ARO' },
+      { label: 'ARO wrongful eviction', value: 'Up to $10,000 plus moving costs and attorney fees' },
+    ],
+    coveredUnits:
+      'San Jose\'s rent control and just cause rules cover different sets of units, so it matters which one you are asking about.\n\nRent control (ARO): apartments in buildings with three or more units that were approved for occupancy, or offered for rent, on or before September 7, 1979. The City estimates this covers roughly 38,000 apartments.\n\nJust cause (TPO): every rent-stabilized unit, plus rental units in apartment buildings of three or more units built after 1979, guest rooms in guesthouses, and unpermitted units (units the City never approved for living in). A tenant in a 1990s apartment complex may not have local rent control, but still cannot be evicted without one of the 13 just causes.\n\nSingle-family homes, condos, townhomes, and duplexes are generally outside both ordinances unless the unit is unpermitted, but California\'s Tenant Protection Act may still apply.',
+    rentCap:
+      'For apartments covered by the ARO, a landlord may raise the rent only once in any 12-month period, and by no more than 5% of the rent charged over the prior 12 months. The 5% is a flat limit; it does not change with inflation. A landlord who wants more must win a petition before the City, such as a fair return petition, and approved capital improvement pass-throughs are capped at 3% of the monthly rent. A landlord who has not substantially complied with the City\'s rent registry requirements for the unit may not raise the rent at all. The rent can reset for a new tenant only if the prior tenant left voluntarily or was lawfully evicted for nonpayment, a serious lease violation, or nuisance. If a landlord pushes a tenant out through unlawful conduct, the old rent carries over. Tenants can also petition the Rent Stabilization Program over improper increases, reduced services, or housing code violations.',
+    justCause:
+      'Under the TPO, a landlord must have one of 13 just causes, state it in a written notice, and send the City a copy of the notice within three days. The causes based on tenant conduct are: nonpayment of rent, a material or habitual lease violation not fixed after written notice, substantial damage to the unit, refusing to sign a substantially identical new lease, nuisance or disorderly conduct, refusing reasonable access after written notice, an unapproved subtenant holding over, and certain serious or violent felony charges against a household member who is not removed from the household. The causes based on landlord decisions are: substantial rehabilitation, Ellis Act withdrawal, owner move-in, a government order to vacate, and ending the use of an unpermitted unit. Adding a child, spouse, domestic partner, or parent to the household (within occupancy limits) can never be treated as a lease violation. Protection begins on the first day of the tenancy.',
+    damages:
+      'San Jose\'s ordinances give tenants their own right to sue. Under the TPO, a landlord who violates the just cause, notice, or anti-retaliation rules can be liable for actual damages, exemplary (punitive) damages, and attorney fees and costs, and damages are tripled when the violation is willful. Under the ARO, a landlord who wrongfully evicts a tenant from a rent-stabilized unit is liable to the tenant for up to $10,000 plus reasonable costs, including moving costs and attorney fees. A landlord who collects rent above the legal limit must refund the overcharge plus damages of up to three times the overcharge (or up to $500, whichever is greater). Renting a rent-stabilized unit in violation of the implied warranty of habitability, or in material violation of the City\'s housing codes, is also treated as an ARO violation. California law adds its own remedies, including penalties of up to $2,000 per violation for certain harassment aimed at forcing a tenant out.',
+    relocationAssistance:
+      'Under the TPO, a landlord who ends a tenancy for owner move-in or substantial rehabilitation must pay relocation assistance when the termination notice is delivered. The amount equals the Ellis Act "base assistance" set by the City Council by unit size, and the landlord must also refund the security deposit, less proper deductions. When an owner withdraws a rent-stabilized building under the Ellis Act, tenants receive base assistance plus additional "qualified assistance" if the household is lower-income, or includes someone 62 or older, someone with a disability or a terminal or catastrophic illness, or a child enrolled in K-12 school. Relocation is also required when a tenant must leave because of a government order to vacate or because the unit is unpermitted. The City sets and adjusts the amounts, so confirm current figures with the Rent Stabilization Program.',
+    exemptions: [
+      'Single-family homes, condos, and townhomes (from both ordinances, unless the unit is unpermitted; state law may still apply)',
+      'Duplexes and buildings with only one or two units (from both ordinances, unless the unit is unpermitted)',
+      'Apartments first occupied or offered for rent after September 7, 1979 (from ARO rent control only; TPO just cause still applies)',
+      'In-law units and accessory dwelling units (from ARO rent control)',
+      'Hotels and motels rented to transient guests for less than 30 days',
+      'Most government-owned units and units with recorded affordable-rent restrictions',
+    ],
+    whyStrong:
+      'San Jose\'s eviction protections reach far more renters than its rent control does. Because the TPO covers apartment buildings of three or more units regardless of age, and applies from the first day of a tenancy, many tenants in newer complexes have local just cause protection that state law would not give them until they had lived there 12 months. Those protections come with real remedies, including exemplary damages, attorney fees, and treble damages for willful violations. For long-term tenants in older rent-stabilized buildings, the gap between a rent held to 5% increases and current market rent can make the tenancy itself very valuable.',
+    tpaInteraction:
+      'California\'s Tenant Protection Act (Civil Code sections 1946.2 and 1947.12) fills the gaps around San Jose\'s ordinances. Where the TPO applies, the City\'s just cause rules govern instead of the state\'s, because the state law defers to local just cause ordinances adopted on or before September 1, 2019. Where the ARO applies, the City\'s flat 5% cap governs, because the state cap does not apply to housing under a stricter local rent limit. Apartments in post-1979 buildings of three or more units often get both: TPO just cause protection and, if the building is more than 15 years old, the state rent cap of 5% plus inflation (never more than 10%). Single-family homes, condos, and duplexes fall outside the local ordinances but may be covered by the TPA unless an exemption applies.',
+    faq: [
+      {
+        q: 'Can my San Jose landlord raise my rent more than 5%?',
+        a: 'If you live in an apartment building with three or more units that was approved for occupancy by September 7, 1979, generally no. Under the Apartment Rent Ordinance, your landlord can raise the rent only once every 12 months and by no more than 5%, unless the City approves a larger increase through a petition. If your unit is not covered by the ARO, California\'s Tenant Protection Act may still cap increases at 5% plus inflation (never more than 10%) if the building is more than 15 years old and no exemption applies. Some San Jose rentals have no rent cap at all.',
+      },
+      {
+        q: 'Does my San Jose landlord need a reason to evict me?',
+        a: 'If you rent in an apartment building of three or more units (of any age), a guesthouse room, or an unpermitted unit, yes. San Jose\'s Tenant Protection Ordinance requires one of 13 just causes, stated in a written notice, and the landlord must send the City a copy within three days. This protection starts on your first day as a tenant. Tenants in single-family homes, condos, and duplexes may instead be protected by California\'s Tenant Protection Act after 12 months.',
+      },
+      {
+        q: 'My San Jose landlord says they are moving into my unit. Do I have to leave?',
+        a: 'Not necessarily. Owner move-in is a just cause under the TPO only if an owner with at least a 50% interest intends, in good faith, to live in the unit as a principal residence for at least 36 consecutive months, starting within three months after you leave. A move-in for a family member is allowed only if the unit is in the same building where the owner lives and no other unit there is vacant. The landlord must pay relocation assistance when the notice is delivered. If the owner or relative does not move in within three months or does not stay 36 months, the law presumes bad faith unless the owner proves otherwise, and you may have a claim for damages.',
+      },
+      {
+        q: 'Is it illegal for my San Jose landlord to retaliate against me?',
+        a: 'Yes. San Jose\'s ordinances bar landlords from retaliating against tenants who exercise their rights under them, for example by threatening eviction, serving a termination notice, reducing services, raising the rent, or threatening to report a tenant to immigration authorities. Under the TPO, if the landlord acts within six months after you asserted your rights, the law presumes the act was retaliatory, and you can sue for actual and punitive damages. California law separately protects tenants who complain about repair or habitability problems.',
+      },
+      {
+        q: 'Does San Jose rent control cover my house, condo, or duplex?',
+        a: 'Generally no. San Jose\'s Apartment Rent Ordinance and Tenant Protection Ordinance apply to buildings with three or more units (and, for just cause, to guesthouses and unpermitted units). Single-family homes, condos, townhomes, and duplexes are usually outside both. California\'s Tenant Protection Act may still give you just cause protection and a cap on rent increases, unless your home is exempt. For example, it may be exempt if it was built within the last 15 years, or if it is not owned by a corporation or REIT and you received the required written exemption notice.',
+      },
+      {
+        q: 'What can I recover if my San Jose landlord wrongfully evicted me?',
+        a: 'It depends on your unit and what happened. Under the TPO, tenants can recover actual damages, exemplary damages, and attorney fees, and damages are tripled when the violation is willful. Under the ARO, a landlord who wrongfully evicts a tenant from a rent-stabilized unit is liable for up to $10,000 plus moving costs and attorney fees. California law may add other claims. Bowlay Law can review your situation during a free screening call.',
       },
     ],
   },

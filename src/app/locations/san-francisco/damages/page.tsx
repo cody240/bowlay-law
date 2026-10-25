@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CaseReviewCTA from '@/components/CaseReviewCTA';
+import CaseReviewSection from '@/components/CaseReviewSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/locations/san-francisco/damages' },
@@ -60,7 +62,7 @@ export default function SFDamagesPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/contact"
+              href="#case-review"
               className="inline-block bg-brand-dark text-white px-8 py-4 rounded-full font-semibold hover:bg-brand transition-colors"
             >
               Get a Free Case Review
@@ -160,6 +162,8 @@ export default function SFDamagesPage() {
         </div>
       </section>
 
+      <CaseReviewCTA location="sf_damages_mid" />
+
       {/* What drives value */}
       <section className="bg-cream-dark px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
@@ -224,28 +228,12 @@ export default function SFDamagesPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-brand-dark text-white px-6 py-20">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-display text-3xl font-bold mb-4">
-            Want to know what your case might be worth?
-          </h2>
-          <p className="text-white/70 mb-4 leading-relaxed max-w-2xl mx-auto">
-            The free screening call is 15–20 minutes. Cody will ask about your rent, your
-            tenancy, what happened, and what you know about the unit now — and give you an
-            honest read on whether there&rsquo;s a case and what it might look like.
-          </p>
-          <p className="text-white/50 text-sm mb-8">
-            No fee unless we win &middot; Contingency fee &middot; SF tenants only
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-white text-brand-dark px-8 py-4 rounded-full font-semibold hover:bg-cream transition-colors"
-          >
-            Get a Free Case Review
-          </Link>
-        </div>
-      </section>
+      {/* Case review — intake form built in */}
+      <CaseReviewSection location="sf_damages_form" title="Want to know what your case might be worth?">
+        <p>
+          The free screening call is 15–20 minutes. Cody will ask about your rent, your tenancy, what happened, and what you know about the unit now — and give you an honest read on whether there&rsquo;s a case and what it might look like.
+        </p>
+      </CaseReviewSection>
     </>
   );
 }

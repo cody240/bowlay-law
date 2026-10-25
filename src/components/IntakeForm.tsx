@@ -11,7 +11,8 @@ const labelClass = 'block text-sm font-semibold text-ink mb-1.5';
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 
-export default function IntakeForm() {
+// `location` tags the form_submit event so GA4 shows which page the lead came from.
+export default function IntakeForm({ location = 'contact_page' }: { location?: string }) {
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState('');
 
@@ -44,7 +45,7 @@ export default function IntakeForm() {
         throw new Error(data.error || 'Something went wrong.');
       }
       setStatus('sent');
-      trackEvent('form_submit', { location: 'contact_page' });
+      trackEvent('form_submit', { location });
     } catch (err) {
       setStatus('error');
       setError(err instanceof Error ? err.message : 'Something went wrong.');

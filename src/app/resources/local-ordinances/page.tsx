@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CaseReviewSection from '@/components/CaseReviewSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/resources/local-ordinances' },
@@ -48,6 +49,7 @@ const cities = [
       'One of the oldest rent control programs in California, covering most pre-1980 multi-unit buildings. Just cause required for eviction, strict relocation assistance requirements, and an active Rent Stabilization Board.',
     href: '/resources/local-ordinances/berkeley',
     available: false,
+    cityPage: '/locations/berkeley',
   },
   {
     city: 'Los Angeles',
@@ -56,6 +58,7 @@ const cities = [
       'Covers most multi-unit residential buildings built before October 1, 1978. Just cause required for eviction, annual allowable rent increases, and relocation assistance for no-fault evictions.',
     href: '/resources/local-ordinances/los-angeles',
     available: false,
+    cityPage: '/locations/los-angeles',
   },
   {
     city: 'San Jose',
@@ -64,6 +67,7 @@ const cities = [
       'Covers multi-unit residential properties built before September 7, 1979. Annual rent increase limitations, a formal Rent Arbitration Program, and tenant petition rights for unlawful increases.',
     href: '/resources/local-ordinances/san-jose',
     available: false,
+    cityPage: '/locations/san-jose',
   },
 ];
 
@@ -104,7 +108,7 @@ export default function LocalOrdinancesPage() {
       <section className="bg-white px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {cities.map(({ city, ordinance, description, href, available }) => (
+            {cities.map(({ city, ordinance, description, href, available, cityPage }) => (
               <div
                 key={city}
                 className={`rounded-xl border border-border overflow-hidden ${!available ? 'opacity-75' : ''}`}
@@ -129,9 +133,14 @@ export default function LocalOrdinancesPage() {
                     >
                       Read the {city} ordinance reference →
                     </Link>
-                  ) : (
-                    <p className="text-xs text-muted">Reference guide in progress</p>
-                  )}
+                  ) : cityPage ? (
+                    <Link
+                      href={cityPage}
+                      className="inline-block text-sm font-semibold text-brand-dark hover:text-brand transition-colors"
+                    >
+                      See {city} tenant law →
+                    </Link>
+                  ) : null}
                 </div>
               </div>
             ))}
@@ -139,24 +148,13 @@ export default function LocalOrdinancesPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-brand-dark text-white px-6 py-16">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-display text-2xl font-bold mb-4">
-            Need help with a case?
-          </h2>
-          <p className="text-white/70 mb-8 leading-relaxed max-w-xl mx-auto">
-            I represent California tenants under these ordinances. The free case review is
-            15–20 minutes and costs nothing.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-white text-brand-dark px-8 py-4 rounded-full font-semibold hover:bg-cream transition-colors"
-          >
-            Free Case Review →
-          </Link>
-        </div>
-      </section>
+      {/* Case review — intake form built in */}
+      <CaseReviewSection location="ordinances_hub_form" title="Need help with a case?">
+        <p>
+          I represent California tenants under these ordinances. The free case review is
+          15–20 minutes and costs nothing.
+        </p>
+      </CaseReviewSection>
     </>
   );
 }

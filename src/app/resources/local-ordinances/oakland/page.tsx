@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CaseReviewCTA from '@/components/CaseReviewCTA';
+import CaseReviewSection from '@/components/CaseReviewSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/resources/local-ordinances/oakland' },
@@ -54,7 +56,7 @@ export default function OaklandOrdinanceReferencePage() {
               </p>
             </div>
             <Link
-              href="/contact"
+              href="#case-review"
               className="shrink-0 bg-brand-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand transition-colors"
             >
               Free Case Review →
@@ -346,7 +348,9 @@ export default function OaklandOrdinanceReferencePage() {
         </div>
       </section>
 
-      {/* ── RENT CONTROL (Article I) — placeholder ── */}
+      <CaseReviewCTA location="oakland_ordinance_mid" />
+
+      {/* ── RENT CONTROL (Article I) ── */}
       <section id="rent-control" className="bg-cream-dark px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-6">
@@ -356,16 +360,53 @@ export default function OaklandOrdinanceReferencePage() {
           <p className="text-xs font-semibold text-brand-mid tracking-wider mb-2">
             OMC Chapter 8.22, Article I — Rent Adjustment Ordinance
           </p>
-          <div className="bg-white rounded-xl p-6 border border-border">
-            <p className="text-muted text-sm leading-relaxed">
-              Allowable rent increases, passthrough petitions, and the Rent Adjustment Program
-              procedures for covered units. This section is in progress.
+          <div className="space-y-4">
+            <p className="text-muted leading-relaxed">
+              Oakland&rsquo;s Rent Adjustment Ordinance limits how much, and how often, a landlord can raise the rent on a covered unit: generally units whose certificate of occupancy was issued before January 1, 1983, including owner-occupied duplexes and triplexes. Most single-family homes, condos, and government-subsidized units are not covered (see &ldquo;What Is a Covered Unit?&rdquo; above). The City&rsquo;s Rent Adjustment Program (RAP) sets the yearly allowance and decides disputes.
             </p>
+            <p className="text-muted leading-relaxed">
+              For increases taking effect <strong className="text-ink">August 1, 2026 through July 31, 2027, the allowable annual increase is 2.3%</strong>. Since 2022 the City has set it at 60% of the change in the regional Consumer Price Index, capped at 3%. Landlords can &ldquo;bank&rdquo; increases they skipped in past years, but a single increase cannot exceed three times the current figure (6.9% this year). Starting January 1, 2026, banked increases expire after five years instead of ten, and they are lost when the property is sold (with a narrow exception for inheritance). Anything above that, such as capital improvements, uninsured repairs, higher operating costs, or &ldquo;fair return,&rdquo; requires a RAP petition first. Even then, no increase may exceed the state cap in one year (8.8% for the same period) or 30% over five years, except a fair-return increase. (OMC § 8.22.070)
+            </p>
+            <p className="text-muted leading-relaxed">
+              When a tenant moves out voluntarily or is evicted for cause, state law (Costa-Hawkins) generally lets the landlord set a new starting rent. That reset is not available in some cases, for example where the unit was cited for serious code violations at least 60 days before the vacancy and they were never fixed, or where special re-rental limits apply after an owner move-in or Ellis Act withdrawal. (OMC § 8.22.080; Civ. Code § 1954.53)
+            </p>
+            <p className="text-muted leading-relaxed">
+              A tenant can challenge an unlawful increase by petitioning RAP <strong className="text-ink">within 180 days</strong> (extended from 90 days on December 24, 2024), and can petition for a rent reduction when housing services are cut or code violations go unrepaired. The ordinance also allows an aggrieved tenant to sue for damages or a court order. (OMC § 8.22.150)
+            </p>
+          <div className="bg-white rounded-xl p-6 border border-border mt-6">
+            <p className="text-sm font-semibold text-ink mb-3">A lawful increase requires:</p>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>No more than one increase in any 12 months, and none in the first 12 months of the tenancy</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>At least 30 days&rsquo; written notice, with the City&rsquo;s RAP Notice attached (OMC § 8.22.060)</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>No increase until at least six months after the tenant first received the RAP Notice</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>The unit must be registered with RAP</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>A current business tax certificate (required if the increase includes banked amounts; for a CPI-only increase, a payment plan for back business taxes also works)</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>On a fixed-term lease, waiting until the lease ends unless the lease allows mid-term increases</span>
+              </li>
+            </ul>
+          </div>
           </div>
         </div>
       </section>
 
-      {/* ── JUST CAUSE (Article II) — placeholder ── */}
+      {/* ── JUST CAUSE (Article II) ── */}
       <section id="just-cause" className="bg-white px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-6">
@@ -375,17 +416,99 @@ export default function OaklandOrdinanceReferencePage() {
           <p className="text-xs font-semibold text-brand-mid tracking-wider mb-2">
             OMC Chapter 8.22, Article II — Just Cause for Eviction Ordinance
           </p>
-          <div className="bg-cream-dark rounded-xl p-6 border border-border">
-            <p className="text-muted text-sm leading-relaxed">
-              Enumerated just causes, notice requirements, relocation assistance, and remedies.
-              Note: Article II has different exemptions than Article I — a unit exempt from rent
-              control may still be subject to just cause eviction protections. This section is in progress.
+          <div className="space-y-4">
+            <p className="text-muted leading-relaxed">
+              Oakland&rsquo;s Just Cause for Eviction Ordinance, adopted by voters as Measure EE in 2002, means a landlord can end a tenancy only for one of the reasons the ordinance lists, and must state that reason in the notice (OMC § 8.22.360). Its coverage is much broader than rent control. Measure Y (effective December 21, 2018) added owner-occupied duplexes and triplexes, and Measure V (effective December 30, 2022) extended protection to units built after 1995 and to rented RVs and tiny homes on wheels. The main exceptions are ground-up new construction with a certificate of occupancy issued in the last 10 years, rooms where the owner lives in the unit and shares a kitchen or bathroom with the tenant, and certain hospital, treatment, and transitional-housing facilities (OMC § 8.22.350).
             </p>
+            <p className="text-muted leading-relaxed">
+              The end of a lease, a sale or foreclosure, a condo conversion, and a change in a unit&rsquo;s Section 8 status are <strong className="text-ink">not</strong> just causes. Every termination notice must state the cause, must say that advice is available from RAP, and must be filed with RAP within 10 days of service.
+            </p>
+            <p className="text-muted leading-relaxed">
+              If a landlord, or anyone acting for them, evicts or tries to evict without a valid just cause, the tenant can sue for a court order and for <strong className="text-ink">not less than three times actual damages</strong>. Emotional distress damages are tripled only if the landlord knowingly or recklessly violated the ordinance. A tenant who wins is entitled to reasonable attorney&rsquo;s fees and costs (OMC § 8.22.370), and lease clauses that waive these rights are void (OMC § 8.22.380).
+            </p>
+          <div className="bg-cream-dark rounded-xl p-6 border border-border mt-6">
+            <p className="text-sm font-semibold text-ink mb-3">Owner move-in evictions carry extra conditions:</p>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>The owner, or the owner&rsquo;s spouse, domestic partner, child, parent, or grandparent, must intend in good faith to live there as a principal residence for at least 36 months</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>The person must move in within three months and file certifications with RAP</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>Tenants who have lived in the unit five years or more and are 60 or older, disabled, or catastrophically ill are generally protected from owner move-in eviction</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>A no-fault eviction cannot take effect during the Oakland Unified School District school year if a school-age child or an educator lives in the unit and the tenant has been there at least 90 days</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>No-fault notices must include a copy of the owner&rsquo;s current business tax certificate</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>The owner must pay relocation under OMC § 8.22.850</span>
+              </li>
+            </ul>
+          </div>
+          <div className="bg-cream-dark rounded-xl p-6 border border-border mt-6">
+            <p className="text-sm font-semibold text-ink mb-3">The listed just causes (OMC § 8.22.360(A)):</p>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>Nonpayment of rent, where the amount owed is at least one month of HUD fair market rent for a comparable unit</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>Continuing a substantial violation of a material lease term after a written notice to stop</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>Willfully causing substantial damage and refusing to stop or repair it after written notice</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>Continuing to disturb other tenants&rsquo; peace and quiet after written notice</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>Using the unit for an illegal purpose</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>Continuing to deny lawful access after written notice</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>The owner returning to a unit that was their prior residence, when the written rental agreement reserves that right</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>Owner or qualifying-relative move-in (conditions above)</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>Substantial repairs needed for health and safety code compliance that cannot be done with the tenant in place: permits must be pulled before the notice, displacement is limited to three months unless the Rent Board extends it, and the tenant has the right to return at the same rent</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>Withdrawal of the building from the rental market under the Ellis Act</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span>Refusing to sign a new lease is no longer a just cause (removed by Measure V)</span>
+              </li>
+            </ul>
+          </div>
           </div>
         </div>
       </section>
 
-      {/* ── ELLIS ACT (Article III) — placeholder ── */}
+      {/* ── ELLIS ACT (Article III) ── */}
       <section id="ellis-act" className="bg-cream-dark px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-6">
@@ -395,36 +518,50 @@ export default function OaklandOrdinanceReferencePage() {
           <p className="text-xs font-semibold text-brand-mid tracking-wider mb-2">
             OMC Chapter 8.22, Article III — Ellis Act Ordinance (§ 8.22.400 et seq.)
           </p>
-          <div className="bg-white rounded-xl p-6 border border-border">
-            <p className="text-muted text-sm leading-relaxed">
-              Withdrawal requirements, relocation assistance, right of first refusal, and
-              restrictions on re-rental. Note: Article III has different exemptions than
-              Article I. This section is in progress.
+          <div className="space-y-4">
+            <p className="text-muted leading-relaxed">
+              The state Ellis Act lets an owner go out of the rental business; Oakland&rsquo;s Ellis Act Ordinance sets the rules. An owner has to withdraw <strong className="text-ink">every</strong> unit in the building, or for buildings of three or fewer units, every rental unit on the parcel (OMC § 8.22.420). The owner files a notice of intent with RAP, records a notice with the County, and pays a per-unit fee, and the withdrawal generally takes effect 120 days after filing (OMC § 8.22.430). Tenants who are 62 or older, or disabled, and have lived in the unit at least a year can extend that to one year by notifying the owner in writing within 60 days (OMC § 8.22.440).
             </p>
+            <p className="text-muted leading-relaxed">
+              Tenants are entitled to relocation payments on the City&rsquo;s schedule. For July 1, 2026 through June 30, 2027 that is <strong className="text-ink">$8,293.13</strong> (studio or 1-bedroom), <strong className="text-ink">$10,206.93</strong> (2-bedroom), or <strong className="text-ink">$12,599.18</strong> (3 or more bedrooms), half when the termination notice is served and half when the tenant moves out. Households with a lower-income, elderly, or disabled tenant, or a minor child, get one additional <strong className="text-ink">$2,500</strong> payment (OMC § 8.22.450).
+            </p>
+            <p className="text-muted leading-relaxed">
+              The withdrawal restrictions stay with the property, including after a sale. A displaced tenant who wants a chance to return should notify the owner in writing within 30 days of moving out and keep the owner updated with a current address.
+            </p>
+          <div className="bg-white rounded-xl p-6 border border-border mt-6">
+            <p className="text-sm font-semibold text-ink mb-3">Re-rental rules after a withdrawal (OMC § 8.22.460; Gov. Code § 7060.2):</p>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span><strong className="text-ink">Within 2 years:</strong> the owner is liable to displaced tenants for actual and punitive damages; the suit must be filed within three years of the withdrawal notice</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span><strong className="text-ink">Within 5 years:</strong> the unit must be offered at no more than the prior lawful rent plus allowable annual increases</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span><strong className="text-ink">Within 10 years:</strong> the owner must first offer the unit back to the displaced tenant, and failing to do so can bring punitive damages of up to six months&rsquo; rent</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                <span className="text-brand font-bold shrink-0">·</span>
+                <span><strong className="text-ink">Demolished and rebuilt within 5 years:</strong> the new units are subject to rent control even though they are new construction</span>
+              </li>
+            </ul>
+          </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <section className="bg-white px-6 py-12 border-b border-border">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div>
-            <p className="text-ink font-medium mb-1">Representing Oakland tenants under Chapter 8.22</p>
-            <p className="text-muted text-sm">
-              Contingency only — no fee unless we win.{' '}
-              <Link href="/locations/oakland" className="text-brand underline hover:text-brand-mid">
-                See the Oakland tenant law page →
-              </Link>
-            </p>
-          </div>
-          <Link
-            href="/contact"
-            className="shrink-0 bg-brand-dark text-white px-6 py-3 rounded-full font-semibold hover:bg-brand transition-colors"
-          >
-            Free Case Review
+      {/* Case review — intake form built in */}
+      <CaseReviewSection location="oakland_ordinance_form" title="Representing Oakland tenants under Chapter 8.22">
+        <p>
+          Contingency only — no fee unless we win.{' '}
+          <Link href="/locations/oakland" className="underline hover:text-white transition-colors">
+            See the Oakland tenant law page →
           </Link>
-        </div>
-      </section>
+        </p>
+      </CaseReviewSection>
 
       <section className="bg-cream-dark px-6 py-6">
         <div className="max-w-6xl mx-auto">

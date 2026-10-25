@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import CaseReviewCTA from '@/components/CaseReviewCTA';
+import CaseReviewSection from '@/components/CaseReviewSection';
+import FaqSection from '@/components/FaqSection';
+import OfficeAndReviews from '@/components/OfficeAndReviews';
 import { getLocation, locations } from '@/lib/locations';
 
 export async function generateStaticParams() {
@@ -33,19 +37,9 @@ export default async function LocationPage({
   const loc = getLocation(city);
   if (!loc) notFound();
 
-  const faqSchema = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: loc.faq.map(({ q, a }) => ({
-      '@type': 'Question',
-      name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a },
-    })),
-  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqSchema }} />
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
         <div className="max-w-6xl mx-auto text-center">
@@ -135,6 +129,17 @@ export default async function LocationPage({
             </ul>
           </div>
 
+          {loc.extraSections?.map(({ title, body }) => (
+            <div key={title}>
+              <h2 className="font-display text-2xl font-bold text-ink mb-4">{title}</h2>
+              <div className="space-y-3">
+                {body.split('\n\n').map((para, i) => (
+                  <p key={i} className="text-muted leading-relaxed">{para}</p>
+                ))}
+              </div>
+            </div>
+          ))}
+
           <div className="bg-cream-dark rounded-2xl p-7 border border-border">
             <h2 className="font-display text-xl font-bold text-ink mb-3">
               Interaction with the California Tenant Protection Act
@@ -157,44 +162,19 @@ export default async function LocationPage({
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="bg-cream-dark px-6 py-16">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-display text-2xl font-bold text-ink mb-8">
-            Common questions — {loc.city}
-          </h2>
-          <div className="space-y-3">
-            {loc.faq.map(({ q, a }) => (
-              <details key={q} className="group bg-white rounded-2xl border border-border shadow-sm overflow-hidden">
-                <summary className="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-ink hover:text-brand transition-colors">
-                  <span>{q}</span>
-                  <span className="shrink-0 text-brand group-open:rotate-45 transition-transform text-xl font-light">+</span>
-                </summary>
-                <div className="px-6 pb-5 text-muted leading-relaxed border-t border-border/60 pt-4">{a}</div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+      {loc.showOffice && <OfficeAndReviews />}
 
-      {/* CTA */}
-      <section className="bg-brand-dark text-white px-6 py-20">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-display text-3xl font-bold mb-4">
-            {loc.city} tenant? Let&rsquo;s talk.
-          </h2>
-          <p className="text-white/70 mb-8 leading-relaxed">
-            If your landlord has violated the {loc.ordinanceName}, you may have a case worth pursuing.
-            The free screening call is 15–20 minutes and costs nothing.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-white text-brand-dark px-8 py-4 rounded-full font-semibold hover:bg-cream transition-colors"
-          >
-            Get a Free Case Review
-          </Link>
-        </div>
-      </section>
+      <CaseReviewCTA location={`${loc.slug}_mid`} />
+
+      <FaqSection title={`Common questions — ${loc.city}`} faqs={loc.faq} />
+
+      {/* Case review — intake form built in */}
+      <CaseReviewSection location={`${loc.slug}_form`} title={`${loc.city} tenant? Let’s talk.`}>
+        <p>
+          If your landlord has violated the {loc.ordinanceName}, you may have a case worth pursuing.
+          The free screening call is 15–20 minutes and costs nothing.
+        </p>
+      </CaseReviewSection>
     </>
   );
 }

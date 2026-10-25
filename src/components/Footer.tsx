@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { trackEvent } from '@/lib/analytics';
+import { EMAIL, PHONE_DISPLAY, PHONE_TEL } from '@/lib/contact';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -13,7 +14,7 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-white mt-auto">
+    <footer className="bg-ink text-white mt-auto pb-16 md:pb-0">
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           <div>
@@ -43,24 +44,24 @@ export default function Footer() {
             <p className="text-sm font-semibold text-white/80 uppercase tracking-wider mb-3">Contact</p>
             <div className="flex flex-col gap-2">
               <a
-                href="tel:+14159095920"
+                href={PHONE_TEL}
                 className="text-sm text-white/60 hover:text-white transition-colors"
                 onClick={() => trackEvent('phone_click', { location: 'footer' })}
               >
-                (415) 909-5920
+                {PHONE_DISPLAY}
               </a>
               <a
-                href="mailto:cody@bowlaylaw.com"
+                href={`mailto:${EMAIL}`}
                 className="text-sm text-white/60 hover:text-white transition-colors"
                 onClick={() => trackEvent('email_click', { location: 'footer' })}
               >
-                cody@bowlaylaw.com
+                {EMAIL}
               </a>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between gap-3 text-xs text-white/40">
+        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between gap-3 text-xs text-white/60">
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
             <p>© {new Date().getFullYear()} Bowlay Law. All rights reserved.</p>
             <Link

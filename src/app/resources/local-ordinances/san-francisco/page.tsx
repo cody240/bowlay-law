@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CaseReviewCTA from '@/components/CaseReviewCTA';
+import CaseReviewSection from '@/components/CaseReviewSection';
+import TopCaseBox from '@/components/TopCaseBox';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/resources/local-ordinances/san-francisco' },
@@ -39,6 +42,11 @@ export default function SFOrdinanceReferencePage() {
       {/* Hero */}
       <section className="bg-white px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
+          <TopCaseBox
+            location="sf_ordinance_top"
+            lead="Facing an eviction notice, an illegal rent increase, or harassment in SF?"
+            body="You may be owed relocation money or damages."
+          />
           <p className="text-brand-mid text-sm font-semibold tracking-wider mb-4">
             Resources · Local Ordinances · San Francisco
           </p>
@@ -52,22 +60,6 @@ export default function SFOrdinanceReferencePage() {
             (§ 37.3), just cause for eviction (§ 37.9), and tenant harassment (§ 37.10B). Every
             major provision, exemption, and carve-back in one place.
           </p>
-
-          {/* Conversion banner */}
-          <div className="bg-brand-dark/5 border border-brand-dark/20 rounded-xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <div className="flex-1">
-              <p className="text-ink font-medium text-sm leading-relaxed">
-                I represent SF tenants in Chapter 37 cases. If your landlord violated this
-                ordinance, the free case review is 15–20 minutes.
-              </p>
-            </div>
-            <Link
-              href="/contact"
-              className="shrink-0 bg-brand-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand transition-colors"
-            >
-              Free Case Review →
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -281,7 +273,7 @@ export default function SFOrdinanceReferencePage() {
             Admin Code § 37.3
           </p>
           <a
-            href="https://codelibrary.amlegal.com/codes/san_francisco/latest/sf_admin/0-0-0-23891"
+            href="https://codelibrary.amlegal.com/codes/san_francisco/latest/sf_admin/0-0-0-70881"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-xs text-brand underline hover:text-brand-mid mb-10"
@@ -768,7 +760,7 @@ export default function SFOrdinanceReferencePage() {
               If this happened to you — an unlawful rent increase, a passthrough imposed without Board certification, or a banked increase that exceeded what was actually accumulated — you may have a claim.
             </p>
             <Link
-              href="/contact"
+              href="#case-review"
               className="shrink-0 bg-brand-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand transition-colors"
             >
               Get a Free Case Review →
@@ -777,6 +769,8 @@ export default function SFOrdinanceReferencePage() {
 
         </div>
       </section>
+
+      <CaseReviewCTA location="sf_ordinance_mid" />
 
       {/* ── JUST CAUSE ── */}
       <section id="just-cause" className="bg-white px-6 py-16 border-b border-border">
@@ -790,7 +784,7 @@ export default function SFOrdinanceReferencePage() {
             Admin Code § 37.9
           </p>
           <a
-            href="https://codelibrary.amlegal.com/codes/san_francisco/latest/sf_admin/0-0-0-24063"
+            href="https://codelibrary.amlegal.com/codes/san_francisco/latest/sf_admin/0-0-0-16273"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-xs text-brand underline hover:text-brand-mid mb-10"
@@ -1289,7 +1283,7 @@ export default function SFOrdinanceReferencePage() {
               If this happened to you — an eviction notice without valid just cause, an OMI where the landlord never moved in, or an Ellis Act where not all units were withdrawn — you may have a wrongful eviction claim.
             </p>
             <Link
-              href="/contact"
+              href="#case-review"
               className="shrink-0 bg-brand-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand transition-colors"
             >
               Get a Free Case Review →
@@ -1311,7 +1305,7 @@ export default function SFOrdinanceReferencePage() {
             Admin Code § 37.10B
           </p>
           <a
-            href="https://codelibrary.amlegal.com/codes/san_francisco/latest/sf_admin/0-0-0-24134"
+            href="https://codelibrary.amlegal.com/codes/san_francisco/latest/sf_admin/0-0-0-16480"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-xs text-brand underline hover:text-brand-mid mb-10"
@@ -1517,7 +1511,7 @@ export default function SFOrdinanceReferencePage() {
               If this happened to you — a landlord making your home unlivable, refusing repairs, entering without notice, or pressuring you to leave — you don&rsquo;t have to wait for an eviction notice to call a lawyer.
             </p>
             <Link
-              href="/contact"
+              href="#case-review"
               className="shrink-0 bg-brand-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand transition-colors"
             >
               Get a Free Case Review →
@@ -1527,26 +1521,15 @@ export default function SFOrdinanceReferencePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <section className="bg-white px-6 py-12 border-b border-border">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div>
-            <p className="text-ink font-medium mb-1">Representing SF tenants under Chapter 37</p>
-            <p className="text-muted text-sm">
-              Contingency only — no fee unless we win.{' '}
-              <Link href="/locations/san-francisco" className="text-brand underline hover:text-brand-mid">
-                See the SF tenant law conversion hub →
-              </Link>
-            </p>
-          </div>
-          <Link
-            href="/contact"
-            className="shrink-0 bg-brand-dark text-white px-6 py-3 rounded-full font-semibold hover:bg-brand transition-colors"
-          >
-            Free Case Review
+      {/* Case review — intake form built in */}
+      <CaseReviewSection location="sf_ordinance_form" title="Representing SF tenants under Chapter 37">
+        <p>
+          Contingency only — no fee unless we win.{' '}
+          <Link href="/locations/san-francisco" className="underline hover:text-white transition-colors">
+            See the SF tenant law hub →
           </Link>
-        </div>
-      </section>
+        </p>
+      </CaseReviewSection>
 
       {/* Back to resources */}
       <section className="bg-cream-dark px-6 py-6">

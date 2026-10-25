@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CaseReviewCTA from '@/components/CaseReviewCTA';
+import CaseReviewSection from '@/components/CaseReviewSection';
 import TimelineSection from '@/components/TimelineSection';
 import { locationLinks } from '@/lib/locations';
 
@@ -77,7 +79,7 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="#case-review"
               className="bg-brand-dark text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-brand transition-colors"
             >
               Get a Free Case Review
@@ -89,7 +91,7 @@ export default function HomePage() {
               See What We Handle
             </Link>
           </div>
-          <p className="mt-6 text-sm text-muted/60">
+          <p className="mt-6 text-sm text-muted">
             California tenants only &middot; Contingency fee &middot; Free screening call
           </p>
         </div>
@@ -140,6 +142,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <CaseReviewCTA location="home_mid" />
+
       {/* How it works */}
       <section className="bg-cream px-6 py-20">
         <div className="max-w-7xl mx-auto">
@@ -189,7 +193,7 @@ export default function HomePage() {
               About Cody
             </Link>
             <Link
-              href="/contact"
+              href="#case-review"
               className="inline-block bg-gold text-ink px-6 py-3 rounded-full font-semibold hover:bg-gold-light transition-colors"
             >
               Get a Free Case Review
@@ -198,24 +202,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Bottom CTA strip */}
-      <section className="bg-gold-pale px-6 py-14">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-ink mb-3">
-            Not sure if you have a case?
-          </h2>
-          <p className="text-muted mb-6">
-            The free screening call costs you nothing and takes 15&ndash;20 minutes. Cody will tell
-            you what he thinks — honestly.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-brand-dark text-white px-8 py-4 rounded-full font-semibold hover:bg-brand transition-colors"
-          >
-            Request a Free Case Review
-          </Link>
-        </div>
-      </section>
+      {/* Case review — intake form built in */}
+      <CaseReviewSection location="home_form" title="Not sure if you have a case?">
+        <p>
+          The free screening call costs you nothing and takes 15&ndash;20 minutes. Cody will tell
+          you what he thinks — honestly.
+        </p>
+      </CaseReviewSection>
     </>
   );
 }
