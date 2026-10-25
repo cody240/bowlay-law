@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { trackEvent } from '@/lib/analytics';
 import { locationLinks } from '@/lib/locations';
 
@@ -14,19 +14,109 @@ const navLinks = [
   { href: '/contact', label: 'Contact' },
 ];
 
+// Only guides that exist. Berkeley, LA and San Jose are under Locations until they get guides.
 const resourceCities = [
   { href: '/resources/local-ordinances/san-francisco', label: 'San Francisco' },
   { href: '/resources/local-ordinances/oakland', label: 'Oakland' },
-  { href: '/resources/local-ordinances/berkeley', label: 'Berkeley' },
-  { href: '/resources/local-ordinances/los-angeles', label: 'Los Angeles' },
-  { href: '/resources/local-ordinances/san-jose', label: 'San Jose' },
 ];
+
+const sfTopics = [
+  { href: '/locations/san-francisco/wrongful-eviction', label: 'Wrongful Eviction' },
+  { href: '/locations/san-francisco/omi-eviction', label: 'Owner Move-In (OMI)' },
+  { href: '/locations/san-francisco/ellis-act', label: 'Ellis Act' },
+  { href: '/locations/san-francisco/constructive-eviction', label: 'Constructive Eviction' },
+  { href: '/locations/san-francisco/rent-control', label: 'Rent Control Violations' },
+  { href: '/locations/san-francisco/tenant-harassment', label: 'Tenant Harassment' },
+  { href: '/locations/san-francisco/damages', label: 'Damages & Case Value' },
+];
+
+const chevron = (open: boolean) => (
+  <svg className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+    <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+  </svg>
+);
+
+// Desktop dropdown. Opens on mouse hover, keyboard focus, or a tap (first tap on touch
+// opens the menu instead of following the link). The menu's top padding bridges the gap
+// below the label so the pointer can travel into it without the menu closing.
+function NavDropdown({
+  label,
+  href,
+  active,
+  menuClassName,
+  children,
+}: {
+  label: string;
+  href: string;
+  active: boolean;
+  menuClassName: string;
+  children: (close: () => void) => ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const tapOpensMenu = useRef(false);
+  const close = () => setOpen(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [open]);
+
+  return (
+    <div
+      ref={ref}
+      className="relative"
+      onPointerEnter={(e) => e.pointerType === 'mouse' && setOpen(true)}
+      onPointerLeave={(e) => e.pointerType === 'mouse' && setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(e) => {
+        if (!ref.current?.contains(e.relatedTarget as Node)) setOpen(false);
+      }}
+    >
+      <Link
+        href={href}
+        aria-haspopup="true"
+        aria-expanded={open}
+        onPointerDown={(e) => {
+          tapOpensMenu.current = e.pointerType !== 'mouse' && !open;
+        }}
+        onClick={(e) => {
+          if (tapOpensMenu.current) {
+            e.preventDefault();
+            tapOpensMenu.current = false;
+            setOpen(true);
+          }
+        }}
+        className={`flex items-center gap-1 transition-colors ${active ? 'text-brand font-semibold' : 'text-ink/70 hover:text-ink'}`}
+      >
+        {label}
+        {chevron(open)}
+      </Link>
+      {open && (
+        <div className="absolute top-full left-0 pt-2 z-50">
+          <div className={`bg-white border border-border rounded-xl shadow-lg py-1 ${menuClassName}`}>
+            {children(close)}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [locOpen, setLocOpen] = useState(false);
-  const [resOpen, setResOpen] = useState(false);
 
   return (
     <header className="bg-white border-b border-border sticky top-0 z-50 shadow-sm">
@@ -47,68 +137,54 @@ export default function Header() {
             </Link>
           ))}
 
-          {/* Locations dropdown */}
-          <div className="relative" onMouseEnter={() => setLocOpen(true)} onMouseLeave={() => setLocOpen(false)}>
-            <Link href="/locations/california" className={`flex items-center gap-1 transition-colors ${pathname.startsWith('/locations') ? 'text-brand font-semibold' : 'text-ink/70 hover:text-ink'}`}>
-              Locations
-              <svg className={`w-3.5 h-3.5 transition-transform ${locOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
-              </svg>
-            </Link>
-            {locOpen && (
-              <div className="absolute top-full left-0 mt-1 w-64 bg-white border border-border rounded-xl shadow-lg py-1 z-50">
-                {locationLinks.map(({ href, city }) => (
-                  <div key={href}>
-                    <Link
-                      href={href}
-                      className="block px-4 py-2.5 text-sm text-ink/70 hover:text-ink hover:bg-cream-dark transition-colors"
-                      onClick={() => setLocOpen(false)}
-                    >
-                      {city}
-                    </Link>
-                    {city === 'San Francisco' && (
-                      <div className="pl-4 pb-1 border-b border-border">
-                        {[
-                          { href: '/locations/san-francisco/wrongful-eviction', label: 'Wrongful Eviction' },
-                          { href: '/locations/san-francisco/omi-eviction', label: 'Owner Move-In (OMI)' },
-                          { href: '/locations/san-francisco/ellis-act', label: 'Ellis Act' },
-                          { href: '/locations/san-francisco/constructive-eviction', label: 'Constructive Eviction' },
-                          { href: '/locations/san-francisco/rent-control', label: 'Rent Control Violations' },
-                          { href: '/locations/san-francisco/tenant-harassment', label: 'Tenant Harassment' },
-                          { href: '/locations/san-francisco/damages', label: 'Damages & Case Value' },
-                        ].map((sub) => (
-                          <Link
-                            key={sub.href}
-                            href={sub.href}
-                            className="block px-3 py-1.5 text-xs text-ink/60 hover:text-ink hover:bg-cream-dark rounded transition-colors"
-                            onClick={() => setLocOpen(false)}
-                          >
-                            → {sub.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          <NavDropdown
+            label="Locations"
+            href="/locations/california"
+            active={pathname.startsWith('/locations')}
+            menuClassName="w-64"
+          >
+            {(close) =>
+              locationLinks.map(({ href, city }) => (
+                <div key={href}>
+                  <Link
+                    href={href}
+                    className="block px-4 py-2.5 text-sm text-ink/70 hover:text-ink hover:bg-cream-dark transition-colors"
+                    onClick={close}
+                  >
+                    {city}
+                  </Link>
+                  {city === 'San Francisco' && (
+                    <div className="pl-4 pb-1 border-b border-border">
+                      {sfTopics.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className="block px-3 py-1.5 text-xs text-ink/60 hover:text-ink hover:bg-cream-dark rounded transition-colors"
+                          onClick={close}
+                        >
+                          → {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))
+            }
+          </NavDropdown>
 
-          {/* Resources dropdown */}
-          <div className="relative" onMouseEnter={() => setResOpen(true)} onMouseLeave={() => setResOpen(false)}>
-            <Link href="/resources/local-ordinances" className={`flex items-center gap-1 transition-colors ${pathname.startsWith('/resources') ? 'text-brand font-semibold' : 'text-ink/70 hover:text-ink'}`}>
-              Resources
-              <svg className={`w-3.5 h-3.5 transition-transform ${resOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
-              </svg>
-            </Link>
-            {resOpen && (
-              <div className="absolute top-full left-0 mt-1 w-56 bg-white border border-border rounded-xl shadow-lg py-1 z-50">
+          <NavDropdown
+            label="Resources"
+            href="/resources/local-ordinances"
+            active={pathname.startsWith('/resources')}
+            menuClassName="w-56"
+          >
+            {(close) => (
+              <>
                 <div className="px-4 pt-2 pb-1">
                   <Link
                     href="/resources/local-ordinances"
                     className="block text-xs font-semibold text-muted hover:text-ink transition-colors mb-1"
-                    onClick={() => setResOpen(false)}
+                    onClick={close}
                   >
                     Local Ordinances
                   </Link>
@@ -118,7 +194,7 @@ export default function Header() {
                         key={href}
                         href={href}
                         className="block px-2 py-1 text-xs text-ink/60 hover:text-ink hover:bg-cream-dark rounded transition-colors"
-                        onClick={() => setResOpen(false)}
+                        onClick={close}
                       >
                         → {label}
                       </Link>
@@ -127,16 +203,16 @@ export default function Header() {
                 </div>
                 <div className="border-t border-border px-4 py-2">
                   <Link
-                    href="/resources/ab-1482"
+                    href="/locations/california"
                     className="block text-xs text-ink/60 hover:text-ink hover:bg-cream-dark rounded px-2 py-1 transition-colors"
-                    onClick={() => setResOpen(false)}
+                    onClick={close}
                   >
                     AB 1482 (statewide)
                   </Link>
                 </div>
-              </div>
+              </>
             )}
-          </div>
+          </NavDropdown>
 
           <Link
             href="/contact"
@@ -167,8 +243,10 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-border">
-          <nav className="flex flex-col px-6 py-4 gap-4">
+        // Scrolls on its own: the header is sticky, so a menu taller than the screen would
+        // otherwise be cut off. Bottom padding clears the MobileCallBar.
+        <div className="md:hidden bg-white border-t border-border max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain">
+          <nav className="flex flex-col px-6 pt-4 pb-24 gap-4">
             {navLinks.map(({ href, label }) => (
               <Link
                 key={href}
@@ -189,15 +267,7 @@ export default function Header() {
                     </Link>
                     {city === 'San Francisco' && (
                       <div className="pl-3 flex flex-col gap-0.5 mb-1">
-                        {[
-                          { href: '/locations/san-francisco/wrongful-eviction', label: 'Wrongful Eviction' },
-                          { href: '/locations/san-francisco/omi-eviction', label: 'Owner Move-In' },
-                          { href: '/locations/san-francisco/ellis-act', label: 'Ellis Act' },
-                          { href: '/locations/san-francisco/constructive-eviction', label: 'Constructive Eviction' },
-                          { href: '/locations/san-francisco/rent-control', label: 'Rent Control Violations' },
-                          { href: '/locations/san-francisco/tenant-harassment', label: 'Tenant Harassment' },
-                          { href: '/locations/san-francisco/damages', label: 'Damages & Case Value' },
-                        ].map((sub) => (
+                        {sfTopics.map((sub) => (
                           <Link key={sub.href} href={sub.href} onClick={() => setMobileOpen(false)} className="text-xs text-ink/50 hover:text-ink transition-colors py-0.5">
                             → {sub.label}
                           </Link>
@@ -221,7 +291,7 @@ export default function Header() {
                     </Link>
                   ))}
                 </div>
-                <Link href="/resources/ab-1482" onClick={() => setMobileOpen(false)} className="text-sm text-ink/70 hover:text-ink transition-colors py-1">
+                <Link href="/locations/california" onClick={() => setMobileOpen(false)} className="text-sm text-ink/70 hover:text-ink transition-colors py-1">
                   AB 1482 (statewide)
                 </Link>
               </div>
