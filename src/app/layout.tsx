@@ -26,12 +26,35 @@ const schema = {
       url: 'https://bowlaylaw.com',
       telephone: '+14159095920',
       email: 'cody@bowlaylaw.com',
+      logo: 'https://bowlaylaw.com/logo-black.svg',
+      image: 'https://bowlaylaw.com/opengraph-image',
       description:
         'California tenant rights law firm representing tenants in wrongful eviction and rent control cases. No fee unless we win.',
-      areaServed: {
-        '@type': 'State',
-        name: 'California',
+      // Service-area business (matches the Google Business Profile): city only, no street address.
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Oakland',
+        addressRegion: 'CA',
+        addressCountry: 'US',
       },
+      areaServed: [
+        { '@type': 'State', name: 'California' },
+        { '@type': 'City', name: 'San Francisco' },
+        { '@type': 'City', name: 'Oakland' },
+        { '@type': 'City', name: 'Berkeley' },
+        { '@type': 'City', name: 'Los Angeles' },
+        { '@type': 'City', name: 'Antioch' },
+      ],
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+      sameAs: [
+        'https://www.linkedin.com/in/codybowlay',
+        'https://apps.calbar.ca.gov/attorney/Licensee/Detail/359971',
+      ],
       serviceType: 'Tenant Rights Law',
       priceRange: 'Contingency — no fee unless we win',
       founder: { '@id': 'https://bowlaylaw.com/#cody' },
