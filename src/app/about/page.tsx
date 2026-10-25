@@ -40,8 +40,8 @@ export default function AboutPage() {
             I started Bowlay Law because tenants deserve a lawyer who actually listens.
           </h1>
           <p className="text-muted text-lg leading-relaxed">
-            At my last firm, clients emailed — and waited. Sometimes weeks. I kept thinking: that
-            is not how this should work. So I started my own practice.
+            You work with me directly, from your first call to the end of your case. I keep you
+            updated, explain your options in plain English, and make time when you need it.
           </p>
         </div>
       </section>
@@ -53,10 +53,14 @@ export default function AboutPage() {
           <div className="space-y-5 text-ink/80 leading-relaxed text-lg">
             <p>
               I graduated from{' '}
-              <strong className="text-ink">UC Berkeley School of Law</strong> and clerked at the U.S. District
-              Court for the Northern District of California. Before law school, I spent nearly four
-              years at Google — which shaped the way I think about systems, communication, and
-              using the right tools for the job.
+              <strong className="text-ink">UC Berkeley School of Law</strong> in 2024. In law school I
+              externed at the U.S. District Court for the Northern District of California and
+              interned with the San Francisco City Attorney&rsquo;s code enforcement team. After
+              graduating, I spent a year as a Christopher M. Patti Legal Fellow at the University of
+              California Office of the President, then litigated tenant cases at a San Francisco firm
+              before opening Bowlay Law. Before law school, I spent nearly four years at Google,
+              which shaped the way I think about systems, communication, and using the right tools
+              for the job.
             </p>
             <p>
               I practice in{' '}
