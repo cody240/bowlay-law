@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/about' },
@@ -30,6 +31,7 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbSchema trail={[{ name: 'About', path: '/about' }]} />
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
         <div className="max-w-6xl mx-auto">

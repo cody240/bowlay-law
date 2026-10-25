@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/faq' },
@@ -68,6 +69,7 @@ const faqSchema = JSON.stringify({
 export default function FAQPage() {
   return (
     <>
+      <BreadcrumbSchema trail={[{ name: 'FAQ', path: '/faq' }]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: faqSchema }}

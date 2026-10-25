@@ -6,6 +6,9 @@ export interface CoverageDetail {
 export interface LocationData {
   slug: string;
   city: string;
+  // Optional search-result title/description (default: "{city} Tenant Rights Attorney").
+  seoTitle?: string;
+  seoDescription?: string;
   fullName: string;
   ordinanceName: string;
   yearEstablished: string;
@@ -147,6 +150,9 @@ export const locations: LocationData[] = [
   },
   {
     slug: 'oakland',
+    seoTitle: 'Oakland Tenant Lawyer & Tenant Rights Guide',
+    seoDescription:
+      'Oakland tenant lawyer with an office downtown. Your rights under Oakland\'s rent and Just Cause for Eviction ordinances, explained. Free case review; no fee unless we win.',
     city: 'Oakland',
     showOffice: true,
     fullName: 'Oakland',
@@ -213,6 +219,9 @@ export const locations: LocationData[] = [
   },
   {
     slug: 'berkeley',
+    seoTitle: 'Berkeley Tenant Rights & Eviction Lawyer',
+    seoDescription:
+      'Berkeley tenant rights under the Rent Stabilization Ordinance: rent limits, just cause eviction and relocation pay. Free case review from an East Bay tenant lawyer; no fee unless we win.',
     city: 'Berkeley',
     fullName: 'Berkeley',
     ordinanceName: 'Berkeley Rent Stabilization Ordinance',
@@ -264,6 +273,9 @@ export const locations: LocationData[] = [
   },
   {
     slug: 'los-angeles',
+    seoTitle: 'Los Angeles Tenant Rights & Landlord-Tenant Law',
+    seoDescription:
+      'LA tenant rights explained: RSO rent limits, just cause eviction, relocation pay and anti-harassment rules. Free case review from a tenant attorney; no fee unless we win.',
     city: 'Los Angeles',
     fullName: 'Los Angeles',
     ordinanceName: 'Los Angeles Rent Stabilization Ordinance (RSO)',

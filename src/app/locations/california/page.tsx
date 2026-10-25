@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CaseReviewCTA from '@/components/CaseReviewCTA';
 import CaseReviewSection from '@/components/CaseReviewSection';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/locations/california' },
-  title: 'California Tenant Protection Act (AB 1482) | Tenant Rights Attorney',
+  // Written for the AB 1482 searches this page shows up for (Search Console, Jul-Oct 2026).
+  title: 'AB 1482 Explained: Rent Cap, Just Cause & Exemptions',
   description:
-    'AB 1482 gives California tenants statewide just cause eviction and rent control protections. Learn what is covered, what is exempt, and what remedies are available. Bowlay Law handles TPA wrongful eviction cases on contingency.',
+    'AB 1482 in plain English: the 5% + CPI rent cap (10% max), just cause eviction rules, who is exempt, and what to do if your landlord broke the law.',
   keywords: [
     'California Tenant Protection Act',
     'AB 1482',
@@ -121,21 +123,11 @@ const faqSchema = JSON.stringify({
   })),
 });
 
-const breadcrumbSchema = JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://bowlaylaw.com' },
-    { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://bowlaylaw.com/locations/california' },
-    { '@type': 'ListItem', position: 3, name: 'California Tenant Protection Act', item: 'https://bowlaylaw.com/locations/california' },
-  ],
-});
-
 export default function CaliforniaPage() {
   return (
     <>
+      <BreadcrumbSchema trail={[{ name: 'California (AB 1482)', path: '/locations/california' }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqSchema }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbSchema }} />
 
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">

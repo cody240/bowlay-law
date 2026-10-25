@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CaseReviewCTA from '@/components/CaseReviewCTA';
 import CaseReviewSection from '@/components/CaseReviewSection';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/resources/local-ordinances/oakland' },
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 export default function OaklandOrdinanceReferencePage() {
   return (
     <>
+      <BreadcrumbSchema trail={[{ name: 'Local Tenant Ordinances', path: '/resources/local-ordinances' }, { name: 'Oakland Rent Ordinance', path: '/resources/local-ordinances/oakland' }]} />
       {/* Hero */}
       <section className="bg-white px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">

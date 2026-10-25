@@ -4,6 +4,7 @@ import CaseReviewCTA from '@/components/CaseReviewCTA';
 import CaseReviewSection from '@/components/CaseReviewSection';
 import TopCaseBox from '@/components/TopCaseBox';
 import FaqSection, { type Faq } from '@/components/FaqSection';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/locations/san-francisco/omi-eviction' },
@@ -109,6 +110,7 @@ const omiFaqs: Faq[] = [
 export default function SFOMIPage() {
   return (
     <>
+      <BreadcrumbSchema trail={[{ name: 'San Francisco', path: '/locations/san-francisco' }, { name: 'Owner Move-In Evictions', path: '/locations/san-francisco/omi-eviction' }]} />
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
         <div className="max-w-6xl mx-auto">

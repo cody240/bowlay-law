@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CaseReviewCTA from '@/components/CaseReviewCTA';
 import CaseReviewSection from '@/components/CaseReviewSection';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/locations/san-francisco/ellis-act' },
@@ -90,6 +91,7 @@ const abusePatterns = [
 export default function SFEllisActPage() {
   return (
     <>
+      <BreadcrumbSchema trail={[{ name: 'San Francisco', path: '/locations/san-francisco' }, { name: 'Ellis Act Evictions', path: '/locations/san-francisco/ellis-act' }]} />
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
         <div className="max-w-6xl mx-auto">

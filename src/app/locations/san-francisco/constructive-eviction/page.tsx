@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CaseReviewCTA from '@/components/CaseReviewCTA';
 import CaseReviewSection from '@/components/CaseReviewSection';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/locations/san-francisco/constructive-eviction' },
@@ -73,6 +74,7 @@ const causes = [
 export default function SFConstructiveEvictionPage() {
   return (
     <>
+      <BreadcrumbSchema trail={[{ name: 'San Francisco', path: '/locations/san-francisco' }, { name: 'Constructive Eviction', path: '/locations/san-francisco/constructive-eviction' }]} />
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
         <div className="max-w-6xl mx-auto">

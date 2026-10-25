@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 import CaseReviewCTA from '@/components/CaseReviewCTA';
 import CaseReviewSection from '@/components/CaseReviewSection';
 import FaqSection from '@/components/FaqSection';
@@ -23,8 +24,10 @@ export async function generateMetadata({
   if (!loc) return {};
   return {
     alternates: { canonical: `/locations/${loc.slug}` },
-    title: `${loc.city} Tenant Rights Attorney`,
-    description: `Bowlay Law represents ${loc.city} tenants in wrongful eviction and rent control cases under the ${loc.ordinanceName}. No fee unless we win.`,
+    title: loc.seoTitle ?? `${loc.city} Tenant Rights Attorney`,
+    description:
+      loc.seoDescription ??
+      `Bowlay Law represents ${loc.city} tenants in wrongful eviction and rent control cases under the ${loc.ordinanceName}. No fee unless we win.`,
   };
 }
 
@@ -40,6 +43,7 @@ export default async function LocationPage({
 
   return (
     <>
+      <BreadcrumbSchema trail={[{ name: `${loc.city} Tenant Rights`, path: `/locations/${loc.slug}` }]} />
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
         <div className="max-w-6xl mx-auto text-center">
