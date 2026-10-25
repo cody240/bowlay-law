@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CaseReviewCTA from '@/components/CaseReviewCTA';
+import CaseReviewSection from '@/components/CaseReviewSection';
+import FaqSection, { type Faq } from '@/components/FaqSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/locations/san-francisco/wrongful-eviction' },
@@ -122,6 +125,30 @@ const evidence = [
   },
 ];
 
+// Plain-language Q&A (also emitted as FAQPage data). Answers restate this page's content.
+const wrongfulEvictionFaqs: Faq[] = [
+  {
+    q: 'What makes an eviction wrongful in San Francisco?',
+    a: 'Under SF Admin Code § 37.9, a landlord cannot end a covered tenancy without one of the just causes listed in the ordinance, and the stated cause must be the real, dominant reason. An eviction is wrongful when there was no valid just cause, the stated cause was a pretext, the landlord skipped required procedures, a no-fault eviction was brought in bad faith (for example an owner move-in where the owner never moved in), or the landlord pushed the tenant out through harassment, neglect, or unlawful rent increases.',
+  },
+  {
+    q: 'Can I still sue for wrongful eviction if I already moved out?',
+    a: 'Yes. Many wrongful eviction cases are brought after the tenant has left, often once it becomes clear the landlord never followed through on the stated reason. Most claims must be filed within three years of moving out; owner move-in claims have five years.',
+  },
+  {
+    q: 'How long do I have to file a wrongful eviction claim in San Francisco?',
+    a: 'For most § 37.9 claims, three years from the date you moved out. For owner move-in (OMI) claims, five years from the earlier of three months after the landlord recovered possession or the landlord\'s first statement of occupancy filing. For constructive eviction, three years from the date you left.',
+  },
+  {
+    q: 'How much is a San Francisco wrongful eviction case worth?',
+    a: 'The core of most cases is the rent differential: the gap between your rent-controlled rent and current market rent, over the years you could have stayed. Under § 37.9(f), actual damages can be trebled. Every case is different, and the free case review is the way to get a real estimate.',
+  },
+  {
+    q: 'What evidence should I keep after a wrongful eviction?',
+    a: 'Keep every notice you received, photos and video of the unit around the time you left, all texts, emails, and letters from the landlord, your rent history, and a record of any relocation payments. After you move out, screenshot any new listings of your former unit.',
+  },
+];
+
 export default function SFWrongfulEvictionPage() {
   return (
     <>
@@ -142,7 +169,7 @@ export default function SFWrongfulEvictionPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/contact"
+              href="#case-review"
               className="inline-block bg-brand-dark text-white px-8 py-4 rounded-full font-semibold hover:bg-brand transition-colors"
             >
               Get a Free Case Review
@@ -310,6 +337,8 @@ export default function SFWrongfulEvictionPage() {
         </div>
       </section>
 
+      <CaseReviewCTA location="sf_wrongful_eviction_mid" />
+
       {/* Statute of limitations */}
       <section className="bg-white px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
@@ -416,28 +445,14 @@ export default function SFWrongfulEvictionPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-brand-dark text-white px-6 py-20">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-display text-3xl font-bold mb-4">
-            Think your eviction was wrongful?
-          </h2>
-          <p className="text-white/70 mb-4 leading-relaxed max-w-2xl mx-auto">
-            The sooner you call, the more options you have. If you are still in the unit, a
-            court order can stop the eviction. If you have already left, you may still have
-            years to bring a claim — but building the case starts now.
-          </p>
-          <p className="text-white/50 text-sm mb-8">
-            No fee unless we win &middot; Free 15–20 minute screening call &middot; SF tenants only
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-white text-brand-dark px-8 py-4 rounded-full font-semibold hover:bg-cream transition-colors"
-          >
-            Get a Free Case Review
-          </Link>
-        </div>
-      </section>
+      <FaqSection title="Wrongful eviction questions, answered plainly" faqs={wrongfulEvictionFaqs} />
+
+      {/* Case review — intake form built in */}
+      <CaseReviewSection location="sf_wrongful_eviction_form" title="Think your eviction was wrongful?">
+        <p>
+          The sooner you call, the more options you have. If you are still in the unit, a court order can stop the eviction. If you have already left, you may still have years to bring a claim — but building the case starts now.
+        </p>
+      </CaseReviewSection>
     </>
   );
 }

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CaseReviewCTA from '@/components/CaseReviewCTA';
+import CaseReviewSection from '@/components/CaseReviewSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/locations/san-francisco/constructive-eviction' },
@@ -88,7 +90,7 @@ export default function SFConstructiveEvictionPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/contact"
+              href="#case-review"
               className="inline-block bg-brand-dark text-white px-8 py-4 rounded-full font-semibold hover:bg-brand transition-colors"
             >
               Get a Free Case Review
@@ -185,6 +187,8 @@ export default function SFConstructiveEvictionPage() {
         </div>
       </section>
 
+      <CaseReviewCTA location="sf_constructive_eviction_mid" />
+
       {/* Evidence */}
       <section className="bg-cream-dark px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
@@ -240,29 +244,12 @@ export default function SFConstructiveEvictionPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-brand-dark text-white px-6 py-20">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-display text-3xl font-bold mb-4">
-            Being pushed out without a notice?
-          </h2>
-          <p className="text-white/70 mb-4 leading-relaxed max-w-2xl mx-auto">
-            Call before you leave. The options available to you while you&rsquo;re still in the
-            unit — injunctive relief, documented conditions, negotiating position — are
-            different from the options you have after you vacate. The free screening call is
-            15–20 minutes.
-          </p>
-          <p className="text-white/50 text-sm mb-8">
-            No fee unless we win &middot; SF tenants only &middot; Contingency fee
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-white text-brand-dark px-8 py-4 rounded-full font-semibold hover:bg-cream transition-colors"
-          >
-            Get a Free Case Review
-          </Link>
-        </div>
-      </section>
+      {/* Case review — intake form built in */}
+      <CaseReviewSection location="sf_constructive_eviction_form" title="Being pushed out without a notice?">
+        <p>
+          Call before you leave. The options available to you while you&rsquo;re still in the unit — injunctive relief, documented conditions, negotiating position — are different from the options you have after you vacate. The free screening call is 15–20 minutes.
+        </p>
+      </CaseReviewSection>
     </>
   );
 }

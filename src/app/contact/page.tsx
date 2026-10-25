@@ -2,6 +2,7 @@
 
 import IntakeForm from '@/components/IntakeForm';
 import { trackEvent } from '@/lib/analytics';
+import { CASE_REVIEW_ID, EMAIL, PHONE_DISPLAY, PHONE_TEL } from '@/lib/contact';
 
 export default function ContactPage() {
   return (
@@ -41,18 +42,18 @@ export default function ContactPage() {
               <h3 className="font-semibold text-ink mb-3 text-sm">Prefer to reach out directly?</h3>
               <div className="space-y-2 text-sm">
                 <a
-                  href="tel:+14159095920"
+                  href={PHONE_TEL}
                   onClick={() => trackEvent('phone_click', { location: 'contact_page' })}
                   className="flex items-center gap-2 text-brand hover:text-brand-mid transition-colors font-medium"
                 >
-                  📞 (415) 909-5920
+                  📞 {PHONE_DISPLAY}
                 </a>
                 <a
-                  href="mailto:cody@bowlaylaw.com"
+                  href={`mailto:${EMAIL}`}
                   onClick={() => trackEvent('email_click', { location: 'contact_page' })}
                   className="flex items-center gap-2 text-brand hover:text-brand-mid transition-colors font-medium"
                 >
-                  ✉️ cody@bowlaylaw.com
+                  ✉️ {EMAIL}
                 </a>
               </div>
             </div>
@@ -63,7 +64,7 @@ export default function ContactPage() {
           </div>
 
           {/* Intake form (submits to GoHighLevel via /api/intake) */}
-          <div className="lg:col-span-2">
+          <div id={CASE_REVIEW_ID} className="lg:col-span-2 scroll-mt-24">
             <IntakeForm />
             <p className="text-xs text-muted text-center leading-relaxed mt-4">
               Submitting this form does not create an attorney-client relationship. No legal

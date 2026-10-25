@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CaseReviewCTA from '@/components/CaseReviewCTA';
+import CaseReviewSection from '@/components/CaseReviewSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/locations/san-francisco' },
@@ -97,7 +99,7 @@ export default function SanFranciscoPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/contact"
+              href="#case-review"
               className="inline-block bg-brand-dark text-white px-8 py-4 rounded-full font-semibold hover:bg-brand transition-colors"
             >
               Get a Free Case Review
@@ -183,6 +185,8 @@ export default function SanFranciscoPage() {
         </div>
       </section>
 
+      <CaseReviewCTA location="sf_hub_mid" />
+
       {/* How cases work */}
       <section className="bg-cream-dark px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
@@ -219,40 +223,16 @@ export default function SanFranciscoPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="bg-brand-dark text-white px-6 py-20">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-display text-3xl font-bold mb-4">
-            San Francisco tenant? Let&rsquo;s talk.
-          </h2>
-          <p className="text-white/70 mb-2 leading-relaxed">
-            Free screening call. 15–20 minutes. No commitment.
-          </p>
-          <p className="text-white/50 text-sm mb-8">
-            No fee unless we win &middot; Contingency fee &middot; SF tenants only
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-block bg-white text-brand-dark px-8 py-4 rounded-full font-semibold hover:bg-cream transition-colors"
-            >
-              Get a Free Case Review
-            </Link>
-            <a
-              href="tel:+14159095920"
-              className="inline-block border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-colors"
-            >
-              (415) 909-5920
-            </a>
-          </div>
-          <p className="mt-12 text-white/30 text-xs">
-            For attorneys, journalists, and tenants who want the full statutory text:{' '}
-            <Link href="/resources/local-ordinances/san-francisco" className="underline hover:text-white/60 transition-colors">
-              SF Rent Ordinance Reference (Chapter 37) →
-            </Link>
-          </p>
-        </div>
-      </section>
+      {/* Case review — intake form built in */}
+      <CaseReviewSection location="sf_hub_form" title="San Francisco tenant? Let’s talk.">
+        <p>Free screening call. 15–20 minutes. No commitment.</p>
+        <p className="text-white/70 text-sm">
+          For attorneys, journalists, and tenants who want the full statutory text:{' '}
+          <Link href="/resources/local-ordinances/san-francisco" className="underline hover:text-white transition-colors">
+            SF Rent Ordinance Reference (Chapter 37) →
+          </Link>
+        </p>
+      </CaseReviewSection>
     </>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CaseReviewSection from '@/components/CaseReviewSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/resources/local-ordinances' },
@@ -139,24 +140,13 @@ export default function LocalOrdinancesPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-brand-dark text-white px-6 py-16">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-display text-2xl font-bold mb-4">
-            Need help with a case?
-          </h2>
-          <p className="text-white/70 mb-8 leading-relaxed max-w-xl mx-auto">
-            I represent California tenants under these ordinances. The free case review is
-            15–20 minutes and costs nothing.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-white text-brand-dark px-8 py-4 rounded-full font-semibold hover:bg-cream transition-colors"
-          >
-            Free Case Review →
-          </Link>
-        </div>
-      </section>
+      {/* Case review — intake form built in */}
+      <CaseReviewSection location="ordinances_hub_form" title="Need help with a case?">
+        <p>
+          I represent California tenants under these ordinances. The free case review is
+          15–20 minutes and costs nothing.
+        </p>
+      </CaseReviewSection>
     </>
   );
 }

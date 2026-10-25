@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CaseReviewCTA from '@/components/CaseReviewCTA';
+import CaseReviewSection from '@/components/CaseReviewSection';
+import TopCaseBox from '@/components/TopCaseBox';
+import FaqSection, { type Faq } from '@/components/FaqSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/locations/san-francisco/omi-eviction' },
@@ -78,12 +82,41 @@ const redFlags = [
   'Statements of occupancy were not filed with the Rent Board as required',
 ];
 
+// Plain-language Q&A (also emitted as FAQPage data). Answers restate this page's content.
+const omiFaqs: Faq[] = [
+  {
+    q: 'Can my landlord evict me for an owner move-in in San Francisco?',
+    a: 'Yes, but only if strict rules are met. Under SF Admin Code § 37.9(a)(8), the owner or a qualifying relative must genuinely intend to live in the unit as their principal residence for at least 36 continuous months. The owner must hold at least a 25% ownership interest (10% if they became an owner of record on or before February 21, 1991), the notice must include the Rent Board form and a declaration under penalty of perjury, and the landlord cannot use OMI if a comparable unit in the building is vacant. If those requirements are not met, the eviction is wrongful.',
+  },
+  {
+    q: 'Who cannot be evicted for an owner move-in in San Francisco?',
+    a: 'Under § 37.9(i), a landlord cannot use OMI against a tenant who is 60 or older and has lived in the unit for 10 or more years, a disabled tenant who has lived there 10 or more years, or a catastrophically ill tenant who has lived there 5 or more years. Separately, if a child under 18 or an educator lives in the unit and the tenant has been there 12 or more months, the notice cannot take effect during the school year (§ 37.9(j)).',
+  },
+  {
+    q: 'What if the owner never moves in after an OMI eviction?',
+    a: 'If the owner or relative never moves in, moves out before completing 36 months, or re-rents the unit, the eviction may have been fraudulent. You have the right to re-occupy the unit at your prior controlled rent, and you may be able to sue for wrongful eviction. Common red flags include the unit being re-listed online within months of your move-out and the landlord not filing the required statements of occupancy with the Rent Board.',
+  },
+  {
+    q: 'What can I recover for a fraudulent owner move-in eviction in SF?',
+    a: 'Actual damages, which can be trebled under § 37.9(f). The core is usually the rent differential between your controlled rent and current market rent over the tenancy you lost, plus moving costs, temporary housing, and emotional distress. Unpaid or underpaid relocation assistance is added, and the prevailing party recovers attorney\'s fees.',
+  },
+  {
+    q: 'How long do I have to sue over a wrongful owner move-in in San Francisco?',
+    a: 'Five years, running from the earlier of three months after the landlord recovered possession or the date of the landlord\'s first statement of occupancy filing with the Rent Board.',
+  },
+];
+
 export default function SFOMIPage() {
   return (
     <>
       {/* Hero */}
       <section className="bg-white px-6 py-20 border-b border-border">
         <div className="max-w-6xl mx-auto">
+          <TopCaseBox
+            location="sf_omi_top"
+            lead="Got an OMI notice?"
+            body="You may be owed relocation money or damages."
+          />
           <p className="text-brand-mid text-sm font-semibold uppercase tracking-wider mb-4">
             San Francisco · Owner Move-In Eviction
           </p>
@@ -98,7 +131,7 @@ export default function SFOMIPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/contact"
+              href="#case-review"
               className="inline-block bg-brand-dark text-white px-8 py-4 rounded-full font-semibold hover:bg-brand transition-colors"
             >
               Get a Free Case Review
@@ -204,6 +237,8 @@ export default function SFOMIPage() {
         </div>
       </section>
 
+      <CaseReviewCTA location="sf_omi_mid" />
+
       {/* Red flags */}
       <section className="bg-white px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
@@ -253,28 +288,14 @@ export default function SFOMIPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-brand-dark text-white px-6 py-20">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-display text-3xl font-bold mb-4">
-            Received an owner move-in notice?
-          </h2>
-          <p className="text-white/70 mb-4 leading-relaxed max-w-2xl mx-auto">
-            The free screening call is 15–20 minutes. Cody will ask about your tenancy, the
-            notice, and what you know about what&rsquo;s happened to the unit. If there&rsquo;s a case,
-            he will tell you — and if there isn&rsquo;t, he will tell you that too.
-          </p>
-          <p className="text-white/50 text-sm mb-8">
-            No fee unless we win &middot; SF tenants only &middot; Contingency fee
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-white text-brand-dark px-8 py-4 rounded-full font-semibold hover:bg-cream transition-colors"
-          >
-            Get a Free Case Review
-          </Link>
-        </div>
-      </section>
+      <FaqSection title="Owner move-in questions, answered plainly" faqs={omiFaqs} />
+
+      {/* Case review — intake form built in */}
+      <CaseReviewSection location="sf_omi_form" title="Received an owner move-in notice?">
+        <p>
+          The free screening call is 15–20 minutes. Cody will ask about your tenancy, the notice, and what you know about what&rsquo;s happened to the unit. If there&rsquo;s a case, he will tell you — and if there isn&rsquo;t, he will tell you that too.
+        </p>
+      </CaseReviewSection>
     </>
   );
 }

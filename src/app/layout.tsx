@@ -3,6 +3,8 @@ import { Nunito } from 'next/font/google';
 import Script from 'next/script';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import MobileCallBar from '@/components/MobileCallBar';
+import { OFFICE } from '@/lib/contact';
 import './globals.css';
 
 const nunito = Nunito({
@@ -30,11 +32,13 @@ const schema = {
       image: 'https://bowlaylaw.com/opengraph-image',
       description:
         'California tenant rights law firm representing tenants in wrongful eviction and rent control cases. No fee unless we win.',
-      // Service-area business (matches the Google Business Profile): city only, no street address.
+      // Same office address the Oakland page and State Bar listing show.
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Oakland',
-        addressRegion: 'CA',
+        streetAddress: OFFICE.street,
+        addressLocality: OFFICE.city,
+        addressRegion: OFFICE.region,
+        postalCode: OFFICE.postalCode,
         addressCountry: 'US',
       },
       areaServed: [
@@ -145,6 +149,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <MobileCallBar />
       </body>
 
     </html>

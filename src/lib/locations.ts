@@ -21,6 +21,10 @@ export interface LocationData {
   whyStrong: string;
   tpaInteraction: string;
   faq: { q: string; a: string }[];
+  // Optional city-specific sections rendered after "What is exempt" (paragraphs split on blank lines).
+  extraSections?: { title: string; body: string }[];
+  // Shows the office address, map, and client reviews (the city where the office is).
+  showOffice?: boolean;
 }
 
 export const locations: LocationData[] = [
@@ -144,6 +148,7 @@ export const locations: LocationData[] = [
   {
     slug: 'oakland',
     city: 'Oakland',
+    showOffice: true,
     fullName: 'Oakland',
     ordinanceName: 'Oakland Rent Adjustment Program & Just Cause for Eviction Ordinance',
     yearEstablished: '1980',

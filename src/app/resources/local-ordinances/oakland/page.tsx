@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CaseReviewCTA from '@/components/CaseReviewCTA';
+import CaseReviewSection from '@/components/CaseReviewSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/resources/local-ordinances/oakland' },
@@ -54,7 +56,7 @@ export default function OaklandOrdinanceReferencePage() {
               </p>
             </div>
             <Link
-              href="/contact"
+              href="#case-review"
               className="shrink-0 bg-brand-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand transition-colors"
             >
               Free Case Review →
@@ -346,6 +348,8 @@ export default function OaklandOrdinanceReferencePage() {
         </div>
       </section>
 
+      <CaseReviewCTA location="oakland_ordinance_mid" />
+
       {/* ── RENT CONTROL (Article I) — placeholder ── */}
       <section id="rent-control" className="bg-cream-dark px-6 py-16 border-b border-border">
         <div className="max-w-6xl mx-auto">
@@ -405,26 +409,15 @@ export default function OaklandOrdinanceReferencePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <section className="bg-white px-6 py-12 border-b border-border">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div>
-            <p className="text-ink font-medium mb-1">Representing Oakland tenants under Chapter 8.22</p>
-            <p className="text-muted text-sm">
-              Contingency only — no fee unless we win.{' '}
-              <Link href="/locations/oakland" className="text-brand underline hover:text-brand-mid">
-                See the Oakland tenant law page →
-              </Link>
-            </p>
-          </div>
-          <Link
-            href="/contact"
-            className="shrink-0 bg-brand-dark text-white px-6 py-3 rounded-full font-semibold hover:bg-brand transition-colors"
-          >
-            Free Case Review
+      {/* Case review — intake form built in */}
+      <CaseReviewSection location="oakland_ordinance_form" title="Representing Oakland tenants under Chapter 8.22">
+        <p>
+          Contingency only — no fee unless we win.{' '}
+          <Link href="/locations/oakland" className="underline hover:text-white transition-colors">
+            See the Oakland tenant law page →
           </Link>
-        </div>
-      </section>
+        </p>
+      </CaseReviewSection>
 
       <section className="bg-cream-dark px-6 py-6">
         <div className="max-w-6xl mx-auto">
