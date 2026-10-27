@@ -1,9 +1,10 @@
-// Receives the Contact page form and files it in GoHighLevel:
-// upserts the contact (with intake custom fields), then opens a card in the
-// Intake pipeline at "New inquiry". The GHL token stays server-side.
+// Receives the Contact page form and creates a lead in the Clio Grow Lead
+// Inbox. The Grow lead capture token stays server-side (CLIO_GROW_LEAD_TOKEN).
+// Endpoint reference: https://docs.developers.clio.com/guides/clio-grow/lead-inbox-api/
 
-const GHL_API = 'https://services.leadconnectorhq.com';
-const GHL_VERSION = '2021-07-28';
+const GROW_LEAD_INBOX = 'https://grow.clio.com/inbox_leads';
+const LEAD_SOURCE = 'Website contact form';
+const FORM_URL = 'https://bowlaylaw.com/contact';
 
 const RESIDENCE_TYPES = ['Single-family home', 'Apartment', 'Condo', 'In-law unit', 'Other'];
 
@@ -25,7 +26,7 @@ function clean(value: unknown, max = 200): string {
   return typeof value === 'string' ? value.trim().slice(0, max) : '';
 }
 
-// GHL wants E.164; assume US for bare 10-digit numbers.
+// Normalize bare 10-digit US numbers to E.164; leave anything else as typed.
 function toE164(raw: string): string {
   const digits = raw.replace(/\D/g, '');
   if (digits.length === 10) return `+1${digits}`;
@@ -33,25 +34,10 @@ function toE164(raw: string): string {
   return raw;
 }
 
-async function ghl(path: string, body: unknown) {
-  const res = await fetch(`${GHL_API}${path}`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${process.env.GHL_API_TOKEN}`,
-      Version: GHL_VERSION,
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
-  const data = await res.json().catch(() => ({}));
-  return { ok: res.ok, status: res.status, data };
-}
-
 export async function POST(request: Request) {
-  const { GHL_API_TOKEN, GHL_LOCATION_ID, GHL_PIPELINE_ID, GHL_NEW_INQUIRY_STAGE_ID } = process.env;
-  if (!GHL_API_TOKEN || !GHL_LOCATION_ID || !GHL_PIPELINE_ID || !GHL_NEW_INQUIRY_STAGE_ID) {
-    console.error('intake: GHL environment variables are missing');
+  const token = process.env.CLIO_GROW_LEAD_TOKEN;
+  if (!token) {
+    console.error('intake: CLIO_GROW_LEAD_TOKEN is missing');
     return Response.json({ error: 'Form is temporarily unavailable.' }, { status: 500 });
   }
 
@@ -88,44 +74,39 @@ export async function POST(request: Request) {
     return Response.json({ error: 'Please fill in every field.' }, { status: 400 });
   }
 
-  const tags = ['website-inquiry'];
-  if (body.smsConsent === true) tags.push('sms-consent');
+  // Grow's inbox lead has one free-text field, so the intake answers go there.
+  const message = [
+    `City where you rent: ${lead.city}`,
+    `Type of residence: ${lead.residenceType}`,
+    `Approximate move-in date: ${lead.moveInDate}`,
+    `Moved out: ${lead.movedOut}`,
+    `SMS consent: ${body.smsConsent === true ? 'Yes' : 'No'}`,
+    '',
+    'What happened:',
+    lead.whatHappened,
+  ].join('\n');
 
-  const contact = await ghl('/contacts/upsert', {
-    locationId: GHL_LOCATION_ID,
-    firstName: lead.firstName,
-    lastName: lead.lastName,
-    email: lead.email,
-    phone: lead.phone,
-    source: 'Website contact form',
-    tags,
-    customFields: [
-      { key: 'city_where_you_rent', field_value: lead.city },
-      { key: 'type_of_residence', field_value: lead.residenceType },
-      { key: 'approximate_movein_date', field_value: lead.moveInDate },
-      { key: 'moved_out', field_value: lead.movedOut },
-      { key: 'what_happened', field_value: lead.whatHappened },
-    ],
+  const res = await fetch(GROW_LEAD_INBOX, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      inbox_lead: {
+        from_first: lead.firstName,
+        from_last: lead.lastName,
+        from_email: lead.email,
+        from_phone: lead.phone,
+        from_message: message,
+        referring_url: FORM_URL,
+        from_source: LEAD_SOURCE,
+      },
+      inbox_lead_token: token,
+    }),
   });
-  const contactId: string | undefined = contact.data?.contact?.id;
-  if (!contact.ok || !contactId) {
-    console.error('intake: contact upsert failed', contact.status, contact.data);
+
+  if (!res.ok) {
+    const data = await res.text().catch(() => '');
+    console.error('intake: Clio Grow lead create failed', res.status, data);
     return Response.json({ error: 'Something went wrong. Please call or email instead.' }, { status: 502 });
-  }
-
-  const opportunity = await ghl('/opportunities/', {
-    locationId: GHL_LOCATION_ID,
-    pipelineId: GHL_PIPELINE_ID,
-    pipelineStageId: GHL_NEW_INQUIRY_STAGE_ID,
-    contactId,
-    name: `${lead.firstName} ${lead.lastName}`,
-    status: 'open',
-    source: 'Website contact form',
-  });
-  // A repeat inquiry from someone with an open card fails here; the contact
-  // (and their latest answers) is still saved, so don't fail the visitor.
-  if (!opportunity.ok) {
-    console.error('intake: opportunity create failed', opportunity.status, opportunity.data);
   }
 
   return Response.json({ ok: true });
