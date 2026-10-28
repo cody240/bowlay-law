@@ -11,6 +11,13 @@ const labelClass = 'block text-sm font-semibold text-ink mb-1.5';
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 
+// CallRail's snippet captures the submission and creates the lead through its
+// webhook. If the snippet was blocked (ad blocker, Brave), the server creates
+// the lead directly instead.
+function callrailPresent(): boolean {
+  return typeof window !== 'undefined' && typeof (window as { CallTrk?: unknown }).CallTrk === 'function';
+}
+
 // `location` tags the form_submit event so GA4 shows which page the lead came from.
 export default function IntakeForm({ location = 'contact_page' }: { location?: string }) {
   const [status, setStatus] = useState<Status>('idle');
@@ -37,6 +44,7 @@ export default function IntakeForm({ location = 'contact_page' }: { location?: s
           movedOut: form.get('movedOut'),
           whatHappened: form.get('whatHappened'),
           smsConsent: form.get('smsConsent') === 'on',
+          callrailCaptured: callrailPresent(),
           website: form.get('website'),
         }),
       });
