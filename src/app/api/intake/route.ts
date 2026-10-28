@@ -1,12 +1,13 @@
-// Receives the Contact page form and creates a lead in the Clio Grow Lead
-// Inbox. The Grow lead capture token stays server-side (CLIO_GROW_LEAD_TOKEN).
-// Endpoint reference: https://docs.developers.clio.com/guides/clio-grow/lead-inbox-api/
+// Receives the Contact page form. Validates it and, when CallRail's script was
+// not running in the visitor's browser (ad blocker, Brave), creates the lead in
+// the Clio Grow Lead Inbox directly. When CallRail did capture the submission,
+// the lead is created by /api/callrail/form from CallRail's webhook instead,
+// so it carries CallRail's attribution and is never duplicated.
+// The Grow lead capture token stays server-side (CLIO_GROW_LEAD_TOKEN).
 
-const GROW_LEAD_INBOX = 'https://grow.clio.com/inbox_leads';
-const LEAD_SOURCE = 'Website contact form';
+import { RESIDENCE_TYPES, clean, createGrowLead, formatIntakeMessage, toE164, type IntakeFields } from '@/lib/growLead';
+
 const FORM_URL = 'https://bowlaylaw.com/contact';
-
-const RESIDENCE_TYPES = ['Single-family home', 'Apartment', 'Condo', 'In-law unit', 'Other'];
 
 type IntakeBody = {
   firstName?: string;
@@ -19,20 +20,9 @@ type IntakeBody = {
   movedOut?: string;
   whatHappened?: string;
   smsConsent?: boolean;
+  callrailCaptured?: boolean; // true when CallRail's script was present at submit
   website?: string; // honeypot: real people never fill this
 };
-
-function clean(value: unknown, max = 200): string {
-  return typeof value === 'string' ? value.trim().slice(0, max) : '';
-}
-
-// Normalize bare 10-digit US numbers to E.164; leave anything else as typed.
-function toE164(raw: string): string {
-  const digits = raw.replace(/\D/g, '');
-  if (digits.length === 10) return `+1${digits}`;
-  if (digits.length === 11 && digits.startsWith('1')) return `+${digits}`;
-  return raw;
-}
 
 export async function POST(request: Request) {
   const token = process.env.CLIO_GROW_LEAD_TOKEN;
@@ -51,7 +41,7 @@ export async function POST(request: Request) {
   // Bots fill every field; pretend success so they move on.
   if (clean(body.website)) return Response.json({ ok: true });
 
-  const lead = {
+  const lead: IntakeFields = {
     firstName: clean(body.firstName, 80),
     lastName: clean(body.lastName, 80),
     phone: toE164(clean(body.phone, 40)),
@@ -60,10 +50,13 @@ export async function POST(request: Request) {
     residenceType: clean(body.residenceType, 40),
     moveInDate: clean(body.moveInDate, 10),
     movedOut: clean(body.movedOut, 3),
+    smsConsent: body.smsConsent === true,
     whatHappened: clean(body.whatHappened, 5000),
   };
 
-  const missing = Object.entries(lead).filter(([, v]) => !v).map(([k]) => k);
+  const required = { ...lead } as Record<string, unknown>;
+  delete required.smsConsent;
+  const missing = Object.entries(required).filter(([, v]) => !v).map(([k]) => k);
   if (
     missing.length ||
     !/^\S+@\S+\.\S+$/.test(lead.email) ||
@@ -74,40 +67,24 @@ export async function POST(request: Request) {
     return Response.json({ error: 'Please fill in every field.' }, { status: 400 });
   }
 
-  // Grow's inbox lead has one free-text field, so the intake answers go there.
-  const message = [
-    `City where you rent: ${lead.city}`,
-    `Type of residence: ${lead.residenceType}`,
-    `Approximate move-in date: ${lead.moveInDate}`,
-    `Moved out: ${lead.movedOut}`,
-    `SMS consent: ${body.smsConsent === true ? 'Yes' : 'No'}`,
-    '',
-    'What happened:',
-    lead.whatHappened,
-  ].join('\n');
+  // CallRail captured this submission; its webhook creates the Grow lead.
+  if (body.callrailCaptured === true) return Response.json({ ok: true, via: 'callrail' });
 
-  const res = await fetch(GROW_LEAD_INBOX, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({
-      inbox_lead: {
-        from_first: lead.firstName,
-        from_last: lead.lastName,
-        from_email: lead.email,
-        from_phone: lead.phone,
-        from_message: message,
-        referring_url: FORM_URL,
-        from_source: LEAD_SOURCE,
-      },
-      inbox_lead_token: token,
-    }),
+  const result = await createGrowLead({
+    token,
+    firstName: lead.firstName,
+    lastName: lead.lastName,
+    email: lead.email,
+    phone: lead.phone,
+    message: formatIntakeMessage(lead),
+    referringUrl: FORM_URL,
+    source: 'Website contact form',
   });
 
-  if (!res.ok) {
-    const data = await res.text().catch(() => '');
-    console.error('intake: Clio Grow lead create failed', res.status, data);
+  if (!result.ok) {
+    console.error('intake: Clio Grow lead create failed', result.status, result.body);
     return Response.json({ error: 'Something went wrong. Please call or email instead.' }, { status: 502 });
   }
 
-  return Response.json({ ok: true });
+  return Response.json({ ok: true, via: 'direct' });
 }
