@@ -27,7 +27,7 @@ const schema = {
       name: 'Bowlay Law',
       url: 'https://bowlaylaw.com',
       telephone: '+14159095920',
-      email: 'cody@bowlaylaw.com',
+      email: 'inquiry@bowlaylaw.com',
       logo: 'https://bowlaylaw.com/logo-black.svg',
       image: 'https://bowlaylaw.com/opengraph-image',
       description:

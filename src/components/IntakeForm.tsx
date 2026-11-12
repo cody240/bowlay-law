@@ -142,7 +142,7 @@ export default function IntakeForm({ location = 'contact_page' }: { location?: s
       {status === 'error' && (
         <p className="text-sm text-red-700" role="alert">
           {error} You can also call <a href="tel:+14159095920" className="underline">(415) 909-5920</a> or
-          email <a href="mailto:cody@bowlaylaw.com" className="underline">cody@bowlaylaw.com</a>.
+          email <a href="mailto:inquiry@bowlaylaw.com" className="underline">inquiry@bowlaylaw.com</a>.
         </p>
       )}
 
