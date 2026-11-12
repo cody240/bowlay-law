@@ -99,10 +99,10 @@ export default function PrivacyPolicyPage() {
               Contact Bowlay Law
             </Link>
             <a
-              href="mailto:cody@bowlaylaw.com"
+              href="mailto:inquiry@bowlaylaw.com"
               className="border-2 border-brand-dark text-brand-dark px-8 py-4 rounded-full font-semibold hover:bg-brand-pale transition-colors"
             >
-              cody@bowlaylaw.com
+              inquiry@bowlaylaw.com
             </a>
           </div>
         </div>
